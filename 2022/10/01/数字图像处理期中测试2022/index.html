@@ -16,16 +16,16 @@
   <meta name="author" content="Liu Mingchen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、简答题（共2题，20分） 1.（10分）什么是图像深度? 它跟图像的灰度级有什么关系？ 答：图像深度是指在位图图像中，表示各像素点亮度或色彩信息的二进制位数。 当一幅图像有2k2^k2k个灰度级时，图像的深度为k。 2.（10分）什么是同时对比度现象并解释原因。 答：同时对比度现象：感知区域的亮度并不简单地取决于其强度。两目标物亮度相同，但人会感觉到背景暗的目标物亮,背景亮的目标物暗。 原因：">
+    <meta name="description" content="2020级数字图像处理技术期中测试 薛志东老师 2022.9.30">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字图像处理期中测试2022">
 <meta property="og:url" content="http://example.com/2022/10/01/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E6%9C%9F%E4%B8%AD%E6%B5%8B%E8%AF%952022/index.html">
 <meta property="og:site_name" content="Mingchen&#39;s Blog">
-<meta property="og:description" content="一、简答题（共2题，20分） 1.（10分）什么是图像深度? 它跟图像的灰度级有什么关系？ 答：图像深度是指在位图图像中，表示各像素点亮度或色彩信息的二进制位数。 当一幅图像有2k2^k2k个灰度级时，图像的深度为k。 2.（10分）什么是同时对比度现象并解释原因。 答：同时对比度现象：感知区域的亮度并不简单地取决于其强度。两目标物亮度相同，但人会感觉到背景暗的目标物亮,背景亮的目标物暗。 原因：">
+<meta property="og:description" content="2020级数字图像处理技术期中测试 薛志东老师 2022.9.30">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20220930_bg1.jpg">
 <meta property="article:published_time" content="2022-10-01T00:27:20.784Z">
-<meta property="article:modified_time" content="2022-10-01T14:40:18.493Z">
+<meta property="article:modified_time" content="2022-10-01T14:54:54.821Z">
 <meta property="article:author" content="Liu Mingchen">
 <meta property="article:tag" content="数字图像处理">
 <meta name="twitter:card" content="summary_large_image">
@@ -286,9 +286,9 @@
 原因：因为神经的感受野的存在：视觉感觉由视网膜上一定范围内的细胞群共同引起。</p>
 <h2 id="二、计算题（共2题，30分）">二、计算题（共2题，30分）</h2>
 <p><strong>某4*5的灰度图像A，图像深度为3bit，图像像素灰度值如图1所示，请分别做如下计算。</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221001_con1.png" srcset="/img/loading.gif" lazyload alt="图1" title="图1"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221001_con1.png" srcset="/img/loading.gif" lazyload alt="图1"></p>
 <p><strong>1.（15分）解释均值滤波的基本原理，以图2为滤波器，对图像A进行均值滤波，给出均值滤波的计算结果。</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221001_con2.png" srcset="/img/loading.gif" lazyload alt="图2" title="图2"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221001_con2.png" srcset="/img/loading.gif" lazyload alt="图2"></p>
 <p>答：均值滤波是指在图像上对待处理的像素给一个模板，该模板包括了其周围的邻近像素，将模板中的全体像素的均值来替代原来的像素值的方法。</p>
 <table>
 <thead>
@@ -365,7 +365,7 @@
 <p>答：直方图均衡化是对在图像中像素个数多的灰度级进行展宽，而对像素个数少的灰度级进行缩减，从而达到清晰图像的目的。<br>
 直方图规定化是指通过灰度映射函数，将灰度直方图改造成所希望的直方图，从而有选择地增强某个灰度值范围内的对比度，使图像灰度值的分布满足特定的要求。</p>
 <p><strong>2.（15分）某分辨率为40×25的3bit图像，灰度级从0到7各出现了200，100，100，50，250，100，100，100次，请采用直方图规定化的方法进行灰度映射变换，使变换后的0到7的8个灰度级近似服从0，0.1，0.2，0.2，0.2，0.2，0.0，0.1的分布。</strong></p>
-<p>答：<img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221001_con3.png" srcset="/img/loading.gif" lazyload alt="图3"></p>
+<p>答：<img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221001_con3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>灰度映射函数：</p>
 <table>
 <thead>
