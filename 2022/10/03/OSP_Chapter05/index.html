@@ -16,26 +16,26 @@
   <meta name="author" content="Liu Mingchen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="2020级操作系统原理 苏曙光老师 2022.5.19 第二章 操作系统的硬件基础">
+    <meta name="description" content="2020级操作系统原理 苏曙光老师 2022.5.19 第五章 资源分配与调度">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统原理复习 第二章 操作系统的硬件基础">
-<meta property="og:url" content="http://example.com/2022/10/03/OSP_Chapter02/index.html">
+<meta property="og:title" content="操作系统原理复习 第五章 资源分配与调度">
+<meta property="og:url" content="http://example.com/2022/10/03/OSP_Chapter05/index.html">
 <meta property="og:site_name" content="Mingchen&#39;s Blog">
-<meta property="og:description" content="2020级操作系统原理 苏曙光老师 2022.5.19 第二章 操作系统的硬件基础">
+<meta property="og:description" content="2020级操作系统原理 苏曙光老师 2022.5.19 第五章 资源分配与调度">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg2.jpg">
-<meta property="article:published_time" content="2022-10-02T18:04:38.802Z">
-<meta property="article:modified_time" content="2022-10-02T18:18:22.326Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg5.jpg">
+<meta property="article:published_time" content="2022-10-03T03:09:52.389Z">
+<meta property="article:modified_time" content="2022-10-03T04:02:04.273Z">
 <meta property="article:author" content="Liu Mingchen">
 <meta property="article:tag" content="操作系统原理">
 <meta property="article:tag" content="复习">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg2.jpg">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg5.jpg">
   
   
   
-  <title>操作系统原理复习 第二章 操作系统的硬件基础 - Mingchen&#39;s Blog</title>
+  <title>操作系统原理复习 第五章 资源分配与调度 - Mingchen&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,13 +198,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg2.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg5.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="第二章 操作系统的硬件基础"></span>
+            <span id="subtitle" data-typed-text="第五章 资源分配与调度"></span>
           
         </div>
 
@@ -215,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-03 02:04" pubdate>
-          2022年10月3日 凌晨
+        <time datetime="2022-10-03 11:09" pubdate>
+          2022年10月3日 上午
         </time>
       </span>
     
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1k 字
         
       </span>
     
@@ -238,7 +238,7 @@
         
         
         
-          17 分钟
+          9 分钟
         
       </span>
     
@@ -276,251 +276,92 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">第二章 操作系统的硬件基础</h1>
+            <h1 style="display: none">第五章 资源分配与调度</h1>
             
             
               <div class="markdown-body">
                 
-                <p><em>支持操作系统的最基本硬件结构：<strong>CPU、内存、中断、时钟</strong></em></p>
-<h2 id="CPU的态">CPU的态</h2>
-<p>CPU的工作状态，对资源和指令使用权限的描述<br>
-硬件按“态”来区分CPU的状态，OS按“进程”来区分CPU的状态</p>
+                <h1>死锁</h1>
+<h2 id="死锁定义1">死锁定义1</h2>
 <ul>
-<li>
-<p><strong>核态</strong></p>
+<li><strong>两个或多个</strong>进程<strong>无限期地等待</strong>永远不会发生的条件的一种系统<strong>状态</strong>。</li>
+<li>结果：每个进程都<strong>永远阻塞</strong></li>
+</ul>
+<h2 id="死锁定义2">死锁定义2</h2>
 <ul>
-<li>能够访问所有资源和执行所有指令</li>
-<li>管理程序/OS内核</li>
+<li>在两个或多个进程中，<strong>每个</strong>进程都<strong>已持有</strong>某种资源，但又<strong>继续申请</strong>其它进程已持有的某种资源。</li>
+<li>每个进程都拥有其运行所需的<strong>部分资源</strong>，但又<strong>不足够</strong>运行，从而每个进程都不能向前推进，陷于<strong>阻塞</strong>状态。这种状态称死锁。</li>
+</ul>
+<h2 id="死锁的起因">死锁的起因</h2>
+<ul>
+<li><strong>系统资源有限</strong>：资源数目不足以满足所有进程的需要，引起进程对资源的竞争而产生死锁</li>
+<li><strong>并发进程的推进顺序不当</strong>：进程在运行过程中，请求和释放资源的顺序不当，导致进程产生死锁</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con18.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="死锁的必要条件">死锁的必要条件</h2>
+<ul>
+<li><strong>互斥条件</strong>：资源具有独占性，进程互斥使用资源</li>
+<li><strong>不剥夺条件</strong>：进程在释放资源前（即访问完）不能被其他进程剥夺</li>
+<li><strong>部分分配条件</strong>：进程所需资源逐步分配，需要时申请和分配
+<ul>
+<li>占有一些资源，同时申请新资源</li>
 </ul>
 </li>
-<li>
-<p><strong>用户态</strong></p>
-<ul>
-<li>仅能访问部分资源，其他资源受限</li>
-<li>用户程序</li>
+<li><strong>环路条件</strong>：多个进程构成环路：环中每个进程已占用的资源被前一进程申请，而自己所需新资源又被环中后一进程所占用</li>
 </ul>
-</li>
-<li>
-<p><strong>管态</strong></p>
+<h2 id="解决死锁的策略">解决死锁的策略</h2>
+<p>预防死锁、避免死锁、检测死锁、恢复死锁</p>
+<h3 id="预防死锁">预防死锁</h3>
+<p>通过设置某些限制条件，破坏死锁四个必要条件中的一个或多个，来防止死锁。</p>
 <ul>
-<li>介于核态和用户态之间</li>
-</ul>
-</li>
-</ul>
-<h2 id="用户态和核态之间的转换">用户态和核态之间的转换</h2>
+<li>破坏互斥条件……………（难）</li>
+<li>破坏不剥夺条件…………（代价大）</li>
+<li>破坏部分分配条件………（<strong>预先静态分配</strong>）</li>
+<li>破坏环路条件……………（<strong>有序资源分配</strong>）
 <ul>
-<li>
-<p><strong>用户态向核态转换</strong></p>
-<ul>
-<li>用户请求OS提供服务</li>
-<li>发生中断</li>
-<li>用户进程产生错误（内部中断）</li>
-<li>用户态企图执行特权指令</li>
-</ul>
-</li>
-<li>
-<p><strong>核态向用户态转换</strong></p>
-<ul>
-<li>一般是中断返回：<strong>IRET</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="存储器">存储器</h2>
-<ul>
-<li><strong>寄存器</strong></li>
-<li><strong>高速缓存</strong>（CACHE）</li>
-<li><strong>主存</strong>：直接和CPU交换信息——内存</li>
-<li><strong>辅存</strong>：不能直接和CPU交换信息——硬盘、软盘</li>
-</ul>
-<h2 id="中断定义">中断定义</h2>
-<ul>
-<li>指CPU对突发的外部事件的反应过程或机制</li>
-<li>CPU收到外部信号（中断信号）后，停止当前工作，转去处理该外部事件，处理完毕后回到原来工作的中断处（断点）继续原来的工作</li>
-<li>引起系统中断的时间称为<strong>中断源</strong></li>
-</ul>
-<h2 id="引入中断的目的">引入中断的目的</h2>
-<ul>
-<li>实现并发活动</li>
-<li>实现实时处理</li>
-<li>故障自动处理</li>
-</ul>
-<h2 id="中断类型">中断类型</h2>
-<ul>
-<li>
-<p><strong>强迫中断和自愿中断</strong></p>
-<ul>
-<li>强迫中断：程序没有预期：例：I/O、外部中断</li>
-<li>自愿中断：程序有预期。例：执行访管指令</li>
-</ul>
-</li>
-<li>
-<p><strong>外中断（中断）和内中断（俘获）</strong></p>
-<ul>
-<li>外中断：由CPU外部事件引起。例：I/O，外部事情</li>
-<li>内中断：由CPU内部事件引起。例：访管中断、程序中断</li>
-</ul>
-</li>
-<li>
-<p>外中断分为<strong>不可屏蔽中断和可屏蔽中断</strong></p>
-<ul>
-<li>不可屏蔽中断：中断的原因很紧要，CPU必须响应</li>
-<li>可屏蔽中断：中断原因不很紧要，CPU可以不响应</li>
+<li>较易实现， (早期)广泛使用。</li>
+<li>缺点：由于限制太严格，导致资源利用率和吞吐量降低。</li>
 </ul>
 </li>
 </ul>
-<h2 id="中断响应过程">中断响应过程</h2>
+<h3 id="避免死锁">避免死锁</h3>
+<p>在资源的分配过程中，用某种方法分析该次分配是否可能导致死锁？若会则不分配；若不会就分配</p>
+<ul>
+<li><strong>实现较难</strong></li>
+</ul>
+<h3 id="检测和恢复死锁">检测和恢复死锁</h3>
+<p>允许死锁发生，但可通过检测机制及时检测出死锁状态，并精确确定与死锁有关的进程和资源，然后采取适当措施，将系统中已发生的死锁清除，将进程从死锁状态解脱出来。</p>
+<ul>
+<li><strong>检测方法复杂</strong></li>
+<li><strong>恢复方法</strong>：撤消或挂起一些进程，以回收一些资源</li>
+<li><strong>实现难度大</strong></li>
+</ul>
+<h3 id="预先静态分配法">预先静态分配法</h3>
+<p>目的：<strong>破坏部分分配条件</strong></p>
+<p>进程运行前将所需全部资源<strong>一次性</strong>分配给它</p>
+<ul>
+<li>特点：进程仅当其所需<strong>全部资源可用</strong>时才开始运行</li>
+</ul>
 <ol>
-<li>识别中断源</li>
-<li>保护断点</li>
-<li>保护现场</li>
-<li>进入中断服务程序</li>
-<li>恢复现场</li>
-<li>中断返回</li>
+<li>应用设计和执行开销增大：进程运行前估算资源需求</li>
+<li>执行可能被延迟：进程所需资源不能全部满足时</li>
+<li>资源利用率低：资源被占而不用</li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>中断嵌套处理：高优先级打断低优先级中断服务</p>
-<h2 id="中断响应的实质">中断响应的实质</h2>
 <ul>
-<li>交换指令执行地址</li>
-<li>交换CPU的态</li>
-<li>现场保护和恢复、参数传递（通信）</li>
+<li>改进：资源分配的单位由<strong>进程</strong>改为<strong>程序步</strong></li>
 </ul>
-<h2 id="基本输入输出系统BIOS">基本输入输出系统BIOS</h2>
+<h3 id="有序资源分配法">有序资源分配法</h3>
+<p>目的：<strong>破坏环路条件，使得环路无法构成</strong></p>
 <ul>
 <li>
-<p>显示卡BIOS：C0000-C7FFF</p>
+<p>进程每次申请资源时只能申请<strong>序号更大</strong>的资源：如果进程已占有资源的序号最大为M，则下次只能申请序号大于M的资源，而不能再申请序号小于或等于M的资源。</p>
 </li>
 <li>
-<p>IDE控制器BIOS：C8000-CBFFF</p>
-</li>
-<li>
-<p><strong>系统BIOS：F0000-FFFFF</strong>，大小为64K</p>
-<p>功能：</p>
+<p>分配资源时检查资源序号是否符合递增规定</p>
 <ul>
-<li>加电自检及初始化（POST）</li>
-<li>CMOS设置</li>
-<li>系统自举/加载OS</li>
-<li>基本I/O服务（BIOS中断）</li>
-</ul>
-</li>
-</ul>
-<h3 id="POST（Power-On-Self-Test）">POST（Power On Self-Test）</h3>
-<p>按下PowerOn键开始执行POST程序</p>
-<ul>
-<li>
-<p>POST程序：<strong>执行首条指令（FFFF0）</strong>：JMP POST；加电自检</p>
-<p>初始化基本硬件（CPU、内存、显卡）</p>
-</li>
-</ul>
-<h3 id="CMOS设置">CMOS设置</h3>
-<h3 id="系统自举-加载OS">系统自举/加载OS</h3>
-<p>开机时加载并运行OS位用户建立用户环境</p>
-<ul>
-<li><strong>现场引导方式</strong>：OS文件存储在本地存储设备</li>
-<li><strong>下载引导方式</strong>：OS文件存储在网络存储设备中</li>
-</ul>
-<h3 id="基本I-O服务（BIOS中断）">基本I/O服务（BIOS中断）</h3>
-<p>BIOS使用的中断类型号为<strong>10H~1FH</strong>，每一组又分为不同的子功能，AH寄存器指定子功能编号。<br>
-INT 13H  AH=02H 为读扇区</p>
-<h2 id="实模式和保护模式">实模式和保护模式</h2>
-<ul>
-<li>
-<p>实模式</p>
-<ul>
-<li>寻址方式：物理地址（20位），可访问1MB空间（0~FFFFFh）</li>
-<li>CPU单任务运行</li>
-</ul>
-</li>
-<li>
-<p>保护模式</p>
-<ul>
-<li>寻址方式：段（16位）和偏移量（32位），寻址4GB
-<ul>
-<li>段的新含义和新工作机制</li>
-<li>段的属性：起始地址、存取属性、权限…</li>
-<li>段页式虚拟内存管理机制(段，页）</li>
-<li>新增多个寄存器（GDR,LDR,CR0,CR1,CR2）</li>
-</ul>
-</li>
-<li>虚拟地址，进程，封闭空间</li>
-<li>应用程序和操作系统的运行环境都被保护</li>
-<li>CPU支持多任务</li>
-</ul>
-</li>
-</ul>
-<h2 id="操作系统的启动">操作系统的启动</h2>
-<p>从加电到用户工作环境准备好的过程</p>
-<ul>
-<li><strong>初始引导</strong></li>
-<li><strong>核心初始化</strong></li>
-<li><strong>系统初始化</strong></li>
-</ul>
-<h3 id="初始引导">初始引导</h3>
-<p>目的：把<strong>OS内核</strong>装入内存并使之开始工作接管计算机系统</p>
-<ul>
-<li>
-<p>加电，JUMP POST（<strong>FFFF0</strong>）</p>
-</li>
-<li>
-<p>跳入BIOS的<strong>启动程序</strong></p>
-<ul>
-<li>读取0面0道第一扇区内容</li>
-<li>MBR(Master Boot Record)：主启动记录：引导程序<br>
-（BIOS 从MBR 读入引导程序，装入内存的特定位置）</li>
-</ul>
-</li>
-<li>
-<p>运行<strong>引导程序</strong></p>
-<ul>
-<li>根据相关参数，读取硬盘指定位置的<strong>OS内核</strong>到内存</li>
-<li>初始化基本参数</li>
-</ul>
-</li>
-<li>
-<p><strong>OS内核</strong>：逐步加载OS剩余部分，直到最后完全控制计算机</p>
-</li>
-</ul>
-<h3 id="核心初始化">核心初始化</h3>
-<p>目的：OS内核初始化系统的核心数据</p>
-<p>各种寄存器的初始化、存储系统和页表初始化、核心进程构建…</p>
-<h3 id="系统初始化">系统初始化</h3>
-<p>目的：为用户使用系统做准备，使系统处于<strong>待命状态</strong></p>
-<p>初始化文件系统、初始化网络系统、初始化控制台、初始化图形界面…</p>
-<h3 id="MBR（主引导记录、主启动记录）">MBR（主引导记录、主启动记录）</h3>
-<p>存放引导代码：OS启动相关的数据和代码，存放在主启动扇区（0面0道第一扇区），大小为512字节（510+AA55h）</p>
-<ul>
-<li>结构
-<ul>
-<li>引导程序</li>
-<li>该磁盘的分区表</li>
-<li>主引导签名：55AA表示MBR结束</li>
-</ul>
-</li>
-</ul>
-<p>其中分区表的作用记录硬盘分区信息（多个操作系统）。每个分区的第一个扇区叫作分区引导记录(PartitionBoot Record，PBR)，也叫次引导记录，其结构与MBR类似。</p>
-<ul>
-<li>功能
-<ul>
-<li>直接指向引导代码加载OS</li>
-<li>提供启动选项菜单</li>
-<li>跳转到PBR以加载特定OS BootLoader</li>
-</ul>
-</li>
-<li>工作原理
-<ul>
-<li>初启过程<br>
-POST<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>CMOS设置<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>读取MBR<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>控制权交给MBR</li>
-<li>MBR工作
-<ul>
-<li>MBR读取分区表，查找并确认唯一的活动分区</li>
-<li>MBR读取活动分区PBR，并加载到内存</li>
-</ul>
-</li>
-<li>PBR控制后续引导过程
-<ul>
-<li>读OS内核</li>
-</ul>
-</li>
+<li>若不符合则拒绝该申请，并<strong>撤销</strong>该进程。</li>
+<li>若符合且资源可用则予以分配</li>
+<li>若符合但资源不可用则不分配，陷于<strong>阻塞</strong>。</li>
 </ul>
 </li>
 </ul>
@@ -573,8 +414,8 @@ POST<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.or
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>操作系统原理复习 第二章 操作系统的硬件基础</div>
-      <div>http://example.com/2022/10/03/OSP_Chapter02/</div>
+      <div>操作系统原理复习 第五章 资源分配与调度</div>
+      <div>http://example.com/2022/10/03/OSP_Chapter05/</div>
     </div>
     <div class="license-meta">
       
@@ -618,9 +459,9 @@ POST<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.or
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/03/OSP_Chapter03/" title="操作系统原理复习 第三章 用户界面">
+                      <a href="/2022/10/03/OSP_Chapter06/" title="操作系统原理复习 第六章 进程调度">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">操作系统原理复习 第三章 用户界面</span>
+                        <span class="hidden-mobile">操作系统原理复习 第六章 进程调度</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -628,8 +469,8 @@ POST<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.or
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/03/OSP_Chapter01/" title="操作系统原理复习 第一章 绪论">
-                        <span class="hidden-mobile">操作系统原理复习 第一章 绪论</span>
+                      <a href="/2022/10/03/OSP_Chapter04/" title="操作系统原理复习 第四章 进程管理和通信">
+                        <span class="hidden-mobile">操作系统原理复习 第四章 进程管理和通信</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

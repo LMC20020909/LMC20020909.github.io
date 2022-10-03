@@ -23,15 +23,15 @@
 <meta property="og:site_name" content="Mingchen&#39;s Blog">
 <meta property="og:description" content="2020级操作系统原理 苏曙光老师 2022.5.19 第三章 用户界面">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg3.jpg">
 <meta property="article:published_time" content="2022-10-02T18:10:23.515Z">
-<meta property="article:modified_time" content="2022-10-02T18:13:08.876Z">
+<meta property="article:modified_time" content="2022-10-03T04:01:03.505Z">
 <meta property="article:author" content="Liu Mingchen">
 <meta property="article:tag" content="操作系统原理">
 <meta property="article:tag" content="复习">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg3.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg3.jpg">
   
   
   
@@ -198,7 +198,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg3.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg3.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -281,15 +281,15 @@
             
               <div class="markdown-body">
                 
-                <h2 id="用户界面">用户界面</h2>
+                <h1>用户界面</h1>
 <p>OS提供给用户控制计算机的机制，又称<strong>用户接口</strong></p>
 <p>类型：</p>
 <ul>
 <li><strong>操作界面</strong></li>
 <li><strong>系统调用</strong></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/con/20221003_con2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="操作界面">操作界面</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="操作界面">操作界面</h2>
 <ul>
 <li>
 <p><strong>图形用户接口</strong>：窗口、图标、菜单、按钮、鼠标（消息、事件）</p>
@@ -307,14 +307,14 @@
 </ul>
 </li>
 </ul>
-<h4 id="Shell">Shell</h4>
+<h3 id="Shell">Shell</h3>
 <p>Shell是操作系统与用户交互的界面</p>
 <ul>
 <li>Shell表现为通过控制台执行用户命令的方式</li>
 <li>Shell本身不执行命令，仅仅是组织和管理命令</li>
 </ul>
 <p>主要功能：… 、<strong>重定向与管道</strong>、<strong>Shell Script脚本编程</strong></p>
-<h4 id="重定向与管道">重定向与管道</h4>
+<h3 id="重定向与管道">重定向与管道</h3>
 <ul>
 <li>标准输入输出
 <ul>
@@ -323,12 +323,12 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/con/20221003_con3.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con3.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>
 <p>重定向操作</p>
 <p>把命令缺省的输入来源或输出方向修改为其他文件/设备</p>
-<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/con/20221003_con4.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con4.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
 <li>
 <p>管道</p>
@@ -343,7 +343,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="Shell脚本">Shell脚本</h4>
+<h3 id="Shell脚本">Shell脚本</h3>
 <p>脚本（Script）通过类似程序的方式执行具有一定逻辑顺序的命令序列完成较复杂的功能和人机交互。</p>
 <ul>
 <li>脚本程序保存在<strong>文本文件</strong>中</li>
@@ -363,7 +363,7 @@
 <li>使用某个特定版本的Shell执行脚本</li>
 <li>在脚本文件首行指定Shell</li>
 </ul>
-<h3 id="系统调用">系统调用</h3>
+<h2 id="系统调用">系统调用</h2>
 <p>操作系统<strong>内核</strong>为应用程序提供的一系列<strong>服务/函数</strong>（printf、exit、fopen、fgetc…）</p>
 <ul>
 <li>一般涉及核心资源或硬件的操作</li>
@@ -371,15 +371,15 @@
 <li>系统调用过程会产生<strong>中断</strong>：自愿中断</li>
 <li>系统调用数量众多</li>
 </ul>
-<h4 id="系统调用的实现形式">系统调用的实现形式</h4>
-<p>调用N号系统调用，使用指令：==SVC N==</p>
+<h3 id="系统调用的实现形式">系统调用的实现形式</h3>
+<p>调用N号系统调用，使用指令：SVC N</p>
 <ul>
 <li>N：系统调用的编号</li>
 <li>SVC：SuperVisor Call，访管指令</li>
 <li>SVC是中断指令</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/con/20221003_con5.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
-<h4 id="具体OS中系统调用的实现">具体OS中系统调用的实现</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con5.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="具体OS中系统调用的实现">具体OS中系统调用的实现</h3>
 <ul>
 <li>
 <p>DOS：<strong>INT 21H</strong></p>
@@ -396,17 +396,17 @@
 </ul>
 <p>INT XXH=SVC指令</p>
 <p>AH/EAX=系统调用的编号：N</p>
-<h4 id="Linux系统调用的实质">Linux系统调用的实质</h4>
+<h3 id="Linux系统调用的实质">Linux系统调用的实质</h3>
 <ul>
 <li>系统调用是Linux内核的出口</li>
 <li>系统调用通过软中断(INT 80H)向内核发出服务请求</li>
 <li>系统调用采用API方式向用户提供，遵循POSIX标准</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/con/20221003_con6.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con6.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>系统调用编号的声明。格式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">#</mi><mi>d</mi><mi>e</mi><mi>f</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi mathvariant="normal">_</mi><mi>N</mi><mi>R</mi><mi mathvariant="normal">_</mi><mi>C</mi><mi>a</mi><mi>l</mi><mi>l</mi><mi>N</mi><mi>a</mi><mi>m</mi><mi>e</mi><mtext>  </mtext><mi>I</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">\#define\_NR\_CallName~~ID</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0044em;vertical-align:-0.31em;"></span><span class="mord">#</span><span class="mord mathnormal">d</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">in</span><span class="mord mathnormal">e</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.00773em;">NR</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.10903em;">llN</span><span class="mord mathnormal">am</span><span class="mord mathnormal">e</span><span class="mspace nobreak"> </span><span class="mspace nobreak"> </span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span></span></span></p>
 <p>系统调用函数的声明。格式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">.</mi><mi>l</mi><mi>o</mi><mi>n</mi><mi>g</mi><mtext> </mtext><mi>s</mi><mi>y</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>X</mi><mi>X</mi><mi>X</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">.long~sys\_XXXX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0044em;vertical-align:-0.31em;"></span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace nobreak"> </span><span class="mord mathnormal">sys</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.07847em;">XXXX</span></span></span></span></p>
 <p>系统调用函数的定义。格式：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>s</mi><mi>m</mi><mi>l</mi><mi>i</mi><mi>n</mi><mi>k</mi><mi>a</mi><mi>g</mi><mi>e</mi><mtext> </mtext><mi>i</mi><mi>n</mi><mi>t</mi><mtext> </mtext><mi>s</mi><mi>y</mi><mi>s</mi><mi mathvariant="normal">_</mi><mi>m</mi><mi>y</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">asmlinkage~int~sys\_mycall()</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">m</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">inka</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mspace nobreak"> </span><span class="mord mathnormal">in</span><span class="mord mathnormal">t</span><span class="mspace nobreak"> </span><span class="mord mathnormal">sys</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal">m</span><span class="mord mathnormal">yc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mopen">(</span><span class="mclose">)</span></span></span></span></p>
-<h5 id="系统调用函数的调用方法">系统调用函数的调用方法</h5>
+<h4 id="系统调用函数的调用方法">系统调用函数的调用方法</h4>
 <p>直接调用（FuncName不带sys_前缀）</p>
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>y</mi><mi>p</mi><mi>e</mi><mo>=</mo><mi>s</mi><mi>y</mi><mi>s</mi><mi>c</mi><mi>a</mi><mi>l</mi><mi>l</mi><mo stretchy="false">(</mo><mi mathvariant="normal">_</mi><mi>N</mi><mi>R</mi><mi mathvariant="normal">_</mi><mi>f</mi><mi>u</mi><mi>n</mi><mi>c</mi><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mo separator="true">,</mo><mi>a</mi><mi>r</mi><mi>g</mi><mn>1</mn><mo separator="true">,</mo><mi>a</mi><mi>r</mi><mi>g</mi><mn>2</mn><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">type=syscall(\_NR\_funcname,arg1,arg2,...)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">p</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">sysc</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mopen">(</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.00773em;">NR</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">u</span><span class="mord mathnormal">n</span><span class="mord mathnormal">c</span><span class="mord mathnormal">nam</span><span class="mord mathnormal">e</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">...</span><span class="mclose">)</span></span></span></span></p>
 
@@ -502,6 +502,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/10/03/OSP_Chapter04/" title="操作系统原理复习 第四章 进程管理和通信">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统原理复习 第四章 进程管理和通信</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
