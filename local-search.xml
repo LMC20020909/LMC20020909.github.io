@@ -4,11 +4,40 @@
   
   
   <entry>
+    <title>Linux配置SSH Key到GitHub</title>
+    <link href="/2023/01/07/Linux%E9%85%8D%E7%BD%AESSH%20Key%E5%88%B0GitHub/"/>
+    <url>/2023/01/07/Linux%E9%85%8D%E7%BD%AESSH%20Key%E5%88%B0GitHub/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Git本地环境配置">Git本地环境配置</h2><h3 id="安装git">安装git</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><h3 id="配置用户信息">配置用户信息</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token string">"Your Name"</span><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email Your_email@example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure><h3 id="查看配置信息">查看配置信息</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--list</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><h2 id="配置SSH连接Github">配置SSH连接Github</h2><h3 id="安装SSH">安装SSH</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><h3 id="创建密钥文件">创建密钥文件</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-C</span> <span class="token string">"你的github账号邮箱"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>首先 ssh-keygen 会确认密钥的存储位置和文件名（默认是 .ssh/id_rsa）,然后他会要求你输入两次密钥口令，留空即可。所以一般选用默认，全部回车即可。</p><p>默认密钥文件路径在<code>~/.ssh</code>，<code>id_rsa</code>是私钥文件，<code>id_rsa.pub</code>是公钥文件</p><h3 id="将公钥添加到Github">将公钥添加到Github</h3><ol><li><p>将<code>id_rsa.pub</code>文件内容全部复制</p></li><li><p>登陆到GitHub上，右上角小头像-&gt;Setting-&gt;SSH and GPG keys中，点击new SSH key。</p></li></ol><h3 id="SSH测试">SSH测试</h3><p>在终端输入：</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> <span class="token parameter variable">-T</span> git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>如果结果为 “ …You’ve successfully authenticated, but GitHub does not provide shell access”，则说明成功。</p><h2 id="Bug">Bug</h2><h3 id="SSH测试结果为要求输入密码">SSH测试结果为要求输入密码</h3><p>如果上一步结果为“git@github.com’s password:”则需要修改配置文件。</p><p>详见官方文档：<a href="https://docs.github.com/cn/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">https://docs.github.com/cn/authentication/troubleshooting-ssh/using-ssh-over-the-https-port</a></p><p>配置文件位置在/etc/ssh/ssh_config</p><h3 id="解决上传ssh-key后git-push仍须输入密码的问题">解决上传ssh-key后git push仍须输入密码的问题</h3><p>如果我们使用https方式克隆的仓库：</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/Name/project.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>这样便会在你git push时候要求输入用户名和密码。<br>解决的方法是使用ssh方式克隆仓库：</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone git@github.com:Name/project.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>当如，如果已经用https方式克隆了仓库，就不必删除仓库重新克隆，只需将 .git/config文件中的</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">url <span class="token operator">=</span> https://github.com/Name/project.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>一行改为</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">url <span class="token operator">=</span> git@github.com:Name/project.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>即可。</p><h2 id="References">References</h2><ol><li><a href="https://segmentfault.com/a/1190000013154540">https://segmentfault.com/a/1190000013154540</a></li><li><a href="https://blog.csdn.net/yuzhiqiang_1993/article/details/127032178">https://blog.csdn.net/yuzhiqiang_1993/article/details/127032178</a></li><li><a href="https://blog.csdn.net/baidu_35085676/article/details/53456884">https://blog.csdn.net/baidu_35085676/article/details/53456884</a></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Linux</tag>
+      
+      <tag>git</tag>
+      
+      <tag>github</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>微信小程序open-type=&quot;chooseAvatar&quot;真机调试无法授权头像的问题</title>
     <link href="/2023/01/02/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fopen-type=chooseAvatar%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%E6%97%A0%E6%B3%95%E6%8E%88%E6%9D%83%E5%A4%B4%E5%83%8F%E7%9A%84%E9%97%AE%E9%A2%98/"/>
     <url>/2023/01/02/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fopen-type=chooseAvatar%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%E6%97%A0%E6%B3%95%E6%8E%88%E6%9D%83%E5%A4%B4%E5%83%8F%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     
-    <content type="html"><![CDATA[<h2 id="在微信开发者工具本地无法获取头像">在微信开发者工具本地无法获取头像</h2><p>升级调试基础库：</p><p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps//img/image-20230102145631777.png" alt="image-20230102145631777"></p><h2 id="真机调试无法获取">真机调试无法获取</h2><p>切换真机调试2.0：</p><p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps//img/image-20230102145858178.png" alt="image-20230102145858178"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="在微信开发者工具本地无法获取头像">在微信开发者工具本地无法获取头像</h2><p>升级调试基础库：</p><p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps//img/image-20230102145631777.png" alt=""></p><h2 id="真机调试无法获取">真机调试无法获取</h2><p>切换真机调试2.0：</p><p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps//img/image-20230102145858178.png" alt=""></p>]]></content>
     
     
     <categories>
@@ -27,33 +56,6 @@
       <tag>uniapp</tag>
       
       <tag>小程序</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>数据库实验</title>
-    <link href="/2022/12/12/%E5%AE%9E%E9%AA%8C13%E8%AE%BE%E8%AE%A1/"/>
-    <url>/2022/12/12/%E5%AE%9E%E9%AA%8C13%E8%AE%BE%E8%AE%A1/</url>
-    
-    <content type="html"><![CDATA[<pre><code class="mermaid">%%&#123;init: &#123;"theme": "forest"&#125;&#125;%%graph LR    A[功能分析] --- B[供书目录及库存管理]    A --- C[采购管理]    A --- D[客户管理]    A --- E[顾客订单管理和发货管理]    A --- F[供应商管理]    A --- G[网上浏览查询]    C --- H[缺书登记管理]    C --- I[采购单管理]    D --- J[客户信息管理]    D --- K[信用管理]    E --- L[客户订单管理]    E --- M[发货管理]    B --- N[供书目录管理]    B --- O[库存管理]</code></pre><h2 id="概念结构设计">概念结构设计</h2><h3 id="实体">实体</h3><ul><li>供书目录</li><li>图书库存</li><li>缺书</li><li>采购</li><li>客户</li><li>客户订单</li><li>发货</li><li>供应商</li></ul><h2 id="表设计">表设计</h2><h3 id="图书信息表book-list">图书信息表book_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>book_id</td><td>书号</td><td>int(10)</td><td>PRIMARY KEY</td></tr><tr><td>name</td><td>书名</td><td>char(255)</td><td>PRIMARY KEY</td></tr><tr><td>press</td><td>出版社</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>price</td><td>价格</td><td>money</td><td>NOT NULL</td></tr><tr><td>keywords</td><td>关键字</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>calatog</td><td>目录</td><td>char(255)</td><td></td></tr><tr><td>cover</td><td>封皮</td><td>char(255)</td><td></td></tr></tbody></table><h3 id="作者信息表author-list">作者信息表author_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>author</td><td>作者</td><td>char(255)</td><td>PRIMARY KEY</td></tr><tr><td>book_id</td><td>书号</td><td>int(10)</td><td>PRIMARY KEY, FOREIGN KEY book_list(book_id)</td></tr><tr><td>order</td><td>顺序号</td><td>int(1)</td><td>1&lt;= order &lt;= 4</td></tr></tbody></table><h3 id="关键字表keywords-list">关键字表keywords_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>keywords</td><td>关键字</td><td>char(255)</td><td>PRIMARY KEY</td></tr><tr><td>book_id</td><td>书号</td><td>int(10)</td><td>PRIMARY KEY, FOREIGN KEY book_list(book_id)</td></tr></tbody></table><h3 id="供应表provide-list">供应表provide_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>book_id</td><td>书号</td><td>int(10)</td><td>PRIMARY KEY, FOREIGN KEY book_list(book_id)</td></tr><tr><td>provider_id</td><td>供应商号</td><td>int(10)</td><td>PRIMARY KEY, FOREIGN KEY provider_list(provider_id)</td></tr></tbody></table><h3 id="库存情况表reserve-list">库存情况表reserve_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>book_id</td><td>书号</td><td>int(10)</td><td>PRIMARY KEY,  FOREIGN KEY book_list(book_id)</td></tr><tr><td>num</td><td>存货量</td><td>int(10)</td><td>NOT NULL</td></tr><tr><td>position</td><td>存放位置</td><td>char(255)</td><td></td></tr></tbody></table><h3 id="缺书记录表lack-list">缺书记录表lack_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>book_id</td><td>书号</td><td>int(10)</td><td>PRIMARY KEY,  FOREIGN KEY book_list(book_id)</td></tr><tr><td>name</td><td>书名</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>press</td><td>出版社</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>provider</td><td>供应商</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>num</td><td>数量</td><td>int(10)</td><td>NOT NULL</td></tr><tr><td>register_date</td><td>登记日期</td><td>date</td><td>NOT NULL</td></tr></tbody></table><h3 id="采购单表purchase-list">采购单表purchase_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>book_id</td><td>书号</td><td>int(10)</td><td>PRIMARY KEY,  FOREIGN KEY book_list(book_id)</td></tr><tr><td>num</td><td>数量</td><td>int(10)</td><td>NOT NULL</td></tr><tr><td>email</td><td>顾客email</td><td>char(255)</td><td></td></tr></tbody></table><h3 id="客户信息表customer-list">客户信息表customer_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>customer_id</td><td>客户ID</td><td>int(10)</td><td>PRIMARY KEY</td></tr><tr><td>password</td><td>登陆密码</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>name</td><td>客户名称</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>address</td><td>客户地址</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>balance</td><td>账户余额</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>credit</td><td>信用等级</td><td>int(1)</td><td></td></tr><tr><td>credit_limit</td><td>信用额度</td><td>int(10)</td><td></td></tr></tbody></table><h3 id="订单表order-list">订单表order_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>order_id</td><td>订单号</td><td>int(10)</td><td>PRIMARY KRY</td></tr><tr><td>customer_id</td><td>客户ID</td><td>int(10)</td><td>FOREIGN KEY customer_list(customer_id)</td></tr><tr><td>order_date</td><td>订货日期</td><td>date</td><td>NOT NULL</td></tr><tr><td>order_address</td><td>发货地址</td><td>char(255)</td><td>NOT NULL</td></tr><tr><td>order_pay</td><td>订单金额</td><td>money</td><td>NOT NULL</td></tr><tr><td>delivery_state</td><td>发货情况</td><td>char(255)</td><td>NOT NULL</td></tr></tbody></table><h3 id="订书信息表ordered-books-list">订书信息表ordered_books_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>order_id</td><td>订单号</td><td>int(10)</td><td>PRIMARY KEY, FOREIGN KEY order_list(order_id)</td></tr><tr><td>book_id</td><td>书号</td><td>int(10)</td><td>PRIMARY KEY, FOREIGN KEY book_list(book_id)</td></tr><tr><td>num</td><td>订书数量</td><td>int(10)</td><td>NOT NULL</td></tr></tbody></table><h3 id="供应商provider-list">供应商provider_list</h3><table><thead><tr><th>属性名</th><th>说明</th><th>数据类型</th><th>约束</th></tr></thead><tbody><tr><td>provider_id</td><td>供应商编号</td><td>int(10)</td><td>PRIMARY KEY</td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table>]]></content>
-    
-    
-    <categories>
-      
-      <category>数据库系统原理</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>数据库</tag>
-      
-      <tag>实验</tag>
       
     </tags>
     
