@@ -16,28 +16,26 @@
   <meta name="author" content="Liu Mingchen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="总体上和windows差不多，但出了点小问题。">
+    <meta name="description" content="隙中驹，石中火，梦中身。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux配置SSH Key到GitHub">
-<meta property="og:url" content="https://lmc20020909.github.io/Linux%E9%85%8D%E7%BD%AESSH%20Key%E5%88%B0GitHub/index.html">
+<meta property="og:title" content="冬夜闲话">
+<meta property="og:url" content="https://lmc20020909.github.io/%E9%9A%99%E4%B8%AD%E9%A9%B9/index.html">
 <meta property="og:site_name" content="Mingchen&#39;s Blog">
-<meta property="og:description" content="总体上和windows差不多，但出了点小问题。">
+<meta property="og:description" content="隙中驹，石中火，梦中身。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221022_bg12.jpg">
-<meta property="article:published_time" content="2023-01-07T13:50:57.000Z">
-<meta property="article:modified_time" content="2023-01-07T06:07:19.127Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221022_bg13.jpg">
+<meta property="article:published_time" content="2023-01-27T09:12:40.655Z">
+<meta property="article:modified_time" content="2023-01-27T09:59:04.829Z">
 <meta property="article:author" content="Liu Mingchen">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="git">
-<meta property="article:tag" content="github">
+<meta property="article:tag" content="闲话">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221022_bg12.jpg">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221022_bg13.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Linux配置SSH Key到GitHub - Mingchen&#39;s Blog</title>
+  <title>冬夜闲话 - Mingchen&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,13 +213,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221022_bg12.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221022_bg13.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux配置SSH Key到GitHub"></span>
+            <span id="subtitle" data-typed-text="冬夜闲话"></span>
           
         </div>
 
@@ -232,8 +230,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-07 21:50" pubdate>
-          2023年1月7日 晚上
+        <time datetime="2023-01-27 17:12" pubdate>
+          2023年1月27日 下午
         </time>
       </span>
     
@@ -244,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1k 字
         
       </span>
     
@@ -255,7 +253,7 @@
         
         
         
-          11 分钟
+          9 分钟
         
       </span>
     
@@ -301,61 +299,17 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux配置SSH Key到GitHub</h1>
+            <h1 style="display: none">冬夜闲话</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Git本地环境配置">Git本地环境配置</h2>
-<h3 id="安装git">安装git</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h3 id="配置用户信息">配置用户信息</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token string">"Your Name"</span>
-<span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email Your_email@example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
-<h3 id="查看配置信息">查看配置信息</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--list</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h2 id="配置SSH连接Github">配置SSH连接Github</h2>
-<h3 id="安装SSH">安装SSH</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">ssh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<h3 id="创建密钥文件">创建密钥文件</h3>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen <span class="token parameter variable">-t</span> rsa <span class="token parameter variable">-C</span> <span class="token string">"你的github账号邮箱"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>首先 ssh-keygen 会确认密钥的存储位置和文件名（默认是 .ssh/id_rsa）,然后他会要求你输入两次密钥口令，留空即可。所以一般选用默认，全部回车即可。</p>
-<p>默认密钥文件路径在<code>~/.ssh</code>，<code>id_rsa</code>是私钥文件，<code>id_rsa.pub</code>是公钥文件</p>
-<h3 id="将公钥添加到Github">将公钥添加到Github</h3>
-<ol>
-<li>
-<p>将<code>id_rsa.pub</code>文件内容全部复制</p>
-</li>
-<li>
-<p>登陆到GitHub上，右上角小头像-&gt;Setting-&gt;SSH and GPG keys中，点击new SSH key。</p>
-</li>
-</ol>
-<h3 id="SSH测试">SSH测试</h3>
-<p>在终端输入：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ssh</span> <span class="token parameter variable">-T</span> git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>如果结果为 “ …You’ve successfully authenticated, but GitHub does not provide shell access”，则说明成功。</p>
-<h2 id="Bug">Bug</h2>
-<h3 id="SSH测试结果为要求输入密码">SSH测试结果为要求输入密码</h3>
-<p>如果上一步结果为“git@github.com’s password:”则需要修改配置文件。</p>
-<p>详见官方文档：<a target="_blank" rel="noopener" href="https://docs.github.com/cn/authentication/troubleshooting-ssh/using-ssh-over-the-https-port">https://docs.github.com/cn/authentication/troubleshooting-ssh/using-ssh-over-the-https-port</a></p>
-<p>配置文件位置在/etc/ssh/ssh_config</p>
-<h3 id="解决上传ssh-key后git-push仍须输入密码的问题">解决上传ssh-key后git push仍须输入密码的问题</h3>
-<p>如果我们使用https方式克隆的仓库：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/Name/project.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>这样便会在你git push时候要求输入用户名和密码。<br>
-解决的方法是使用ssh方式克隆仓库：</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone git@github.com:Name/project.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>当如，如果已经用https方式克隆了仓库，就不必删除仓库重新克隆，只需将 .git/config文件中的</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">url <span class="token operator">=</span> https://github.com/Name/project.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>一行改为</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">url <span class="token operator">=</span> git@github.com:Name/project.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>即可。</p>
-<h2 id="References">References</h2>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000013154540">https://segmentfault.com/a/1190000013154540</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuzhiqiang_1993/article/details/127032178">https://blog.csdn.net/yuzhiqiang_1993/article/details/127032178</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_35085676/article/details/53456884">https://blog.csdn.net/baidu_35085676/article/details/53456884</a></li>
-</ol>
+                <blockquote>
+<p>清夜无尘，月色如银。酒斟时、须满十分。浮名浮利，虚苦劳神。叹隙中驹，石中火，梦中身。<br>
+虽抱文章，开口谁亲。且陶陶、乐尽天真。几时归去，作个闲人。对一张琴，一壶酒，一溪云。</p>
+</blockquote>
+<p>  犹记得初中时写作文很喜欢用一个词叫“白驹过隙”，虽然当时对其含义不甚清楚，但只知道把“光阴似箭，岁月如梭”换成“时间如白驹过隙”就高大上多了。后来才知道这个词不过是字面意思：白色的骏马在缝隙前飞快地越过。仔细一想，却又很形象，人生天地之间，岂不若白驹之过隙，忽然而已。</p>
+<p>  我不过才活了二十年，妄言“人生”二字只会惹人发笑，不过就此身极其浅薄的阅历而言，大学这不到三年的时间着实是过的太快了一些，快到高考出分的那一刻仍历历在目，快到仿佛刚进大学告别父母的时候就在昨天。在上大学之前，我只明白一个道理：快乐的时光总是短暂的，假期一两个月每日都是展转不能起，心旷神怡，宠辱皆忘，仿佛一眨眼就过完了；而上学的时候好似一个礼拜如同一个月一般，周五之前盼着周五到来，周末过完之后又盼着下一个周五，日子也就竟这么一天天过去了。那为什么大学的生活又变得如此之快了呢？难道是鄙人的大学生活俱是些声色犬马吗？恰恰相反，大学里的事情非但不比高中少，反而多了不知道多少，而且多的里面还有很多你不愿做却又不得不做的事情。喝过酒的人都知道，酒乃是天下第一难喝之物，却有很多人情愿堆着笑脸一饮而尽，仿佛这杯里装的不是酒，而是王母娘娘赐下的琼浆玉液一般。上过学的人也都知道，刷题乃是学生第一痛苦之事，但却有很多人宁愿不睡觉不吃饭也要多做两套，仿佛这卷子上印的不是题，而是殿试上皇帝的策问一般。不过策问很难找到正确答案，谁答得出彩谁就当进士，而大学里卷子题目的答案却唾手可得——只需轻轻往后一翻，再这么往前一抄，保管叫任何一个教授来看都挑不出错来。怪不得在严严冬日，有的人却在自习室里捏着厚厚一叠试卷当风扇使，左扇一下，右扇一下，看到前面几页就眉头紧皱，严阵以待，仿佛遇到了最痛苦的事情；随即视线一转，看到后面密密麻麻的几页后立刻就如春风化雨，冰雪消融，目光似已呆了，嘴里还念叨着“妙极，妙极”；随后奋笔疾书，一边写一边扇着卷子。看来刷题虽是件痛苦之事，却也能生热驱寒——这倒是酒的功效了。如此说来，人在冬天只需一斤白酒，一叠试卷，定叫他热得满头冒汗，哪还要什么暖气空调。只可惜会喝酒的人不少，会刷题的人也很多，但能一边喝酒一边刷题的人却是少之又少，这实在是天下的一大憾事。</p>
 
                 
               </div>
@@ -374,7 +328,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  <a href="/categories/%E9%97%B2%E8%AF%9D/" class="category-chain-item">闲话</a>
   
   
 
@@ -389,11 +343,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Linux/">#Linux</a>
-      
-        <a href="/tags/git/">#git</a>
-      
-        <a href="/tags/github/">#github</a>
+        <a href="/tags/%E9%97%B2%E8%AF%9D/">#闲话</a>
       
     </div>
   
@@ -405,8 +355,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux配置SSH Key到GitHub</div>
-      <div>https://lmc20020909.github.io/Linux配置SSH Key到GitHub/</div>
+      <div>冬夜闲话</div>
+      <div>https://lmc20020909.github.io/隙中驹/</div>
     </div>
     <div class="license-meta">
       
@@ -418,7 +368,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月7日</div>
+          <div>2023年1月27日</div>
         </div>
       
       
@@ -450,18 +400,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E9%9A%99%E4%B8%AD%E9%A9%B9/" title="冬夜闲话">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">冬夜闲话</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fopen-type=chooseAvatar%E7%9C%9F%E6%9C%BA%E8%B0%83%E8%AF%95%E6%97%A0%E6%B3%95%E6%8E%88%E6%9D%83%E5%A4%B4%E5%83%8F%E7%9A%84%E9%97%AE%E9%A2%98/" title="微信小程序open-type=&#34;chooseAvatar&#34;真机调试无法授权头像的问题">
-                        <span class="hidden-mobile">微信小程序open-type=&#34;chooseAvatar&#34;真机调试无法授权头像的问题</span>
+                      <a href="/Linux%E9%85%8D%E7%BD%AESSH%20Key%E5%88%B0GitHub/" title="Linux配置SSH Key到GitHub">
+                        <span class="hidden-mobile">Linux配置SSH Key到GitHub</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
