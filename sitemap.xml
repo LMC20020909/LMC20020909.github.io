@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lmc20020909.github.io/%E7%AE%97%E6%B3%95basic/</loc>
+    
+    <lastmod>2023-03-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://lmc20020909.github.io/%E7%AE%80%E5%8D%95dp/</loc>
     
     <lastmod>2023-03-15</lastmod>
@@ -385,20 +394,6 @@
   </url>
   
   <url>
-    <loc>https://lmc20020909.github.io/tags/sever/</loc>
-    <lastmod>2023-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lmc20020909.github.io/tags/MySQL/</loc>
-    <lastmod>2023-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://lmc20020909.github.io/tags/flex/</loc>
     <lastmod>2023-03-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -420,6 +415,27 @@
   </url>
   
   <url>
+    <loc>https://lmc20020909.github.io/tags/sever/</loc>
+    <lastmod>2023-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lmc20020909.github.io/tags/MySQL/</loc>
+    <lastmod>2023-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lmc20020909.github.io/tags/%E9%97%B2%E8%AF%9D/</loc>
+    <lastmod>2023-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://lmc20020909.github.io/tags/bug/</loc>
     <lastmod>2023-03-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -435,13 +451,6 @@
   
   <url>
     <loc>https://lmc20020909.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</loc>
-    <lastmod>2023-03-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lmc20020909.github.io/tags/%E9%97%B2%E8%AF%9D/</loc>
     <lastmod>2023-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -532,14 +541,14 @@
   </url>
   
   <url>
-    <loc>https://lmc20020909.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/</loc>
+    <loc>https://lmc20020909.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2023-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://lmc20020909.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://lmc20020909.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/</loc>
     <lastmod>2023-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -632,14 +641,14 @@
   </url>
   
   <url>
-    <loc>https://lmc20020909.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/</loc>
+    <loc>https://lmc20020909.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2023-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://lmc20020909.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/</loc>
+    <loc>https://lmc20020909.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/</loc>
     <lastmod>2023-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
