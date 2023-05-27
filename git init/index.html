@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221022_bg7.jpg">
 <meta property="article:published_time" content="2022-11-23T02:27:25.582Z">
-<meta property="article:modified_time" content="2022-11-23T02:32:01.494Z">
+<meta property="article:modified_time" content="2023-05-27T12:02:49.794Z">
 <meta property="article:author" content="Liu Mingchen">
 <meta property="article:tag" content="git">
 <meta property="article:tag" content="github">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          325 字
+          448 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -323,6 +323,10 @@
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> push<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 <h2 id="同步远程仓库的文件到本地">同步远程仓库的文件到本地</h2>
 <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> pull origin main<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h2 id="将本地仓库恢复为之前状态">将本地仓库恢复为之前状态</h2>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> reset <span class="token parameter variable">--soft</span> HEAD~1	// 回退到上一个版本<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> log // 查看commit记录，此时最新的提交记录应变为了上一次的commit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p><a target="_blank" rel="noopener" href="https://m.runoob.com/git/git-reset.html">https://m.runoob.com/git/git-reset.html</a></p>
 
                 
               </div>
