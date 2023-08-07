@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>frp配置命令</title>
+    <link href="/frp%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/"/>
+    <url>/frp%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<p>通过具有公网ip的跳板机访问内网服务器</p><span id="more"></span><h3 id="服务端（公网服务器）">服务端（公网服务器）</h3><p>启动frps</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frps <span class="token parameter variable">-c</span> frps.ini <span class="token operator">></span> ./frps.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>关闭frps</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'frps'</span><span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure><h3 id="客户端">客户端</h3><p>启动frpc</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frpc <span class="token parameter variable">-c</span> frpc.ini <span class="token operator">></span> ./frpc.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>关闭frpc</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'frpc'</span><span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure><p>启动jupyter notebook</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> jupyter notebook <span class="token operator">></span> /home/mindle-env/.jupyter/log.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>关闭jupyter notebook</p><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'jupyter-notebook'</span><span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>server</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>server</tag>
+      
+      <tag>frp</tag>
+      
+      <tag>jupyter</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>flappy-bird-gym环境安装</title>
     <link href="/flappy-bird-gym%E5%AE%89%E8%A3%85/"/>
     <url>/flappy-bird-gym%E5%AE%89%E8%A3%85/</url>
@@ -228,7 +257,7 @@
     
     <categories>
       
-      <category>sever</category>
+      <category>server</category>
       
     </categories>
     
@@ -237,7 +266,7 @@
       
       <tag>Linux</tag>
       
-      <tag>sever</tag>
+      <tag>server</tag>
       
       <tag>MySQL</tag>
       
@@ -257,7 +286,7 @@
     
     <categories>
       
-      <category>sever</category>
+      <category>server</category>
       
     </categories>
     
@@ -266,7 +295,7 @@
       
       <tag>Linux</tag>
       
-      <tag>sever</tag>
+      <tag>server</tag>
       
       <tag>MySQL</tag>
       

@@ -16,27 +16,28 @@
   <meta name="author" content="Liu Mingchen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="如题">
+    <meta name="description" content="通过具有公网ip的跳板机访问内网服务器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="flappy-bird-gym环境安装">
-<meta property="og:url" content="https://lmc20020909.github.io/flappy-bird-gym%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:title" content="frp配置命令">
+<meta property="og:url" content="https://lmc20020909.github.io/frp%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="Mingchen&#39;s Blog">
-<meta property="og:description" content="如题">
+<meta property="og:description" content="通过具有公网ip的跳板机访问内网服务器">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230428_bg3.png">
-<meta property="article:published_time" content="2023-07-21T02:41:31.323Z">
-<meta property="article:modified_time" content="2023-07-21T02:53:19.614Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230807_bg1.jpg">
+<meta property="article:published_time" content="2023-08-07T05:45:04.918Z">
+<meta property="article:modified_time" content="2023-08-07T05:55:37.004Z">
 <meta property="article:author" content="Liu Mingchen">
-<meta property="article:tag" content="RL">
-<meta property="article:tag" content="gym">
+<meta property="article:tag" content="server">
+<meta property="article:tag" content="frp">
+<meta property="article:tag" content="jupyter">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230428_bg3.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230807_bg1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>flappy-bird-gym环境安装 - Mingchen&#39;s Blog</title>
+  <title>frp配置命令 - Mingchen&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -214,13 +215,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230428_bg3.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230807_bg1.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="flappy-bird-gym环境安装"></span>
+            <span id="subtitle" data-typed-text="frp配置命令"></span>
           
         </div>
 
@@ -231,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-07-21 10:41" pubdate>
-          2023年7月21日 上午
+        <time datetime="2023-08-07 13:45" pubdate>
+          2023年8月7日 下午
         </time>
       </span>
     
@@ -243,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          541 字
+          337 字
         
       </span>
     
@@ -254,7 +255,7 @@
         
         
         
-          5 分钟
+          3 分钟
         
       </span>
     
@@ -300,41 +301,30 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">flappy-bird-gym环境安装</h1>
+            <h1 style="display: none">frp配置命令</h1>
             
             
               <div class="markdown-body">
                 
-                <p>如题</p>
+                <p>通过具有公网ip的跳板机访问内网服务器</p>
 <span id="more"></span>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">conda create <span class="token parameter variable">-n</span> flappy-bird-gym <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token number">3.8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token assign-left variable">setuptools</span><span class="token operator">==</span><span class="token number">65.5</span>.0	//需要降低版本，不然无法安装低版本的gym<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> <span class="token assign-left variable">gym</span><span class="token operator">=</span><span class="token number">0.18</span>.0	//安装0.18.x版本的gym<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> flappy-bird-gym<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
-<span class="token keyword">import</span> flappy_bird_gym
-env <span class="token operator">=</span> flappy_bird_gym<span class="token punctuation">.</span>make<span class="token punctuation">(</span><span class="token string">"FlappyBird-v0"</span><span class="token punctuation">)</span>
-
-obs <span class="token operator">=</span> env<span class="token punctuation">.</span>reset<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-    <span class="token comment"># Next action:</span>
-    <span class="token comment"># (feed the observation to your agent here)</span>
-    action <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  <span class="token comment"># env.action_space.sample() for a random action</span>
-
-    <span class="token comment"># Processing:</span>
-    obs<span class="token punctuation">,</span> reward<span class="token punctuation">,</span> done<span class="token punctuation">,</span> info <span class="token operator">=</span> env<span class="token punctuation">.</span>step<span class="token punctuation">(</span>action<span class="token punctuation">)</span>
-    
-    <span class="token comment"># Rendering the game:</span>
-    <span class="token comment"># (remove this two lines during training)</span>
-    env<span class="token punctuation">.</span>render<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">/</span> <span class="token number">30</span><span class="token punctuation">)</span>  <span class="token comment"># FPS</span>
-    
-    <span class="token comment"># Checking if the player is still alive</span>
-    <span class="token keyword">if</span> done<span class="token punctuation">:</span>
-        <span class="token keyword">break</span>
-
-env<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-<p>运行成功</p>
+<h3 id="服务端（公网服务器）">服务端（公网服务器）</h3>
+<p>启动frps</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frps <span class="token parameter variable">-c</span> frps.ini <span class="token operator">></span> ./frps.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>关闭frps</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'frps'</span>
+<span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<h3 id="客户端">客户端</h3>
+<p>启动frpc</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frpc <span class="token parameter variable">-c</span> frpc.ini <span class="token operator">></span> ./frpc.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>关闭frpc</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'frpc'</span>
+<span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<p>启动jupyter notebook</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> jupyter notebook <span class="token operator">></span> /home/mindle-env/.jupyter/log.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>关闭jupyter notebook</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'jupyter-notebook'</span>
+<span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
                 
               </div>
@@ -353,7 +343,7 @@ env<span class="token punctuation">.</span>close<span class="token punctuation">
     
       <span class="category-chain">
         
-  <a href="/categories/RL/" class="category-chain-item">RL</a>
+  <a href="/categories/server/" class="category-chain-item">server</a>
   
   
 
@@ -368,9 +358,11 @@ env<span class="token punctuation">.</span>close<span class="token punctuation">
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/RL/">#RL</a>
+        <a href="/tags/server/">#server</a>
       
-        <a href="/tags/gym/">#gym</a>
+        <a href="/tags/frp/">#frp</a>
+      
+        <a href="/tags/jupyter/">#jupyter</a>
       
     </div>
   
@@ -382,8 +374,8 @@ env<span class="token punctuation">.</span>close<span class="token punctuation">
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>flappy-bird-gym环境安装</div>
-      <div>https://lmc20020909.github.io/flappy-bird-gym安装/</div>
+      <div>frp配置命令</div>
+      <div>https://lmc20020909.github.io/frp配置命令/</div>
     </div>
     <div class="license-meta">
       
@@ -395,7 +387,7 @@ env<span class="token punctuation">.</span>close<span class="token punctuation">
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年7月21日</div>
+          <div>2023年8月7日</div>
         </div>
       
       
@@ -427,18 +419,12 @@ env<span class="token punctuation">.</span>close<span class="token punctuation">
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/frp%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/" title="frp配置命令">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">frp配置命令</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E4%B8%89%E5%9B%BD%E6%BC%94%E4%B9%89/" title="《三国演义》情节梳理">
-                        <span class="hidden-mobile">《三国演义》情节梳理</span>
+                      <a href="/flappy-bird-gym%E5%AE%89%E8%A3%85/" title="flappy-bird-gym环境安装">
+                        <span class="hidden-mobile">flappy-bird-gym环境安装</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
