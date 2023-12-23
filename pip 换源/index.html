@@ -16,28 +16,26 @@
   <meta name="author" content="Liu Mingchen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="通过具有公网ip的跳板机访问内网服务器">
+    <meta name="description" content="永久换源，一劳永逸">
 <meta property="og:type" content="article">
-<meta property="og:title" content="frp配置命令">
-<meta property="og:url" content="https://lmc20020909.github.io/frp%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:title" content="pip 换源">
+<meta property="og:url" content="https://lmc20020909.github.io/pip%20%E6%8D%A2%E6%BA%90/index.html">
 <meta property="og:site_name" content="Mingchen&#39;s Blog">
-<meta property="og:description" content="通过具有公网ip的跳板机访问内网服务器">
+<meta property="og:description" content="永久换源，一劳永逸">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230807_bg1.jpg">
-<meta property="article:published_time" content="2023-08-07T05:45:04.918Z">
-<meta property="article:modified_time" content="2023-08-07T05:55:37.004Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230308_bg1.jpg">
+<meta property="article:published_time" content="2023-12-23T03:58:01.306Z">
+<meta property="article:modified_time" content="2023-12-23T04:02:34.936Z">
 <meta property="article:author" content="Liu Mingchen">
-<meta property="article:tag" content="server">
-<meta property="article:tag" content="frp">
-<meta property="article:tag" content="jupyter">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230807_bg1.jpg">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230308_bg1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>frp配置命令 - Mingchen&#39;s Blog</title>
+  <title>pip 换源 - Mingchen&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,13 +213,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230807_bg1.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230308_bg1.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="frp配置命令"></span>
+            <span id="subtitle" data-typed-text="pip 换源"></span>
           
         </div>
 
@@ -232,8 +230,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-07 13:45" pubdate>
-          2023年8月7日 下午
+        <time datetime="2023-12-23 11:58" pubdate>
+          2023年12月23日 中午
         </time>
       </span>
     
@@ -244,7 +242,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          337 字
+          178 字
         
       </span>
     
@@ -255,7 +253,7 @@
         
         
         
-          3 分钟
+          2 分钟
         
       </span>
     
@@ -301,30 +299,17 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">frp配置命令</h1>
+            <h1 style="display: none">pip 换源</h1>
             
             
               <div class="markdown-body">
                 
-                <p>通过具有公网ip的跳板机访问内网服务器</p>
-<span id="more"></span>
-<h3 id="服务端（公网服务器）">服务端（公网服务器）</h3>
-<p>启动frps</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frps <span class="token parameter variable">-c</span> frps.ini <span class="token operator">></span> ./frps.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>关闭frps</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'frps'</span>
-<span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
-<h3 id="客户端">客户端</h3>
-<p>启动frpc</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frpc <span class="token parameter variable">-c</span> frpc.ini <span class="token operator">></span> ./frpc.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>关闭frpc</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'frpc'</span>
-<span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
-<p>启动jupyter notebook</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> jupyter notebook <span class="token operator">></span> /home/mindle-env/.jupyter/log.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>关闭jupyter notebook</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'jupyter-notebook'</span>
-<span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+                <h1>pip 换源</h1>
+<h3 id="临时">临时</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> package-name <span class="token parameter variable">-i</span> https://pypi.tuna.tsinghua.edu.cn/simple/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h3 id="一劳永逸">一劳永逸</h3>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip config <span class="token builtin class-name">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>之后直接 pip install package name 就默认使用国内源</p>
 
                 
               </div>
@@ -358,11 +343,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/server/">#server</a>
-      
-        <a href="/tags/frp/">#frp</a>
-      
-        <a href="/tags/jupyter/">#jupyter</a>
+        <a href="/tags/python/">#python</a>
       
     </div>
   
@@ -374,8 +355,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>frp配置命令</div>
-      <div>https://lmc20020909.github.io/frp配置命令/</div>
+      <div>pip 换源</div>
+      <div>https://lmc20020909.github.io/pip 换源/</div>
     </div>
     <div class="license-meta">
       
@@ -387,7 +368,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月7日</div>
+          <div>2023年12月23日</div>
         </div>
       
       
@@ -419,9 +400,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/pip%20%E6%8D%A2%E6%BA%90/" title="pip 换源">
+                      <a href="/ubuntu%20%E5%AE%89%E8%A3%85%20tensorflow/" title="ubuntu 安装 tensorflow">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pip 换源</span>
+                        <span class="hidden-mobile">ubuntu 安装 tensorflow</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -429,8 +410,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/flappy-bird-gym%E5%AE%89%E8%A3%85/" title="flappy-bird-gym环境安装">
-                        <span class="hidden-mobile">flappy-bird-gym环境安装</span>
+                      <a href="/frp%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/" title="frp配置命令">
+                        <span class="hidden-mobile">frp配置命令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

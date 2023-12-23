@@ -4,6 +4,60 @@
   
   
   <entry>
+    <title>ubuntu 安装 tensorflow</title>
+    <link href="/ubuntu%20%E5%AE%89%E8%A3%85%20tensorflow/"/>
+    <url>/ubuntu%20%E5%AE%89%E8%A3%85%20tensorflow/</url>
+    
+    <content type="html"><![CDATA[<h1>ubuntu 安装 tensorflow</h1><ol><li><p>查看系统CUDA版本</p><p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps2@main//img/202312202306943.png" alt=""></p></li><li><p>上官网查看CUDA版本对应的tensorflow版本以及python版本：<a href="https://www.tensorflow.org/install/source#gpu">https://www.tensorflow.org/install/source#gpu</a></p></li></ol><p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps2@main//img/202312202308089.png" alt=""></p><p>需要安装2.15.0版本的tensorflow，并且python版本要在3.9-3.11之间（划重点），python版本对应不上会安装不了对应版本的tensorflow</p><ol start="3"><li><p>安装tensoorflow：<a href="https://www.tensorflow.org/install/pip%EF%BC%88%E6%B3%A8%E6%84%8F%E8%A6%81%E7%9C%8B%E8%8B%B1%E6%96%87%E7%89%88%E7%9A%84%E5%AE%98%E7%BD%91%EF%BC%8C%E5%92%8C%E4%B8%AD%E6%96%87%E7%89%88%E7%9A%84%E8%BF%98%E4%B8%8D%E4%B8%80%E6%A0%B7%EF%BC%89">https://www.tensorflow.org/install/pip（注意要看英文版的官网，和中文版的还不一样）</a></p><figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># For GPU users</span>pip install tensorflow<span class="token punctuation">[</span><span class="token keyword">and</span><span class="token operator">-</span>cuda<span class="token punctuation">]</span><span class="token comment"># For CPU users</span>pip install tensorflow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure></li><li><p>验证是否安装成功，gpu是否可用</p><figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf<span class="token keyword">print</span><span class="token punctuation">(</span>tf<span class="token punctuation">.</span>config<span class="token punctuation">.</span>list_physical_devices<span class="token punctuation">(</span><span class="token string">'GPU'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>server</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>server</tag>
+      
+      <tag>tensorflow</tag>
+      
+      <tag>linux</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>pip 换源</title>
+    <link href="/pip%20%E6%8D%A2%E6%BA%90/"/>
+    <url>/pip%20%E6%8D%A2%E6%BA%90/</url>
+    
+    <content type="html"><![CDATA[<h1>pip 换源</h1><h3 id="临时">临时</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> package-name <span class="token parameter variable">-i</span> https://pypi.tuna.tsinghua.edu.cn/simple/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><h3 id="一劳永逸">一劳永逸</h3><figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip config <span class="token builtin class-name">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>之后直接 pip install package name 就默认使用国内源</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>server</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>python</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>frp配置命令</title>
     <link href="/frp%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/"/>
     <url>/frp%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/</url>
@@ -805,11 +859,11 @@
     
     <tags>
       
+      <tag>python</tag>
+      
       <tag>数字图像处理</tag>
       
       <tag>opencv</tag>
-      
-      <tag>python</tag>
       
     </tags>
     

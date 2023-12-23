@@ -16,28 +16,28 @@
   <meta name="author" content="Liu Mingchen">
   <meta name="keywords" content="">
   
-    <meta name="description" content="通过具有公网ip的跳板机访问内网服务器">
+    <meta name="description" content="轻松安装gpu版本">
 <meta property="og:type" content="article">
-<meta property="og:title" content="frp配置命令">
-<meta property="og:url" content="https://lmc20020909.github.io/frp%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:title" content="ubuntu 安装 tensorflow">
+<meta property="og:url" content="https://lmc20020909.github.io/ubuntu%20%E5%AE%89%E8%A3%85%20tensorflow/index.html">
 <meta property="og:site_name" content="Mingchen&#39;s Blog">
-<meta property="og:description" content="通过具有公网ip的跳板机访问内网服务器">
+<meta property="og:description" content="轻松安装gpu版本">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230807_bg1.jpg">
-<meta property="article:published_time" content="2023-08-07T05:45:04.918Z">
-<meta property="article:modified_time" content="2023-08-07T05:55:37.004Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230308_bg1.jpg">
+<meta property="article:published_time" content="2023-12-23T03:58:01.780Z">
+<meta property="article:modified_time" content="2023-12-23T04:05:35.229Z">
 <meta property="article:author" content="Liu Mingchen">
 <meta property="article:tag" content="server">
-<meta property="article:tag" content="frp">
-<meta property="article:tag" content="jupyter">
+<meta property="article:tag" content="tensorflow">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230807_bg1.jpg">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230308_bg1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>frp配置命令 - Mingchen&#39;s Blog</title>
+  <title>ubuntu 安装 tensorflow - Mingchen&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -215,13 +215,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230807_bg1.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230308_bg1.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="frp配置命令"></span>
+            <span id="subtitle" data-typed-text="ubuntu 安装 tensorflow"></span>
           
         </div>
 
@@ -232,8 +232,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-07 13:45" pubdate>
-          2023年8月7日 下午
+        <time datetime="2023-12-23 11:58" pubdate>
+          2023年12月23日 中午
         </time>
       </span>
     
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          337 字
+          423 字
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -301,30 +301,37 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">frp配置命令</h1>
+            <h1 style="display: none">ubuntu 安装 tensorflow</h1>
             
             
               <div class="markdown-body">
                 
-                <p>通过具有公网ip的跳板机访问内网服务器</p>
-<span id="more"></span>
-<h3 id="服务端（公网服务器）">服务端（公网服务器）</h3>
-<p>启动frps</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frps <span class="token parameter variable">-c</span> frps.ini <span class="token operator">></span> ./frps.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>关闭frps</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'frps'</span>
-<span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
-<h3 id="客户端">客户端</h3>
-<p>启动frpc</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frpc <span class="token parameter variable">-c</span> frpc.ini <span class="token operator">></span> ./frpc.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>关闭frpc</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'frpc'</span>
-<span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
-<p>启动jupyter notebook</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> jupyter notebook <span class="token operator">></span> /home/mindle-env/.jupyter/log.out <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
-<p>关闭jupyter notebook</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-aux</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'jupyter-notebook'</span>
-<span class="token function">kill</span> <span class="token parameter variable">-9</span> xxx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+                <h1>ubuntu 安装 tensorflow</h1>
+<ol>
+<li>
+<p>查看系统CUDA版本</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps2@main//img/202312202306943.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li>
+<p>上官网查看CUDA版本对应的tensorflow版本以及python版本：<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/source#gpu">https://www.tensorflow.org/install/source#gpu</a></p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps2@main//img/202312202308089.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>需要安装2.15.0版本的tensorflow，并且python版本要在3.9-3.11之间（划重点），python版本对应不上会安装不了对应版本的tensorflow</p>
+<ol start="3">
+<li>
+<p>安装tensoorflow：<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/pip%EF%BC%88%E6%B3%A8%E6%84%8F%E8%A6%81%E7%9C%8B%E8%8B%B1%E6%96%87%E7%89%88%E7%9A%84%E5%AE%98%E7%BD%91%EF%BC%8C%E5%92%8C%E4%B8%AD%E6%96%87%E7%89%88%E7%9A%84%E8%BF%98%E4%B8%8D%E4%B8%80%E6%A0%B7%EF%BC%89">https://www.tensorflow.org/install/pip（注意要看英文版的官网，和中文版的还不一样）</a></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># For GPU users</span>
+pip install tensorflow<span class="token punctuation">[</span><span class="token keyword">and</span><span class="token operator">-</span>cuda<span class="token punctuation">]</span>
+<span class="token comment"># For CPU users</span>
+pip install tensorflow<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+</li>
+<li>
+<p>验证是否安装成功，gpu是否可用</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">print</span><span class="token punctuation">(</span>tf<span class="token punctuation">.</span>config<span class="token punctuation">.</span>list_physical_devices<span class="token punctuation">(</span><span class="token string">'GPU'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+</li>
+</ol>
 
                 
               </div>
@@ -360,9 +367,9 @@
       
         <a href="/tags/server/">#server</a>
       
-        <a href="/tags/frp/">#frp</a>
+        <a href="/tags/tensorflow/">#tensorflow</a>
       
-        <a href="/tags/jupyter/">#jupyter</a>
+        <a href="/tags/linux/">#linux</a>
       
     </div>
   
@@ -374,8 +381,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>frp配置命令</div>
-      <div>https://lmc20020909.github.io/frp配置命令/</div>
+      <div>ubuntu 安装 tensorflow</div>
+      <div>https://lmc20020909.github.io/ubuntu 安装 tensorflow/</div>
     </div>
     <div class="license-meta">
       
@@ -387,7 +394,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月7日</div>
+          <div>2023年12月23日</div>
         </div>
       
       
@@ -419,18 +426,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/pip%20%E6%8D%A2%E6%BA%90/" title="pip 换源">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pip 换源</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/flappy-bird-gym%E5%AE%89%E8%A3%85/" title="flappy-bird-gym环境安装">
-                        <span class="hidden-mobile">flappy-bird-gym环境安装</span>
+                      <a href="/pip%20%E6%8D%A2%E6%BA%90/" title="pip 换源">
+                        <span class="hidden-mobile">pip 换源</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
