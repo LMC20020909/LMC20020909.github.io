@@ -42,6 +42,8 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>server</category>
       
     </categories>
@@ -49,11 +51,13 @@
     
     <tags>
       
+      <tag>教程</tag>
+      
       <tag>server</tag>
       
-      <tag>tensorflow</tag>
-      
       <tag>linux</tag>
+      
+      <tag>tensorflow</tag>
       
     </tags>
     
@@ -71,6 +75,8 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>python</category>
       
     </categories>
@@ -78,7 +84,11 @@
     
     <tags>
       
+      <tag>教程</tag>
+      
       <tag>python</tag>
+      
+      <tag>pip</tag>
       
     </tags>
     
@@ -96,12 +106,16 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>server</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>教程</tag>
       
       <tag>server</tag>
       
@@ -125,12 +139,16 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>RL</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>教程</tag>
       
       <tag>RL</tag>
       
@@ -179,12 +197,16 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>NLP</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>教程</tag>
       
       <tag>NLP</tag>
       
@@ -237,16 +259,12 @@
       
       <category>算法</category>
       
-      <category>算法基础</category>
-      
     </categories>
     
     
     <tags>
       
       <tag>算法</tag>
-      
-      <tag>算法基础</tag>
       
       <tag>排序</tag>
       
@@ -282,12 +300,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>批判性思维</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>复习</tag>
       
@@ -340,6 +362,8 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>server</category>
       
     </categories>
@@ -347,9 +371,11 @@
     
     <tags>
       
-      <tag>Linux</tag>
+      <tag>教程</tag>
       
       <tag>server</tag>
+      
+      <tag>Linux</tag>
       
       <tag>MySQL</tag>
       
@@ -369,6 +395,8 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>server</category>
       
     </categories>
@@ -376,9 +404,11 @@
     
     <tags>
       
-      <tag>Linux</tag>
+      <tag>教程</tag>
       
       <tag>server</tag>
+      
+      <tag>Linux</tag>
       
       <tag>MySQL</tag>
       
@@ -473,14 +503,20 @@
     
     <categories>
       
-      <category>Linux</category>
+      <category>教程</category>
+      
+      <category>server</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Linux</tag>
+      <tag>教程</tag>
+      
+      <tag>server</tag>
+      
+      <tag>linux</tag>
       
       <tag>git</tag>
       
@@ -533,12 +569,16 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>font-end</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>教程</tag>
       
       <tag>font-end</tag>
       
@@ -568,12 +608,16 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>font-end</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>教程</tag>
       
       <tag>笔记</tag>
       
@@ -599,12 +643,16 @@
     
     <categories>
       
+      <category>教程</category>
+      
       <category>font-end</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>教程</tag>
       
       <tag>笔记</tag>
       
@@ -621,7 +669,7 @@
   
   
   <entry>
-    <title>Git</title>
+    <title>Git 基本操作</title>
     <link href="/git%20init/"/>
     <url>/git%20init/</url>
     
@@ -630,12 +678,16 @@
     
     <categories>
       
-      <category>bug</category>
+      <category>教程</category>
+      
+      <category>git</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>教程</tag>
       
       <tag>git</tag>
       
@@ -686,12 +738,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>计算机游戏引擎</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>考试</tag>
       
@@ -713,12 +769,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>计算机组成原理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>笔记</tag>
       
@@ -740,12 +800,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>算法设计与分析</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>复习</tag>
       
@@ -854,12 +918,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>数字图像处理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>数字图像处理</tag>
       
@@ -881,12 +949,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>数字图像处理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>python</tag>
       
@@ -910,12 +982,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>数字图像处理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>复习</tag>
       
@@ -939,12 +1015,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>数字图像处理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>复习</tag>
       
@@ -968,12 +1048,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>数字图像处理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>复习</tag>
       
@@ -997,12 +1081,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>数字图像处理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>复习</tag>
       
@@ -1026,12 +1114,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>数字逻辑</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>复习</tag>
       
@@ -1055,12 +1147,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>操作系统原理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>操作系统原理</tag>
       
@@ -1084,12 +1180,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>操作系统原理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>操作系统原理</tag>
       
@@ -1113,12 +1213,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>操作系统原理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>操作系统原理</tag>
       
@@ -1142,12 +1246,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>操作系统原理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>操作系统原理</tag>
       
@@ -1171,12 +1279,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>操作系统原理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>操作系统原理</tag>
       
@@ -1200,12 +1312,16 @@
     
     <categories>
       
+      <category>课业</category>
+      
       <category>操作系统原理</category>
       
     </categories>
     
     
     <tags>
+      
+      <tag>课业</tag>
       
       <tag>操作系统原理</tag>
       
