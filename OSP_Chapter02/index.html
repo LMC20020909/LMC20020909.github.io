@@ -1,0 +1,941 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon/Mingchen%20Liu.png">
+  <link rel="icon" href="/img/icon/Mingchen%20Liu.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Liu Mingchen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020级操作系统原理 苏曙光老师 2022.5.19 第二章 操作系统的硬件基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统原理复习 第二章 操作系统的硬件基础">
+<meta property="og:url" content="https://lmc20020909.github.io/OSP_Chapter02/index.html">
+<meta property="og:site_name" content="Mingchen&#39;s Blog">
+<meta property="og:description" content="2020级操作系统原理 苏曙光老师 2022.5.19 第二章 操作系统的硬件基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg2.jpg">
+<meta property="article:published_time" content="2022-11-14T16:26:51.000Z">
+<meta property="article:modified_time" content="2022-11-14T16:26:51.000Z">
+<meta property="article:author" content="Liu Mingchen">
+<meta property="article:tag" content="课业">
+<meta property="article:tag" content="操作系统原理">
+<meta property="article:tag" content="复习">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg2.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>操作系统原理复习 第二章 操作系统的硬件基础 - Mingchen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc20020909.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mingchen&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg2.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第二章 操作系统的硬件基础"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-14 16:26" pubdate>
+          2022年11月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第二章 操作系统的硬件基础</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><em>支持操作系统的最基本硬件结构：<strong>CPU、内存、中断、时钟</strong></em></p>
+<h2 id="CPU的态">CPU的态</h2>
+<p>CPU的工作状态，对资源和指令使用权限的描述<br>
+硬件按“态”来区分CPU的状态，OS按“进程”来区分CPU的状态</p>
+<ul>
+<li>
+<p><strong>核态</strong></p>
+<ul>
+<li>能够访问所有资源和执行所有指令</li>
+<li>管理程序/OS内核</li>
+</ul>
+</li>
+<li>
+<p><strong>用户态</strong></p>
+<ul>
+<li>仅能访问部分资源，其他资源受限</li>
+<li>用户程序</li>
+</ul>
+</li>
+<li>
+<p><strong>管态</strong></p>
+<ul>
+<li>介于核态和用户态之间</li>
+</ul>
+</li>
+</ul>
+<h2 id="用户态和核态之间的转换">用户态和核态之间的转换</h2>
+<ul>
+<li>
+<p><strong>用户态向核态转换</strong></p>
+<ul>
+<li>用户请求OS提供服务</li>
+<li>发生中断</li>
+<li>用户进程产生错误（内部中断）</li>
+<li>用户态企图执行特权指令</li>
+</ul>
+</li>
+<li>
+<p><strong>核态向用户态转换</strong></p>
+<ul>
+<li>一般是中断返回：<strong>IRET</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="存储器">存储器</h2>
+<ul>
+<li><strong>寄存器</strong></li>
+<li><strong>高速缓存</strong>（CACHE）</li>
+<li><strong>主存</strong>：直接和CPU交换信息——内存</li>
+<li><strong>辅存</strong>：不能直接和CPU交换信息——硬盘、软盘</li>
+</ul>
+<h2 id="中断定义">中断定义</h2>
+<ul>
+<li>指CPU对突发的外部事件的反应过程或机制</li>
+<li>CPU收到外部信号（中断信号）后，停止当前工作，转去处理该外部事件，处理完毕后回到原来工作的中断处（断点）继续原来的工作</li>
+<li>引起系统中断的时间称为<strong>中断源</strong></li>
+</ul>
+<h2 id="引入中断的目的">引入中断的目的</h2>
+<ul>
+<li>实现并发活动</li>
+<li>实现实时处理</li>
+<li>故障自动处理</li>
+</ul>
+<h2 id="中断类型">中断类型</h2>
+<ul>
+<li>
+<p><strong>强迫中断和自愿中断</strong></p>
+<ul>
+<li>强迫中断：程序没有预期：例：I/O、外部中断</li>
+<li>自愿中断：程序有预期。例：执行访管指令</li>
+</ul>
+</li>
+<li>
+<p><strong>外中断（中断）和内中断（俘获）</strong></p>
+<ul>
+<li>外中断：由CPU外部事件引起。例：I/O，外部事情</li>
+<li>内中断：由CPU内部事件引起。例：访管中断、程序中断</li>
+</ul>
+</li>
+<li>
+<p>外中断分为<strong>不可屏蔽中断和可屏蔽中断</strong></p>
+<ul>
+<li>不可屏蔽中断：中断的原因很紧要，CPU必须响应</li>
+<li>可屏蔽中断：中断原因不很紧要，CPU可以不响应</li>
+</ul>
+</li>
+</ul>
+<h2 id="中断响应过程">中断响应过程</h2>
+<ol>
+<li>识别中断源</li>
+<li>保护断点</li>
+<li>保护现场</li>
+<li>进入中断服务程序</li>
+<li>恢复现场</li>
+<li>中断返回</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>中断嵌套处理：高优先级打断低优先级中断服务</p>
+<h2 id="中断响应的实质">中断响应的实质</h2>
+<ul>
+<li>交换指令执行地址</li>
+<li>交换CPU的态</li>
+<li>现场保护和恢复、参数传递（通信）</li>
+</ul>
+<h2 id="基本输入输出系统BIOS">基本输入输出系统BIOS</h2>
+<ul>
+<li>
+<p>显示卡BIOS：C0000-C7FFF</p>
+</li>
+<li>
+<p>IDE控制器BIOS：C8000-CBFFF</p>
+</li>
+<li>
+<p><strong>系统BIOS：F0000-FFFFF</strong>，大小为64K</p>
+<p>功能：</p>
+<ul>
+<li>加电自检及初始化（POST）</li>
+<li>CMOS设置</li>
+<li>系统自举/加载OS</li>
+<li>基本I/O服务（BIOS中断）</li>
+</ul>
+</li>
+</ul>
+<h3 id="POST（Power-On-Self-Test）">POST（Power On Self-Test）</h3>
+<p>按下PowerOn键开始执行POST程序</p>
+<ul>
+<li>
+<p>POST程序：<strong>执行首条指令（FFFF0）</strong>：JMP POST；加电自检</p>
+<p>初始化基本硬件（CPU、内存、显卡）</p>
+</li>
+</ul>
+<h3 id="CMOS设置">CMOS设置</h3>
+<h3 id="系统自举-加载OS">系统自举/加载OS</h3>
+<p>开机时加载并运行OS位用户建立用户环境</p>
+<ul>
+<li><strong>现场引导方式</strong>：OS文件存储在本地存储设备</li>
+<li><strong>下载引导方式</strong>：OS文件存储在网络存储设备中</li>
+</ul>
+<h3 id="基本I-O服务（BIOS中断）">基本I/O服务（BIOS中断）</h3>
+<p>BIOS使用的中断类型号为<strong>10H~1FH</strong>，每一组又分为不同的子功能，AH寄存器指定子功能编号。<br>
+INT 13H  AH=02H 为读扇区</p>
+<h2 id="实模式和保护模式">实模式和保护模式</h2>
+<ul>
+<li>
+<p>实模式</p>
+<ul>
+<li>寻址方式：物理地址（20位），可访问1MB空间（0~FFFFFh）</li>
+<li>CPU单任务运行</li>
+</ul>
+</li>
+<li>
+<p>保护模式</p>
+<ul>
+<li>寻址方式：段（16位）和偏移量（32位），寻址4GB
+<ul>
+<li>段的新含义和新工作机制</li>
+<li>段的属性：起始地址、存取属性、权限…</li>
+<li>段页式虚拟内存管理机制(段，页）</li>
+<li>新增多个寄存器（GDR,LDR,CR0,CR1,CR2）</li>
+</ul>
+</li>
+<li>虚拟地址，进程，封闭空间</li>
+<li>应用程序和操作系统的运行环境都被保护</li>
+<li>CPU支持多任务</li>
+</ul>
+</li>
+</ul>
+<h2 id="操作系统的启动">操作系统的启动</h2>
+<p>从加电到用户工作环境准备好的过程</p>
+<ul>
+<li><strong>初始引导</strong></li>
+<li><strong>核心初始化</strong></li>
+<li><strong>系统初始化</strong></li>
+</ul>
+<h3 id="初始引导">初始引导</h3>
+<p>目的：把<strong>OS内核</strong>装入内存并使之开始工作接管计算机系统</p>
+<ul>
+<li>
+<p>加电，JUMP POST（<strong>FFFF0</strong>）</p>
+</li>
+<li>
+<p>跳入BIOS的<strong>启动程序</strong></p>
+<ul>
+<li>读取0面0道第一扇区内容</li>
+<li>MBR(Master Boot Record)：主启动记录：引导程序<br>
+（BIOS 从MBR 读入引导程序，装入内存的特定位置）</li>
+</ul>
+</li>
+<li>
+<p>运行<strong>引导程序</strong></p>
+<ul>
+<li>根据相关参数，读取硬盘指定位置的<strong>OS内核</strong>到内存</li>
+<li>初始化基本参数</li>
+</ul>
+</li>
+<li>
+<p><strong>OS内核</strong>：逐步加载OS剩余部分，直到最后完全控制计算机</p>
+</li>
+</ul>
+<h3 id="核心初始化">核心初始化</h3>
+<p>目的：OS内核初始化系统的核心数据</p>
+<p>各种寄存器的初始化、存储系统和页表初始化、核心进程构建…</p>
+<h3 id="系统初始化">系统初始化</h3>
+<p>目的：为用户使用系统做准备，使系统处于<strong>待命状态</strong></p>
+<p>初始化文件系统、初始化网络系统、初始化控制台、初始化图形界面…</p>
+<h3 id="MBR（主引导记录、主启动记录）">MBR（主引导记录、主启动记录）</h3>
+<p>存放引导代码：OS启动相关的数据和代码，存放在主启动扇区（0面0道第一扇区），大小为512字节（510+AA55h）</p>
+<ul>
+<li>结构
+<ul>
+<li>引导程序</li>
+<li>该磁盘的分区表</li>
+<li>主引导签名：55AA表示MBR结束</li>
+</ul>
+</li>
+</ul>
+<p>其中分区表的作用记录硬盘分区信息（多个操作系统）。每个分区的第一个扇区叫作分区引导记录(PartitionBoot Record，PBR)，也叫次引导记录，其结构与MBR类似。</p>
+<ul>
+<li>功能
+<ul>
+<li>直接指向引导代码加载OS</li>
+<li>提供启动选项菜单</li>
+<li>跳转到PBR以加载特定OS BootLoader</li>
+</ul>
+</li>
+<li>工作原理
+<ul>
+<li>初启过程<br>
+POST<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>CMOS设置<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>读取MBR<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>控制权交给MBR</li>
+<li>MBR工作
+<ul>
+<li>MBR读取分区表，查找并确认唯一的活动分区</li>
+<li>MBR读取活动分区PBR，并加载到内存</li>
+</ul>
+</li>
+<li>PBR控制后续引导过程
+<ul>
+<li>读OS内核</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E4%B8%9A/" class="category-chain-item">课业</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%AF%BE%E4%B8%9A/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="category-chain-item">操作系统原理</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E4%B8%9A/">#课业</a>
+      
+        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/">#操作系统原理</a>
+      
+        <a href="/tags/%E5%A4%8D%E4%B9%A0/">#复习</a>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>操作系统原理复习 第二章 操作系统的硬件基础</div>
+      <div>https://lmc20020909.github.io/OSP_Chapter02/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Liu Mingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/OSP_Chapter01/" title="操作系统原理复习 第一章 绪论">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统原理复习 第一章 绪论</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/OSP_Chapter03/" title="操作系统原理复习 第三章 用户界面">
+                        <span class="hidden-mobile">操作系统原理复习 第三章 用户界面</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
