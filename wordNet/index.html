@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon/Mingchen%20Liu.png">
+  <link rel="icon" href="/img/icon/Mingchen%20Liu.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Liu Mingchen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="WordNet is a large lexical database of English. Nouns, verbs, adjectives and adverbs are grouped into sets of cognitive synonyms (synsets), each expressing a distinct concept.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordNet使用简介">
+<meta property="og:url" content="https://lmc20020909.github.io/wordNet/index.html">
+<meta property="og:site_name" content="Mingchen&#39;s Blog">
+<meta property="og:description" content="WordNet is a large lexical database of English. Nouns, verbs, adjectives and adverbs are grouped into sets of cognitive synonyms (synsets), each expressing a distinct concept.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230428_bg1.jpg">
+<meta property="article:published_time" content="2023-04-28T12:32:29.000Z">
+<meta property="article:modified_time" content="2023-04-28T12:32:29.000Z">
+<meta property="article:author" content="Liu Mingchen">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="WordNet">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230428_bg1.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>WordNet使用简介 - Mingchen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc20020909.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mingchen&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20230428_bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="WordNet使用简介"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-28 12:32" pubdate>
+          2023年4月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          55 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">WordNet使用简介</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>WordNet is a large lexical database of English. Nouns, verbs, adjectives and adverbs are grouped into sets of cognitive synonyms (synsets), each expressing a distinct concept.</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="介绍">介绍</h3>
+<ol>
+<li>
+<p>WordNet的基本元素是<strong>synset</strong>，是由一个或多个语义相近的单词构成的同义词组。</p>
+</li>
+<li>
+<p>对于一词多义的单词来说，它会出现在多个对应的synset中。</p>
+</li>
+<li>
+<p>单词被分为NOUN, VERB, ADJ和ADV，各自组成一个语义网络，互相没有连接。</p>
+</li>
+<li>
+<p>synset中的元素称为<strong>lemma</strong>，即词根，标志着WordNet只会记录词元而不会记录其时态的变换。</p>
+</li>
+</ol>
+<p>对于名词来说，synset被组织成树形结构，每一个synset都有对应的上位词集 (<strong>hypernyms</strong>) 和下位词集 (<strong>hyponyms</strong>)。所有名词词集的祖先都是{entity}。</p>
+<p>在WordNet中，每一个synset表示为<strong>单词.词性.序号</strong>，即用词集中的一个单词来表示这一synset，序号则代表这一synset是这一单词的第几个含义。</p>
+<p>与之相对应，lemma表示为<strong>单词.词性.序号.词根</strong>，这样便可唯一表示单词的每一个含义。</p>
+<h3 id="WordNet安装（Python）">WordNet安装（Python）</h3>
+<h4 id="官网地址"><a target="_blank" rel="noopener" href="https://wordnet.princeton.edu/">官网地址</a></h4>
+<p>在官网可以使用图形化界面在线使用和查询。</p>
+<h4 id="安装">安装</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip3 <span class="token function">install</span> nltk<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> nltk
+nltk<span class="token punctuation">.</span>download<span class="token punctuation">(</span><span class="token string">'wordnet'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> nltk<span class="token punctuation">.</span>corpus <span class="token keyword">import</span> wordnet <span class="token keyword">as</span> wn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h3 id="常用API">常用API</h3>
+<h4 id="查看单词的所有synset">查看单词的所有synset</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> wn<span class="token punctuation">.</span>synsets<span class="token punctuation">(</span><span class="token string">"chair"</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span>Synset<span class="token punctuation">(</span><span class="token string">'chair.n.01'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'professorship.n.01'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'president.n.04'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'electric_chair.n.01'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'chair.n.05'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'chair.v.01'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'moderate.v.01'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<p>表示单词chair出现在7个不同的synset中，即有7种不同的含义。</p>
+<p>pos属性可以指定词性查询：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> wn<span class="token punctuation">.</span>synsets<span class="token punctuation">(</span><span class="token string">"chair"</span><span class="token punctuation">,</span> pos<span class="token operator">=</span>wn<span class="token punctuation">.</span>NOUN<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>Synset<span class="token punctuation">(</span><span class="token string">'chair.n.01'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'professorship.n.01'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'president.n.04'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'electric_chair.n.01'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Synset<span class="token punctuation">(</span><span class="token string">'chair.n.05'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<p>调用synset的definition()可以查看词集的简要描述：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> synset <span class="token keyword">in</span> wn<span class="token punctuation">.</span>synsets<span class="token punctuation">(</span><span class="token string">"chair"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    	<span class="token keyword">print</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span> <span class="token string">" ------ "</span> <span class="token operator">+</span> synset<span class="token punctuation">.</span>definition<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">chair.n.01 ------ a seat for one person, with a support for the back
+professorship.n.01 ------ the position of professor
+president.n.04 ------ the officer who presides at the meetings of an organization
+electric_chair.n.01 ------ an instrument of execution by electrocution; resembles an ordinary seat for one person
+chair.n.05 ------ a particular seat in an orchestra
+chair.v.01 ------ act or preside as chair, as of an academic department in a university
+moderate.v.01 ------ preside over<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>调用examples()可以查看例句（例句中的单词可以是synsey中的任意一个）</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> synset <span class="token keyword">in</span> wn<span class="token punctuation">.</span>synsets<span class="token punctuation">(</span><span class="token string">"chair"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    	<span class="token keyword">print</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span> <span class="token string">" ------ "</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>examples<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">chair.n.01 ------ [&#39;he put his coat over the back of the chair and sat down&#39;]
+professorship.n.01 ------ [&#39;he was awarded an endowed chair in economics&#39;]
+president.n.04 ------ [&#39;address your remarks to the chairperson&#39;]
+electric_chair.n.01 ------ [&#39;the murderer was sentenced to die in the chair&#39;]
+chair.n.05 ------ [&#39;he is second chair violin&#39;]
+chair.v.01 ------ [&#39;She chaired the department for many years&#39;]
+moderate.v.01 ------ [&#39;John moderated the discussion&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h4 id="查看synset中有哪些单词-lemma">查看synset中有哪些单词 (lemma)</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> synset <span class="token keyword">in</span> wn<span class="token punctuation">.</span>synsets<span class="token punctuation">(</span><span class="token string">'chair'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    	<span class="token keyword">print</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span> <span class="token string">" ------ "</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>lemmas<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">chair.n.01 ------ [Lemma(&#39;chair.n.01.chair&#39;)]
+professorship.n.01 ------ [Lemma(&#39;professorship.n.01.professorship&#39;), Lemma(&#39;professorship.n.01.chair&#39;)]
+president.n.04 ------ [Lemma(&#39;president.n.04.president&#39;), Lemma(&#39;president.n.04.chairman&#39;), Lemma(&#39;president.n.04.chairwoman&#39;), Lemma(&#39;president.n.04.chair&#39;), Lemma(&#39;president.n.04.chairperson&#39;)]
+electric_chair.n.01 ------ [Lemma(&#39;electric_chair.n.01.electric_chair&#39;), Lemma(&#39;electric_chair.n.01.chair&#39;), Lemma(&#39;electric_chair.n.01.death_chair&#39;), Lemma(&#39;electric_chair.n.01.hot_seat&#39;)]
+chair.n.05 ------ [Lemma(&#39;chair.n.05.chair&#39;)]
+chair.v.01 ------ [Lemma(&#39;chair.v.01.chair&#39;), Lemma(&#39;chair.v.01.chairman&#39;)]
+moderate.v.01 ------ [Lemma(&#39;moderate.v.01.moderate&#39;), Lemma(&#39;moderate.v.01.chair&#39;), Lemma(&#39;moderate.v.01.lead&#39;)]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> synset <span class="token keyword">in</span> wn<span class="token punctuation">.</span>synsets<span class="token punctuation">(</span><span class="token string">'chair'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    	<span class="token keyword">print</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span> <span class="token string">" ------ "</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>lemma_names<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">chair.n.01 ------ [&#39;chair&#39;]
+professorship.n.01 ------ [&#39;professorship&#39;, &#39;chair&#39;]
+president.n.04 ------ [&#39;president&#39;, &#39;chairman&#39;, &#39;chairwoman&#39;, &#39;chair&#39;, &#39;chairperson&#39;]
+electric_chair.n.01 ------ [&#39;electric_chair&#39;, &#39;chair&#39;, &#39;death_chair&#39;, &#39;hot_seat&#39;]
+chair.n.05 ------ [&#39;chair&#39;]
+chair.v.01 ------ [&#39;chair&#39;, &#39;chairman&#39;]
+moderate.v.01 ------ [&#39;moderate&#39;, &#39;chair&#39;, &#39;lead&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h4 id="计算两个synset之间的similarity">计算两个synset之间的similarity</h4>
+<p>计算similarity有很多不同的方法，详见<a target="_blank" rel="noopener" href="https://www.nltk.org/howto/wordnet.html">官方文档</a></p>
+<h5 id="path-similarity">path_similarity</h5>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">path_similarity</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">,</span> verbose<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> simulate_root<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+       <span class="token triple-quoted-string string">"""
+       Path Distance Similarity:
+       Return a score denoting how similar two word senses are, based on the
+       shortest path that connects the senses in the is-a (hypernym/hypnoym)
+       taxonomy. The score is in the range 0 to 1, except in those cases where
+       a path cannot be found (will only be true for verbs as there are many
+       distinct verb taxonomies), in which case None is returned. A score of
+       1 represents identity i.e. comparing a sense with itself will return 1.
+       :type other: Synset
+       :param other: The ``Synset`` that this ``Synset`` is being compared to.
+       :type simulate_root: bool
+       :param simulate_root: The various verb taxonomies do not
+           share a single root which disallows this metric from working for
+           synsets that are not connected. This flag (True by default)
+           creates a fake root that connects all the taxonomies. Set it
+           to false to disable this behavior. For the noun taxonomy,
+           there is usually a default root except for WordNet version 1.6.
+           If you are using wordnet 1.6, a fake root will be added for nouns
+           as well.
+       :return: A score denoting the similarity of the two ``Synset`` objects,
+           normally between 0 and 1. None is returned if no connecting path
+           could be found. 1 is returned if a ``Synset`` is compared with
+           itself.
+       """</span>
+
+       distance <span class="token operator">=</span> self<span class="token punctuation">.</span>shortest_path_distance<span class="token punctuation">(</span>
+           other<span class="token punctuation">,</span>
+           simulate_root<span class="token operator">=</span>simulate_root <span class="token keyword">and</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>_needs_root<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">or</span> other<span class="token punctuation">.</span>_needs_root<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+       <span class="token punctuation">)</span>
+       <span class="token keyword">if</span> distance <span class="token keyword">is</span> <span class="token boolean">None</span> <span class="token keyword">or</span> distance <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+           <span class="token keyword">return</span> <span class="token boolean">None</span>
+       <span class="token keyword">return</span> <span class="token number">1.0</span> <span class="token operator">/</span> <span class="token punctuation">(</span>distance <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>该函数通过两个词集距离其公共祖先的距离之和 (即源码中的 <em>distance</em>) 计算相似度，如果没有公共节点（如词性不一致），则会创建一个虚拟根节点来计算。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> chair <span class="token operator">=</span> wn<span class="token punctuation">.</span>synset<span class="token punctuation">(</span><span class="token string">'chair.n.01'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> president <span class="token operator">=</span> wn<span class="token punctuation">.</span>synset<span class="token punctuation">(</span><span class="token string">'president.n.01'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> chair<span class="token punctuation">.</span>path_similarity<span class="token punctuation">(</span>president<span class="token punctuation">)</span>
+<span class="token number">0.0625</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h4 id="查看两个synset的最近公共祖先">查看两个synset的最近公共祖先</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> chair<span class="token punctuation">.</span>lowest_common_hypernyms<span class="token punctuation">(</span>president<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>Synset<span class="token punctuation">(</span><span class="token string">'whole.n.02'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> chair<span class="token punctuation">.</span>lowest_common_hypernyms<span class="token punctuation">(</span>president<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>definition<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">'an assemblage of parts that is regarded as a single entity'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h4 id="查看synset的上位词集和下位词集">查看synset的上位词集和下位词集</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> synset <span class="token keyword">in</span> wn<span class="token punctuation">.</span>synsets<span class="token punctuation">(</span><span class="token string">'room'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    	<span class="token keyword">print</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span> <span class="token string">" ------ "</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>hypernyms<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">room.n.01 ------ [Synset(&#39;area.n.05&#39;)]
+room.n.02 ------ [Synset(&#39;position.n.07&#39;)]
+room.n.03 ------ [Synset(&#39;opportunity.n.01&#39;)]
+room.n.04 ------ [Synset(&#39;gathering.n.01&#39;)]
+board.v.02 ------ [Synset(&#39;populate.v.01&#39;)]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> synset <span class="token keyword">in</span> wn<span class="token punctuation">.</span>synsets<span class="token punctuation">(</span><span class="token string">'room'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    	<span class="token keyword">print</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>name<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span> <span class="token string">" ------ "</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>synset<span class="token punctuation">.</span>hyponyms<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">room.n.01 ------ [Synset(&#39;anechoic_chamber.n.01&#39;), Synset(&#39;anteroom.n.01&#39;), Synset(&#39;back_room.n.01&#39;), ...]
+room.n.02 ------ [Synset(&#39;breathing_room.n.01&#39;), Synset(&#39;headroom.n.01&#39;), Synset(&#39;houseroom.n.01&#39;), ...]
+room.n.03 ------ []
+room.n.04 ------ []
+board.v.02 ------ []<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h4 id="lemma之间的关系-synonym-antonym">lemma之间的关系 (synonym/antonym)</h4>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> wn<span class="token punctuation">.</span>lemma<span class="token punctuation">(</span><span class="token string">"hot.a.01.hot"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>antonyms<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span>Lemma<span class="token punctuation">(</span><span class="token string">'cold.a.01.cold'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> wn<span class="token punctuation">.</span>synonyms<span class="token punctuation">(</span><span class="token string">"chair"</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'professorship'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'chairman'</span><span class="token punctuation">,</span> <span class="token string">'chairperson'</span><span class="token punctuation">,</span> <span class="token string">'chairwoman'</span><span class="token punctuation">,</span> <span class="token string">'president'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'death_chair'</span><span class="token punctuation">,</span> <span class="token string">'electric_chair'</span><span class="token punctuation">,</span> <span class="token string">'hot_seat'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'chairman'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'lead'</span><span class="token punctuation">,</span> <span class="token string">'moderate'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<p>可以看到同义词仅仅是单词所在的synset中除了这一个外的所有单词</p>
+<h3 id="Reference">Reference</h3>
+<p><a target="_blank" rel="noopener" href="https://www.nltk.org/howto/wordnet.html">官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/nltk/nltk/blob/develop/nltk/corpus/reader/wordnet.py">WordNet源码</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Xiaoyan-Li/p/13477253.html">https://www.cnblogs.com/Xiaoyan-Li/p/13477253.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/11628d249c1c">https://www.jianshu.com/p/11628d249c1c</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%99%E7%A8%8B/NLP/" class="category-chain-item">NLP</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>
+      
+        <a href="/tags/NLP/">#NLP</a>
+      
+        <a href="/tags/WordNet/">#WordNet</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>WordNet使用简介</div>
+      <div>https://lmc20020909.github.io/wordNet/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Liu Mingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/%E4%B8%89%E5%9B%BD%E6%BC%94%E4%B9%89/" title="《三国演义》情节梳理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">《三国演义》情节梳理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/CSAPP%E9%98%85%E8%AF%BB%E6%9C%AD%E8%AE%B0%E2%80%94%E2%80%94%E7%AC%AC%E4%BA%8C%E7%AB%A0/" title="CSAPP阅读札记——第二章">
+                        <span class="hidden-mobile">CSAPP阅读札记——第二章</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
