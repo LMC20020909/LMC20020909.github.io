@@ -1,0 +1,1497 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon/Mingchen%20Liu.png">
+  <link rel="icon" href="/img/icon/Mingchen%20Liu.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Liu Mingchen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020级数字逻辑 黄浩老师 2022.5.9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字逻辑复习">
+<meta property="og:url" content="https://lmc20020909.github.io/ReviewofDigitalLogic/index.html">
+<meta property="og:site_name" content="Mingchen&#39;s Blog">
+<meta property="og:description" content="2020级数字逻辑 黄浩老师 2022.5.9">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221004_bg1.jpg">
+<meta property="article:published_time" content="2022-11-14T16:26:51.000Z">
+<meta property="article:modified_time" content="2022-11-14T16:26:51.000Z">
+<meta property="article:author" content="Liu Mingchen">
+<meta property="article:tag" content="课业">
+<meta property="article:tag" content="复习">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数字逻辑">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221004_bg1.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>数字逻辑复习 - Mingchen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc20020909.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mingchen&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221004_bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数字逻辑复习"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-14 16:26" pubdate>
+          2022年11月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          69 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数字逻辑复习</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="数字系统">数字系统</h2>
+<p>是一个能对数字信号进行加工、传递和存储的实体，它由实现各种功能的数字逻辑电路相互连接而成。</p>
+<h3 id="数字量和模拟量">数字量和模拟量</h3>
+<p>一类物理量的变化在时间上和数量上都是离散的。这类物理量常称为<strong>数字量</strong>。</p>
+<p>另一类物理量的变化在时间上和数量上则是连续的。这类物理量常称为<strong>模拟量</strong>。</p>
+<h3 id="数字信号和模拟信号">数字信号和模拟信号</h3>
+<p>用来表示数字量的信号叫<strong>数字信号</strong>。</p>
+<p>用来表示模拟量的信号叫<strong>模拟信号</strong>。</p>
+<h3 id="数字电路和模拟电路">数字电路和模拟电路</h3>
+<p>我们把用来处理数字信号的电子电路叫做<strong>数字电路</strong>（数字逻辑电路）。</p>
+<p>我们把用来处理模拟信号的电子电路叫做<strong>模拟电路</strong>。</p>
+<h3 id="数字电路特点">数字电路特点</h3>
+<ul>
+<li>
+<p>二进制</p>
+</li>
+<li>
+<p>稳定性好</p>
+</li>
+<li>
+<p>抗干扰能力强</p>
+</li>
+<li>
+<p>具有记忆功能</p>
+</li>
+<li>
+<p>具有加密功能</p>
+</li>
+<li>
+<p>通用性强</p>
+</li>
+<li>
+<p>分析工具为逻辑代数</p>
+</li>
+<li>
+<p>结构简单、功耗低、便于集成制造和系列化生产；产品价格低廉、可靠性好,<br>
+使用灵活使用方便</p>
+</li>
+</ul>
+<h3 id="数字集成电路的分类">数字集成电路的分类</h3>
+<ul>
+<li>
+<h6 id="按照集成度的高低">按照集成度的高低</h6>
+<ul>
+<li>
+<p>小规模（SSI）：逻辑门数小于10门或元件数小于100个</p>
+</li>
+<li>
+<p>中规模（MSI）：逻辑门数为10门-99门或元件数100个-999个</p>
+</li>
+<li>
+<p>大规模（LSI）：逻辑门数为100门-9999门或元件数1000个-99999个</p>
+</li>
+<li>
+<p>超大规模（VLSI）：逻辑门数大于10000门或元件数大于100000个</p>
+</li>
+</ul>
+</li>
+<li>
+<h6 id="根据所采用的半导体器件">根据所采用的半导体器件</h6>
+<ul>
+<li>
+<p><strong>双极型集成电路</strong></p>
+</li>
+<li>
+<p><strong>单极型集成电路(MOS管)</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<h6 id="根据设计方法和功能">根据设计方法和功能</h6>
+<ul>
+<li>
+<p><strong>非用户定制电路</strong></p>
+</li>
+<li>
+<p><strong>全用户定制电路</strong></p>
+</li>
+<li>
+<p><strong>半用户定制电路</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="组合逻辑电路和时序逻辑电路">组合逻辑电路和时序逻辑电路</h3>
+<p>如果一个逻辑电路在任何时刻的稳定输出仅取决于该时刻的输入，而与电路过去的输入无关，则称为组合逻辑(Combinational Logic)电路。</p>
+<p>如果一个逻辑电路在任何时刻的稳定输出不仅取决于该时刻的输入，而且与过去的输入相关，则称为时序逻辑(Sequential Logic)电路。</p>
+<p>时序逻辑电路按照是否有统一的时钟信号进行同步，可进一步分为<strong>同步时序逻辑电路</strong>和<strong>异步时序逻辑电路。</strong></p>
+<h3 id="一个最简的方案并不等于一个最佳的方案">一个最简的方案并不等于一个最佳的方案</h3>
+<blockquote>
+<p>最佳方案应满足全面的性能指标和实际应用要求。所以，在用传统方法求出一个实现预定功能的最简结构之后，往往要根据实际情况进行相应调整。</p>
+</blockquote>
+<h2 id="逻辑代数">逻辑代数</h2>
+<h3 id="真值表">真值表</h3>
+<p>依次列出一个逻辑函数的所有输入变量取值组合及其相应函数值的表格称为<strong>真值表</strong>。</p>
+<h3 id="卡诺图">卡诺图</h3>
+<p><strong>卡诺图</strong>是由表示逻辑变量所有取值组合的小方格所构成的平面图。</p>
+<h3 id="卡诺圈">卡诺圈</h3>
+<p>通常把用来包围那些能由一个简单&quot;与&quot;项代替的若干最小项的&quot;圈&quot;称为<strong>卡诺圈。</strong></p>
+<h3 id="逻辑代数三条重要规则">逻辑代数三条重要规则</h3>
+<p>代入规则、反演规则和对偶规则。</p>
+<h3 id="最小项和最大项">最小项和最大项</h3>
+<p>如果一个具有n个变量的函数的&quot;与项&quot;包含全部n个变量，每个变量都以原变量或反变量形式出现一次，且仅出现一次，则该&quot;与项&quot;被称为<strong>最小项</strong>。有时又将最小项称为<strong>标准&quot;与项&quot;</strong>。</p>
+<p>如果一个具有n个变量函数的&quot;或项&quot;包含全部n个变量，每个变量都以原变量或反变量形式出现一次，且仅出现一次，则该&quot;或项&quot;被称为<strong>最大项</strong>。有时又将最大项称为<strong>标准&quot;或项&quot;</strong>。</p>
+<h3 id="标准与或式和标准或与式">标准与或式和标准或与式</h3>
+<p>由若干最小项相&quot;或&quot;构成的逻辑表达式称为<strong>标准&quot;与-或&quot;表达式</strong>，也叫做最小项表达式。</p>
+<p>由若干最大项相&quot;与&quot;构成的逻辑表达式称为<strong>标准&quot;或-与&quot;表达式</strong>，也叫做最大项表达式。</p>
+<h2 id="集成门电路">集成门电路</h2>
+<h3 id="双极型集成电路">双极型集成电路</h3>
+<p>采用双极型半导体器件作为元件。主要特点是<strong>速度快、负载能力强，但功耗较大、<br>
+集成度较低。</strong></p>
+<h4 id="双极型集成电路又可进一步可分为：">双极型集成电路又可进一步可分为：</h4>
+<ul>
+<li>
+<p>晶体管-晶体管逻辑电路<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>T</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">TTL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">TT</span><span class="mord mathnormal">L</span></span></span></span>(Transistor Transistor Logic)</p>
+</li>
+<li>
+<p>发射极耦合逻辑电路<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>C</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">ECL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">EC</span><span class="mord mathnormal">L</span></span></span></span>(Emitter Coupled Logic)</p>
+</li>
+<li>
+<p>集成注入逻辑电路<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>I</mi><mn>2</mn></msup><mi>L</mi></mrow><annotation encoding="application/x-tex">I^{2}L</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">L</span></span></span></span>(Integrated Injection Logic)</p>
+</li>
+</ul>
+<p><em>TTL电路的&quot;性能价格比&quot;最佳，应用最广泛。</em></p>
+<h3 id="单极型集成电路-MOS管">单极型集成电路(MOS管)</h3>
+<p>采用金属-氧化物半导体场效应管作为元件。主要特点是<strong>结构简单、制造方便、集成度高、功耗低，但速度较慢。</strong></p>
+<h4 id="MOS集成电路又可进一步分为：">MOS集成电路又可进一步分为：</h4>
+<ul>
+<li>
+<p>PMOS</p>
+</li>
+<li>
+<p>NMOS</p>
+</li>
+<li>
+<p>CMOS：同时使用PMOS管和NMOS管<em>CMOS电路应用较普遍，因为它不但适用于通用逻电路的设计，而且综合性能最好。</em></p>
+</li>
+</ul>
+<h3 id="晶体二极管的开关特性">晶体二极管的开关特性</h3>
+<ul>
+<li>
+<p><strong>静态特性</strong>是指二极管在导通和截止两种稳定状态下的特性。（正向导通，反向截止）</p>
+</li>
+<li>
+<p><strong>动态特性</strong>是指二极管在导通与截止两种状态转换过程中的特性，它表现在完成两种状态之间的转换需要一定的时间。</p>
+<ul>
+<li>
+<p>反向恢复时间：二极管从正向导通到反向截止所需要的时间</p>
+<ul>
+<li>反向恢复时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>r</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">tre</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">re</span></span></span></span>=存储时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ts</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span></span></span></span>+渡越时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">tt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">tt</span></span></span></span></li>
+</ul>
+</li>
+<li>
+<p>开通时间： 二极管从反向截止到正向导通的时间</p>
+<ul>
+<li>很短，可以忽略不计</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="晶体三极管的开关特性">晶体三极管的开关特性</h3>
+<ul>
+<li>
+<p>有<strong>截止、放大、饱和</strong>三种工作状态（基极电压<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">U_{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>小于零截止，大于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">U_{E}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">U_{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>饱和导通）</p>
+<ul>
+<li>饱和：发射结正偏，集电结反偏（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>B</mi></msub><mo>&gt;</mo><msub><mi>U</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">U_{B} &gt; U_{E}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>B</mi></msub><mo>&lt;</mo><msub><mi>U</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">U_{B} &lt; U_{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）</li>
+</ul>
+</li>
+<li>
+<p>由电流控制</p>
+</li>
+<li>
+<p>动态特性</p>
+<ul>
+<li>
+<p>开通时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi>o</mi><mi>n</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{on}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>=延迟时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>d</mi></msub><mo>+</mo></mrow><annotation encoding="application/x-tex">t_{d} +</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">+</span></span></span></span>上升时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">t_{r}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p>关闭时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi>o</mi><mi>f</mi><mi>f</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{off}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9012em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">o</span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">ff</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>=存储时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>s</mi></msub><mo>+</mo></mrow><annotation encoding="application/x-tex">t_{s} +</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7651em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">+</span></span></span></span>下降时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>f</mi></msub></mrow><annotation encoding="application/x-tex">t_{f}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9012em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="MOS管的开关特性">MOS管的开关特性</h3>
+<ul>
+<li>
+<p>栅极(G)、漏极(D)、源极(S)</p>
+</li>
+<li>
+<p>是电压控制元件，由栅源电压<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mrow><mi>G</mi><mi>S</mi></mrow></msub></mrow><annotation encoding="application/x-tex">U_{GS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">GS</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>决定其工作状态</p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mtext>截止</mtext><mo>−</mo><mo>&gt;</mo><mtext>导通</mtext></mrow></msub><mo>&lt;</mo><msub><mi>t</mi><mrow><mtext>导通</mtext><mo>−</mo><mo>&gt;</mo><mtext>截止</mtext></mrow></msub></mrow><annotation encoding="application/x-tex">t_{截止 - &gt; 导通} &lt; t_{导通 - &gt; 截止}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8234em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">截止</span><span class="mord mtight">−</span><span class="mrel mtight">&gt;</span><span class="mord cjk_fallback mtight">导通</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8234em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord cjk_fallback mtight">导通</span><span class="mord mtight">−</span><span class="mrel mtight">&gt;</span><span class="mord cjk_fallback mtight">截止</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span></p>
+</li>
+<li>
+<p>NMOS管<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>G</mi></msub></mrow><annotation encoding="application/x-tex">U_{G}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">G</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>低关高通<br>
+PMOS管<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>G</mi></msub></mrow><annotation encoding="application/x-tex">U_{G}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">G</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>高关低通</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con1.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="TTL与非门的主要外部特性参数">TTL与非门的主要外部特性参数</h3>
+<p>输出逻辑电平、开门电平、关门电平、扇入系数、扇出系数、平均传输时延和空载功耗等</p>
+<ul>
+<li>
+<p><strong>输出高电平</strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi>O</mi><mi>H</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{OH}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：输出高电平<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi>O</mi><mi>H</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{OH}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span><span class="mord mathnormal mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是指至少有一个输入端接低电平时的输出电平。</p>
+</li>
+<li>
+<p><strong>输出低电平</strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{OL}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：输出低电平<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mrow><mi>O</mi><mi>L</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V_{OL}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span><span class="mord mathnormal mtight">L</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是指输入全为高电平时的输出电平。</p>
+</li>
+<li>
+<p><strong>平均传输延迟时间</strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9012em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>: 平均传输延迟时间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mi>p</mi><mi>d</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{pd}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9012em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span><br>
+是指一个矩形波信号从与非门输入端传到与非门输出端(反相输出)所延迟的时间。反应与非门开关速度的重要参数。</p>
+</li>
+</ul>
+<h3 id="集电极开路门（OC门）">集电极开路门（OC门）</h3>
+<ul>
+<li>
+<p>是一种输出端可以直接相互连接的特殊逻辑门</p>
+</li>
+<li>
+<p>将一般TTL与非门电路的推拉式输出级改为三极管集电极开路输出</p>
+</li>
+<li>
+<p>集电极开路与非门只有在外接负载电阻RL和电源U’CC后才能正常工作</p>
+</li>
+<li>
+<p>可以方便的实现&quot;线与&quot;逻辑</p>
+</li>
+</ul>
+<h3 id="三态输出门（TS门）">三态输出门（TS门）</h3>
+<p>有三种输出状态：输出高电平、输出低电平和高阻状态，前两种状态为工作状态，后一种状态为禁止状态。</p>
+<p>使能控制端为高电平有效：EN=0，相当于开路；EN=1，相当于一般与非门<br>
+使能控制端为低电平有效：EN=1，相当于开路；EN=1，相当于一般与非门</p>
+<p>可以实现线与，被广泛应用于总线传送，既可用于单向数据传送，也可用于双向数据传送</p>
+<h3 id="CMOS传输门">CMOS传输门</h3>
+<blockquote>
+<p>由于MOS管的结构是对称的，即源极和漏极可以互换使用，因此，传输门的输入端和输出端可以互换使用。即MOS传输门具有双向性，故又称为可控双向开关。</p>
+</blockquote>
+<h3 id="正逻辑和负逻辑">正逻辑和负逻辑</h3>
+<ul>
+<li>正逻辑：用高电平表示逻辑1，低电平表示逻辑0</li>
+<li>负逻辑：用高电平表示逻辑0，低电平表示逻辑1</li>
+<li>正逻辑与门等价于负逻辑或门</li>
+</ul>
+<h2 id="触发器">触发器</h2>
+<ul>
+<li>
+<p>触发器是一种具有记忆功能的电子器件</p>
+</li>
+<li>
+<p>触发器能用来存储一位二进制信息</p>
+</li>
+<li>
+<p>由逻辑门加上适当的反馈线耦合而成</p>
+</li>
+</ul>
+<h3 id="基本R-S触发器">基本R-S触发器</h3>
+<p>是直接复位(Reset)-置位(Set)触发器的简称，由于它是构成各种功能触发器的基本部件，故称为基本R-S触发器</p>
+<ul>
+<li>
+<p>由与非门构成的基本R-S触发器：11不变，10置1，01置0，不允许出现00(状态不定)</p>
+</li>
+<li>
+<p>由或非门构成的基本R-S触发器：00不变，10置0，01置1，不允许出现11(状态不定)</p>
+</li>
+</ul>
+<h3 id="时钟控制触发器">时钟控制触发器</h3>
+<ul>
+<li>
+<p>具有时钟脉冲控制的触发器称为&quot;时钟控制触发器&quot;或者&quot;定时触发器&quot;。</p>
+</li>
+<li>
+<p>时钟脉冲控制触发器的工作特点：</p>
+<ul>
+<li>
+<p>由时钟脉冲确定状态转换的时刻(即何时转换)</p>
+</li>
+<li>
+<p>由输入信号确定触发器状态转换的方向(即如何转换)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="钟控R-S触发器">钟控R-S触发器</h3>
+<ul>
+<li>
+<p>时钟脉冲C=0时，状态保持不变<br>
+时钟脉冲C=1时，00不变，10置0，01置1，不允许出现11(状态不定)</p>
+</li>
+<li>
+<p>不足之处：</p>
+<ul>
+<li>
+<p>输入信号依然存在约束条件，即R、S不能同时为1；</p>
+</li>
+<li>
+<p>可能出现&quot;空翻&quot;现象。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="空翻">空翻</h3>
+<ul>
+<li>
+<p>所谓&quot;空翻&quot;是指在同一个时钟脉冲作用期间触发器状态发生两次或两次以上变化的现象</p>
+</li>
+<li>
+<p>引起空翻的原因是在时钟脉冲作用期间，输入信号直接控制着触发器状态的变化。即当时钟C为1时，输入信号R、S发生变化，触发器状态会跟着变化，从而使得一个时钟脉冲作用期间引起多次翻转。</p>
+</li>
+</ul>
+<h3 id="钟控D触发器">钟控D触发器</h3>
+<ul>
+<li>
+<p>时钟脉冲C=0时，状态保持不变<br>
+时钟脉冲C=1时，D=0置0，D=1置1，状态变化仅取决于输入信号，与现态无关</p>
+</li>
+<li>
+<p>解决了钟控R-S触发器在输入端R、S同时为1时状态不确定的问题</p>
+</li>
+<li>
+<p>依然存在&quot;空翻&quot;现象</p>
+</li>
+<li>
+<p>为了进一步解决&quot;空翻&quot;问题，实际中使用的集成D触发器通常采用维持阻塞结构，称为维持阻塞D触发器。</p>
+</li>
+</ul>
+<h3 id="钟控J-K触发器">钟控J-K触发器</h3>
+<p>注意J和K的位置（K在左，J在右）！与R和S相反</p>
+<ul>
+<li>
+<p>时钟脉冲C=0时，状态保持不变<br>
+时钟脉冲C=1时，00不变，10置1，01置0，11次态与现态相反</p>
+</li>
+<li>
+<p>仍存在&quot;空翻&quot;现象</p>
+</li>
+<li>
+<p>为了进一步解决&quot;空翻&quot;问题，实际中广泛采用主从J-K触发器。</p>
+</li>
+</ul>
+<h3 id="T触发器（计数触发器）">T触发器（计数触发器）</h3>
+<ul>
+<li>
+<p>把J-K触发器的两个输入端J和K连接起来，并把连接在一起的输入端用符号T表示</p>
+</li>
+<li>
+<p>时钟脉冲C=0时，状态保持不变<br>
+时钟脉冲C=1时，T=0状态不变，T=1状态翻转，相当一位二进制计数器</p>
+</li>
+</ul>
+<h2 id="组合电路">组合电路</h2>
+<h3 id="组合电路的特点">组合电路的特点</h3>
+<ul>
+<li>
+<p>由逻辑门电路组成，不包含任何记忆元件；</p>
+</li>
+<li>
+<p>信号是单向传输的，不存在反馈回路。</p>
+</li>
+</ul>
+<h3 id="组合电路分析">组合电路分析</h3>
+<ul>
+<li>
+<p>根据逻辑电路图写出输出函数表达式</p>
+</li>
+<li>
+<p>化简输出函数表达式</p>
+</li>
+<li>
+<p>列出输出函数真值表</p>
+</li>
+<li>
+<p>功能评述</p>
+</li>
+</ul>
+<h3 id="组合电路设计">组合电路设计</h3>
+<ul>
+<li>
+<p>建立给定问题的逻辑描述 （真值表法/分析法）</p>
+</li>
+<li>
+<p>求出逻辑函数的最简表达式</p>
+</li>
+<li>
+<p>选择逻辑门类型并将逻辑函数变换成相应形式</p>
+</li>
+<li>
+<p>画出逻辑电路图</p>
+</li>
+</ul>
+<h3 id="无关最小项">无关最小项</h3>
+<p>由于输入变量之间存在的相互制约或问题的某种特殊限定，使输出函数与某些变量取值无关，这些输入取值组合对应的最小项称为无关最小项，简称为无关项或者任意项。</p>
+<p>A和B相加产生的本位和：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A \oplus B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span><br>
+产生的进位：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>B</mi></mrow><annotation encoding="application/x-tex">AB</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></p>
+<h3 id="竞争现象与险象">竞争现象与险象</h3>
+<ul>
+<li>
+<p>竞争：由于延迟时间的影响，使得输入信号经过不同路径到达输出端的时间有先有后，这一现象称为竞争。</p>
+<ul>
+<li>
+<p>非临界竞争：不产生错误输出的竞争称为非临界竞争</p>
+</li>
+<li>
+<p>临界竞争：导致错误输出的竞争称为临界竞争</p>
+</li>
+</ul>
+</li>
+<li>
+<p>险象：由竞争导至的错误输出信号</p>
+<ul>
+<li>
+<p>静态险象：在输入变化而输出不应发生变化的情况下，输出端产生了短暂的错误输出</p>
+</li>
+<li>
+<p>动态险象：在输入变化而输出应该发生变化的情况下，输出在变化过程中产生了短暂的错误输出</p>
+</li>
+<li>
+<p>&quot;0&quot;型险象：错误输出信号为负脉冲</p>
+</li>
+<li>
+<p>&quot;1&quot;型险象：错误输出信号为正脉冲</p>
+</li>
+</ul>
+</li>
+<li>
+<p>组合电路中的险象是一种瞬态现象，它表现为在输出端产生不应有的尖脉冲，暂时地破坏正常逻辑关系。一旦瞬态过程结束，即可恢复正常逻辑关系。</p>
+</li>
+</ul>
+<h3 id="险象的判断">险象的判断</h3>
+<ul>
+<li>
+<p>代数法</p>
+<ul>
+<li>
+<p>检查函数表达式中是否有某个变量X同时以原变量和反变量的形式出现</p>
+</li>
+<li>
+<p>带入其他变量的所有取值组合,看函数表达式是否会变为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>+</mo><mover accent="true"><mi>X</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">X + \overline{X}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span>或者<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>⋅</mo><mover accent="true"><mi>X</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">X \cdot \overline{X}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span>的形式。若会，则说明对应的逻辑电路可能产生险象</p>
+</li>
+</ul>
+</li>
+<li>
+<p>卡诺图法</p>
+<ul>
+<li>若卡诺圈之间存在&quot;相切&quot;关系，即两卡诺圈之间存在不被同一卡诺圈包含的相邻最小项，则该电路可能产生险象</li>
+</ul>
+</li>
+</ul>
+<h3 id="险象的消除">险象的消除</h3>
+<ul>
+<li>
+<p>增加冗余项</p>
+<ul>
+<li>若卡诺图上某两个卡诺圈&quot;相切&quot;，则用一个多余的卡诺圈将它们之间的相邻最小项圈起来，与多余卡诺圈对应的&quot;与&quot;项即为要加入函数表达式中的冗余项。</li>
+</ul>
+</li>
+<li>
+<p>增加惯性延迟环节</p>
+<ul>
+<li>
+<p>在组合电路输出端连接一个惯性延时环节。通常采用RC电路作惯性延时环节。</p>
+</li>
+<li>
+<p>RC电路实际上是一个低通滤波器。由于竞争引起的险象都是一些频率很高的尖脉冲信号，因此，险象在通过RC电路后能基本被滤掉，保留下来的仅仅是一些幅度极小的毛刺，它们不再对电路的可靠性产生影响。</p>
+</li>
+<li>
+<p>必须适当选择惯性环节的时间常数(τ=RC)，一般要求τ大于尖脉冲的宽度，以便能将尖脉冲&quot;削平&quot;；但也不能太大，否则将使正常输出信号产生不允许的畸变。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>选通法</p>
+<ul>
+<li>选通法不必增加任何器件，仅仅是利用选通脉冲的作用，从时间上加以控制，使输出避开险象脉冲。</li>
+</ul>
+</li>
+</ul>
+<h2 id="时序逻辑电路">时序逻辑电路</h2>
+<ul>
+<li>
+<p>电路由组合电路和存储电路组成，具有对过去输入进行记忆的功能</p>
+</li>
+<li>
+<p>电路中包含反馈回路，通过反馈使电路功能与&quot;时序&quot;相关</p>
+</li>
+<li>
+<p>电路的输出由电路当时的输入和状态(对过去输入的记忆)共同决定</p>
+</li>
+</ul>
+<h3 id="同步时序电路">同步时序电路</h3>
+<ul>
+<li>
+<p>电路中有统一的定时信号，存储器件采用时钟控制触发器，电路状态在时钟脉冲控制下同时发生转换，即电路状态的改变依赖于输入信号和时钟脉冲信号。</p>
+</li>
+<li>
+<p>现态：时钟脉冲作用之前电路所处的状态<br>
+次态：时钟脉冲作用之后电路所达的状态</p>
+</li>
+</ul>
+<h3 id="Mealy型和Moore型">Mealy型和Moore型</h3>
+<ul>
+<li>
+<p>Mealy型电路：时序逻辑电路的输出是电路输入和电路状态的函数</p>
+</li>
+<li>
+<p>Moore型电路：时序逻辑电路的输出仅仅是电路状态的函数</p>
+</li>
+</ul>
+<h3 id="同步时序逻辑电路分析">同步时序逻辑电路分析</h3>
+<ul>
+<li>
+<p>写出输出函数和激励函数表达式</p>
+</li>
+<li>
+<p>借助触发器功能表列出电路<strong>次态真值表</strong></p>
+</li>
+<li>
+<p>作出<strong>状态表</strong>和<strong>状态图</strong>（必要时画出时间图）</p>
+</li>
+<li>
+<p>归纳出电路的逻辑功能</p>
+</li>
+</ul>
+<h4 id="次态真值表（例）">次态真值表（例）</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con2.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="状态表（例）">状态表（例）</h4>
+<h5 id="Mealy型-Moore型">Mealy型 Moore型</h5>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con3.jpg" srcset="/img/loading.gif" lazyload alt=""><br>
+<img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con4.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="同步时序逻辑电路设计">同步时序逻辑电路设计</h3>
+<ul>
+<li>
+<p>形成<strong>原始状态图</strong>和<strong>原始状态表</strong></p>
+</li>
+<li>
+<p>状态化简，求得<strong>最小化状态表</strong></p>
+</li>
+<li>
+<p>状态编码，得到<strong>二进制状态表</strong></p>
+</li>
+<li>
+<p>根据选定的触发器的激励表（画出来）列出<strong>激励函数和输出函数真值表</strong></p>
+</li>
+<li>
+<p>用卡诺图化简后写出激励函数和输出函数的最简表达式</p>
+</li>
+<li>
+<p>画出逻辑电路图</p>
+</li>
+</ul>
+<h3 id="状态化简">状态化简</h3>
+<ul>
+<li>作隐含表<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>求最大等效类<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>作最简状态表（将最简状态分别用a,b,c,d…表示）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con5.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="状态编码原则（相邻分配法）">状态编码原则（相邻分配法）</h3>
+<p>优先考虑第一条，一般把初始状态设为00</p>
+<ul>
+<li>
+<p>次态相同，现态相邻<br>
+<em>在相同输入条件下，具有相同次态的现态应尽可能分配相邻的二进制代码</em></p>
+</li>
+<li>
+<p>同一现态，次态相邻<br>
+<em>在相邻输入条件下，同一现态的次态应尽可能分配相邻的二进制代码</em></p>
+</li>
+<li>
+<p>输出相同，现态相邻<br>
+<em>在每一种输入取值下均具有相同输出的现态应尽可能分配相邻的二进制代码</em></p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con6.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="四种钟控触发器的激励表">四种钟控触发器的激励表</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con7.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="激励函数和输出函数真值表（例）">激励函数和输出函数真值表（例）</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con8.jpg" srcset="/img/loading.gif" lazyload alt=""><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con9.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>序列检测器（用Moore型）和代码检测器（用Mealy型）</p>
+<h3 id="代码检测器的状态图（例）">代码检测器的状态图（例）</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con10.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="同步电路设计的讨论">同步电路设计的讨论</h3>
+<p>当电路中触发器所能表示的状态数大于有效状态数时，需要对设计的电路进行讨论</p>
+<ul>
+<li>
+<p>电路是否具有自恢复功能。即电路万一偶然进入无效状态，能否在输入信号和时钟脉冲作用下自动进入有效状态，如果能，则称为具有自恢复功能；否则，称为&quot;挂起&quot;</p>
+</li>
+<li>
+<p>电路是否会产生错误输出信号。即电路万一处在无效状态，是否会在输入信号和时钟脉冲作用下，产生错误输出信号（无效状态下要求输出全是0！）</p>
+</li>
+<li>
+<p>如果产生错误输出，改变输出函数（把卡诺圈中的无关项去掉）</p>
+</li>
+</ul>
+<h4 id="无效状态表（例）">无效状态表（例）</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con11.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="异步时序电路">异步时序电路</h3>
+<ul>
+<li>异步时序逻辑电路中没有统一的时钟脉冲信号，电路状态的改变是外部输入信号变化直接作用的结果</li>
+</ul>
+<h3 id="脉冲异步时序逻辑电路">脉冲异步时序逻辑电路</h3>
+<ul>
+<li>
+<p>输入信号为脉冲信号</p>
+</li>
+<li>
+<p>输入脉冲的宽度必须保证触发器可靠翻转</p>
+</li>
+<li>
+<p>输入脉冲的间隔必须保证前一个脉冲引起的电路响应完全结束后，后一个脉冲才能到来</p>
+</li>
+<li>
+<p>不允许两个或两个以上输入端同时出现脉冲</p>
+<ul>
+<li>理由：因为客观上两个或两个以上脉冲是不可能准确地&quot;同时&quot;的，在没有时钟脉冲同步的情况下，由不可预知的时间延迟造成的微小时差可能导致电路产生错误的状态转移。</li>
+</ul>
+</li>
+<li>
+<p>若电路结构为Mealy型，则输出为脉冲信号</p>
+</li>
+<li>
+<p>若电路结构为Moore型，则输出是电平信号</p>
+</li>
+</ul>
+<h3 id="脉冲异步时序逻辑电路的分析"><strong>脉冲异步时序逻辑电路的分析</strong></h3>
+<p><em>当存储元件采用时钟控制触发器时，对触发器的时钟控制端应作为激励函数处理</em></p>
+<p><em>分析时可以排除两个或两个以上输入端同时出现脉冲以及输入端无脉冲出现情况</em></p>
+<ul>
+<li>
+<p>写出电路的输出函数和激励函数表达式</p>
+</li>
+<li>
+<p>列出电路次态真值表或次态方程组</p>
+</li>
+<li>
+<p>作出状态表和状态图</p>
+</li>
+<li>
+<p>用文字描述电路的逻辑功能（必要时画出时间图）</p>
+</li>
+</ul>
+<h2 id="中规模通用集成电路">中规模通用集成电路</h2>
+<h3 id="二进制并行加法器">二进制并行加法器</h3>
+<p>是一种能并行产生两个二进制数算术和的组合逻辑部件</p>
+<ul>
+<li>
+<p>串行进位二进制并行加法器</p>
+<ul>
+<li>四位二进制并行加法器T692</li>
+</ul>
+</li>
+<li>
+<p>超前进位二进制并行加法器</p>
+<ul>
+<li>四位二进制并行加法器T693</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con12.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="译码器">译码器</h3>
+<p>对具有特定含义的输入代码进行&quot;翻译&quot;，将其转换成相应的输出信号</p>
+<h4 id="二进制译码器">二进制译码器</h4>
+<p>能将n个输入变量变换成2n个输出函数，且输出函数与输入变量构成的最小项具有对应关系的一种多输出组合逻辑电路</p>
+<ul>
+<li>
+<p>二进制译码器一般具有n个输入端、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span>个输出端和一个(或多个)使能输入端</p>
+</li>
+<li>
+<p>使能输入端为有效电平时，对应每一组输入代码，仅一个输出端为有效电平，其余输出端为无效电平<br>
+（与有效电平相反)</p>
+</li>
+<li>
+<p>有效电平可以是高电平(称为高电平译码)，也可以是低电平(称为低电平译码)</p>
+</li>
+</ul>
+<p>T4138型3-8线译码器：每个输出都是 A2、A1和A0<br>
+的最小项的反（<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><msub><mi>Y</mi><mn>0</mn></msub><mo stretchy="true">‾</mo></mover><mo>=</mo><mover accent="true"><msub><mi>m</mi><mn>0</mn></msub><mo stretchy="true">‾</mo></mover><mtext>，</mtext><mover accent="true"><msub><mi>Y</mi><mn>1</mn></msub><mo stretchy="true">‾</mo></mover><mo>=</mo><mover accent="true"><msub><mi>m</mi><mn>1</mn></msub><mo stretchy="true">‾</mo></mover><mtext>，</mtext><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">\overline{Y_{0}} = \overline{m_{0}}，\overline{Y_{1}} = \overline{m_{1}}，...</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0333em;vertical-align:-0.15em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0333em;vertical-align:-0.15em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6306em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.5506em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mord cjk_fallback">，</span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.2222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord overline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6306em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.5506em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mord cjk_fallback">，</span><span class="mord">...</span></span></span></span>）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con13.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="编码器">编码器</h3>
+<p>编码器的功能恰好与译码器相反，是对输入信号按一定规律进行编排，使每组输出代码具有其特定的含义</p>
+<h4 id="二—十进制编码器">二—十进制编码器</h4>
+<ul>
+<li>
+<p>将十进制数字0～9分别编码成4位BCD码</p>
+</li>
+<li>
+<p>任何时候只允许一个输入端为有效信号</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con14.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="优先编码器">优先编码器</h4>
+<ul>
+<li>
+<p>识别输入信号的优先级别，选中优先级别最高的一个进行编码，实现优先权管理</p>
+</li>
+<li>
+<p>允许多个输入端同时为有效信号</p>
+</li>
+<li>
+<p>每个输入具有不同的优先级别，当多个输入信号有效时，它能识别输入信号的优先级别，并对其中优先级别最高的一个进行编码，产生相应的输出代码</p>
+</li>
+</ul>
+<p>74LS148：8-3线优先编码器</p>
+<ul>
+<li>
+<p>输入<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mn>0</mn></msub><mo>−</mo><msub><mi>I</mi><mn>7</mn></msub></mrow><annotation encoding="application/x-tex">I_{0} - I_{7}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和输出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">Q_{A}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">A</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>B</mi></msub></mrow><annotation encoding="application/x-tex">Q_{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">Q_{C}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的有效工作电平均为<strong>低电平</strong></p>
+</li>
+<li>
+<p>在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mn>0</mn></msub><mo>−</mo><msub><mi>I</mi><mn>7</mn></msub></mrow><annotation encoding="application/x-tex">I_{0} - I_{7}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">7</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>输入端中，下角标号码越大的优先级越高</p>
+</li>
+<li>
+<p>例如，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mn>0</mn></msub><mtext>、</mtext><msub><mi>I</mi><mn>2</mn></msub><mtext>、</mtext><msub><mi>I</mi><mn>3</mn></msub><mtext>、</mtext><msub><mi>I</mi><mn>5</mn></msub><mtext>和</mtext><msub><mi>I</mi><mn>7</mn></msub></mrow><annotation encoding="application/x-tex">I_0、I_2、I_3、I_5和I_7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">和</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">7</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>均为1，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mn>1</mn></msub><mtext>、</mtext><msub><mi>I</mi><mn>4</mn></msub><mtext>和</mtext><msub><mi>I</mi><mn>6</mn></msub></mrow><annotation encoding="application/x-tex">I_1、I_4和I_6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">和</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>为0时，输出按优先级较高的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>I</mi><mn>6</mn></msub></mrow><annotation encoding="application/x-tex">I_6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">6</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>编码，即<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>C</mi></msub><msub><mi>Q</mi><mi>B</mi></msub><msub><mi>Q</mi><mi>A</mi></msub><mo>=</mo><mn>001</mn></mrow><annotation encoding="application/x-tex">Q_CQ_BQ_A = 001</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05017em;">B</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">Q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">001</span></span></span></span></p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con15.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="多路选择器">多路选择器</h3>
+<ul>
+<li>
+<p>多路选择器又称数据选择器或多路开关，常用MUX表示。它是一种<strong>多路输入、单路输出</strong>的组合逻辑电路</p>
+</li>
+<li>
+<p>一个具有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span></span>路输入和一路输出的多路选择器有n个选择控制变量，控制变量的每种取值组合对应选中一路输入送至输出</p>
+</li>
+</ul>
+<h4 id="四路数据选择器T580">四路数据选择器T580</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con16.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con17.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="多路分配器">多路分配器</h3>
+<p>它是一种单输入、多输出组合逻辑部件，由选择控制变量决定输入从哪一路输出</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con18.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="计数器">计数器</h3>
+<ul>
+<li>
+<p>是一种对输入脉冲进行计数的时序逻辑电路，被计数的脉冲信号称作&quot;计数脉冲&quot;</p>
+</li>
+<li>
+<p>计数、保存、清除、预置等功能</p>
+</li>
+<li>
+<p>按其工作方式可分为同步计数器和异步计数器<br>
+按其进位制可分为二进制计数器、十进制计数器和任意进制计数器<br>
+按其功能又可分为加法计数器、减法计数器和加/减可逆计数器等</p>
+</li>
+</ul>
+<h4 id="四位二进制同步可逆计数器T4193">四位二进制同步可逆计数器T4193</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con19.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="寄存器">寄存器</h3>
+<ul>
+<li>
+<p>数字系统中用来存放数据或运算结果的一种常用逻辑部件</p>
+</li>
+<li>
+<p>除了具有接收数据、保存数据和传送数据等基本功能外，通常还具有左、右移位，串、并输入，串、并输出以及预置、清零等多种功能</p>
+</li>
+</ul>
+<h4 id="4位双向移位寄存器T1194">4位双向移位寄存器T1194</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221004_con20.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="可编程逻辑器件（PLD）">可编程逻辑器件（PLD）</h2>
+<ul>
+<li>
+<p>PLD属于LSI中的半用户定制电路</p>
+</li>
+<li>
+<p>基本组成为一个&quot;与&quot;阵列和一个&quot;或&quot;阵列，每个输出都是输入的&quot;与-或&quot;函数</p>
+</li>
+</ul>
+<h3 id="PLD分类">PLD分类</h3>
+<ul>
+<li>
+<p>可编程只读存储器PROM</p>
+</li>
+<li>
+<p>可编程逻辑阵列PLA</p>
+</li>
+<li>
+<p>可编程阵列逻辑PAL</p>
+</li>
+<li>
+<p>通用阵列逻辑GAL</p>
+</li>
+</ul>
+<h3 id="在系统编程（ISP）">在系统编程（ISP）</h3>
+<p>所谓在系统编程，是指可以在用户自己设计的目标系统上、为实现预定逻辑功能而对逻辑器件进行编程或改写</p>
+<ul>
+<li>
+<p>全面实现了硬件设计与修改的软件化</p>
+</li>
+<li>
+<p>简化了设计与调试过程</p>
+</li>
+<li>
+<p>容易实现系统硬件的现场升级</p>
+</li>
+<li>
+<p>可降低系统成本，提高系统可靠性</p>
+</li>
+<li>
+<p>器件制造工艺先进，性能参数好</p>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E4%B8%9A/" class="category-chain-item">课业</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%AF%BE%E4%B8%9A/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/" class="category-chain-item">数字逻辑</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E4%B8%9A/">#课业</a>
+      
+        <a href="/tags/%E5%A4%8D%E4%B9%A0/">#复习</a>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91/">#数字逻辑</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数字逻辑复习</div>
+      <div>https://lmc20020909.github.io/ReviewofDigitalLogic/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Liu Mingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/OSP_Chapter06/" title="操作系统原理复习 第六章 进程调度">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统原理复习 第六章 进程调度</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
