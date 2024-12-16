@@ -1,0 +1,1253 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon/Mingchen%20Liu.png">
+  <link rel="icon" href="/img/icon/Mingchen%20Liu.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Liu Mingchen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="2020级操作系统原理 苏曙光老师 2022.5.19 第四章 进程管理和通信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统原理复习 第四章 进程管理和通信">
+<meta property="og:url" content="https://lmc20020909.github.io/OSP_Chapter04/index.html">
+<meta property="og:site_name" content="Mingchen&#39;s Blog">
+<meta property="og:description" content="2020级操作系统原理 苏曙光老师 2022.5.19 第四章 进程管理和通信">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg4.jpg">
+<meta property="article:published_time" content="2022-11-14T16:26:51.000Z">
+<meta property="article:modified_time" content="2022-11-14T16:26:51.000Z">
+<meta property="article:author" content="Liu Mingchen">
+<meta property="article:tag" content="课业">
+<meta property="article:tag" content="操作系统原理">
+<meta property="article:tag" content="复习">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg4.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>操作系统原理复习 第四章 进程管理和通信 - Mingchen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc20020909.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mingchen&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20221003_bg4.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="第四章 进程管理和通信"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-14 16:26" pubdate>
+          2022年11月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">第四章 进程管理和通信</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="进程概念">进程概念</h2>
+<h3 id="进程定义">进程定义</h3>
+<ul>
+<li>进程是程序在某个<strong>数据集合</strong>上的一次运行<strong>活动</strong></li>
+<li>数据集合：软/硬件环境，多个进程共存/共享的环境</li>
+</ul>
+<h3 id="进程的特征">进程的特征</h3>
+<ul>
+<li><strong>动态性</strong>：进程是程序的一次执行过程，动态产生/消亡</li>
+<li><strong>并发性</strong>：进程可以同其他进程一起向前推进</li>
+<li><strong>异步性</strong>：进程按各自速度向前推进</li>
+<li><strong>独立性</strong>：进程是系统分配资源和调度CPU的单位</li>
+</ul>
+<h3 id="进程与程序的区别">进程与程序的区别</h3>
+<ul>
+<li>
+<p><strong>动态与静态</strong></p>
+<ul>
+<li>进程是动态的：程序的一次执行过程</li>
+<li>程序是静态的：一组指令的有序集合</li>
+</ul>
+</li>
+<li>
+<p>暂存与长存</p>
+<ul>
+<li>进程是暂存的：在内存驻留</li>
+<li>程序是长存的：在介质上长期保存</li>
+</ul>
+</li>
+<li>
+<p>程序和进程的对应</p>
+<ul>
+<li>一个程序可能有多个进程</li>
+</ul>
+</li>
+</ul>
+<h2 id="进程的状态">进程的状态</h2>
+<ul>
+<li><strong>运行状态</strong>：进程已经占有CPU，在CPU上运行</li>
+<li><strong>就绪状态</strong>：具备运行条件但由于无CPU，暂时不能运行</li>
+<li><strong>阻塞状态</strong>：因为等待某项<strong>服务</strong>完成或<strong>信号</strong>来到而不能运行的状态<br>
+例如等待：系统调用，I/O操作，合作进程的服务或信号…</li>
+</ul>
+<h3 id="进程状态的变迁">进程状态的变迁</h3>
+<ul>
+<li><strong>服务</strong>：系统调用、I/O操作</li>
+<li><strong>信号</strong>：事件</li>
+</ul>
+<ol>
+<li>就绪<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>运行：进程调度</li>
+<li>运行<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>就绪：时间片到；被抢占</li>
+<li>运行<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>阻塞：服务请求；等待信号</li>
+<li>阻塞<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span>就绪：服务完成；信号来到</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con7.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Linux进程的状态">Linux进程的状态</h3>
+<ul>
+<li><strong>可运行态</strong>
+<ul>
+<li>就绪：在就绪队列中等待调度</li>
+<li>运行：正在运行</li>
+</ul>
+</li>
+<li><strong>睡眠态/阻塞态/等待态</strong>
+<ul>
+<li>深度睡眠（不可中断）：不能被其他进程通过信号和时钟中断唤醒</li>
+<li>浅度睡眠（可中断）：可被其他进程的信号或时钟中断唤醒</li>
+</ul>
+</li>
+<li><strong>僵死态</strong>：进程终止执行，释放大部分资源</li>
+<li><strong>挂起态</strong>：进程被挂起</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con8.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>ps aux命令显示进程状态</p>
+<h2 id="进程控制块（Process-Control-Block-PCB）">进程控制块（Process Control Block, PCB）</h2>
+<p>描述进程的状态、资源和相关进程的关系</p>
+<ul>
+<li>PCB是进程的标志</li>
+<li>创建进程时创建PCB；进程撤销后PCB同时撤销</li>
+<li><strong>进程=程序+PCB</strong></li>
+</ul>
+<h3 id="Linux的进程控制块：task-struct">Linux的进程控制块：task_struct</h3>
+<ul>
+<li>
+<p>Linux进程的标识</p>
+<ul>
+<li>PID：进程ID</li>
+<li>PPID：父进程ID</li>
+<li>PGID：进程组ID</li>
+</ul>
+</li>
+<li>
+<p>Linux进程的用户标识</p>
+<ul>
+<li>UID：用户ID</li>
+<li>GID：用户组ID</li>
+</ul>
+</li>
+<li>
+<p>进程的上下文<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span></span></span></span>PCB</p>
+<ul>
+<li>Context，进程的运行环境</li>
+</ul>
+</li>
+<li>
+<p>分时系统的进程切换过程</p>
+<ul>
+<li>进程的上下文在CPU中交换</li>
+<li>换入进程的上下文进入CPU（从栈+PCB上来）</li>
+<li>换出进程的上下文离开CPU（到栈+PCB上去）</li>
+</ul>
+</li>
+</ul>
+<h2 id="进程控制">进程控制</h2>
+<p>在进程生存全期间，对其全部行为的控制</p>
+<ul>
+<li>创建进程</li>
+<li>撤销进程</li>
+<li>阻塞进程</li>
+<li>唤醒进程</li>
+</ul>
+<h3 id="进程创建">进程创建</h3>
+<p>创建一个具有指定标识（ID）的进程</p>
+<p>过程：</p>
+<ul>
+<li>创建一个空白PCB</li>
+<li>赋予进程标识符ID</li>
+<li>为进程分配空间</li>
+<li>初始化PCB
+<ul>
+<li>默认值（CPU的状态、内存、优先级等）</li>
+</ul>
+</li>
+<li>插入相应的进程队列
+<ul>
+<li>新进程插入就绪队列</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程撤销">进程撤销</h3>
+<ul>
+<li>
+<p><strong>功能</strong></p>
+<ul>
+<li>
+<p>撤销一个指定的进程</p>
+</li>
+<li>
+<p>收回进程所占有的资源，撤消该进程的PCB</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>进程撤销的时机/事件</strong></p>
+<ul>
+<li>正常结束</li>
+<li>异常结束</li>
+<li>外界干预</li>
+</ul>
+</li>
+<li>
+<p><strong>参数</strong>：被撤销的进程名（ID）</p>
+</li>
+<li>
+<p><strong>进程撤销的实现</strong></p>
+<ul>
+<li>在PCB队列中检索出该PCB</li>
+<li>获取该进程的状态</li>
+<li>若该进程处在运行态，立即终止该进程
+<ul>
+<li>递归地撤销子进程（是否需要撤销子进程？是）</li>
+<li>子进程挂接到init进程下（是否需要撤销子进程？否）</li>
+</ul>
+</li>
+<li>释放进程占有的资源</li>
+<li>将进程从PCB队列中移除</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程阻塞">进程阻塞</h3>
+<ul>
+<li><strong>功能</strong>：停止进程执行，变为阻塞</li>
+<li><strong>阻塞的时机/事件</strong>
+<ul>
+<li>请求系统服务
+<ul>
+<li>（由于某种原因，OS不能立即满足进程的要求）</li>
+</ul>
+</li>
+<li>启动某种操作
+<ul>
+<li>（进程启动某操作，阻塞等待该操作完成）</li>
+</ul>
+</li>
+<li>新数据尚未到达
+<ul>
+<li>（A进程要获得B进程的中间结果，A进程等待）</li>
+</ul>
+</li>
+<li>无新工作可做/idle进程/pause
+<ul>
+<li>（进程完成任务后，自我阻塞，等待新任务到达）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>参数</strong>
+<ul>
+<li>阻塞原因</li>
+<li><strong>不同原因构建有不同的阻塞队列</strong></li>
+</ul>
+</li>
+<li><strong>进程阻塞的实现</strong>
+<ul>
+<li>停止运行</li>
+<li>将PCB从“<strong>运行态</strong>”改为“<strong>阻塞态</strong>”</li>
+<li>插入<strong>对应的</strong>阻塞队列</li>
+<li>转调度程序</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程唤醒">进程唤醒</h3>
+<ul>
+<li><strong>功能</strong>：唤醒处于阻塞队列当中的某个进程</li>
+<li><strong>引起唤醒的时机/事件</strong>
+<ul>
+<li>系统服务由不满足到满足</li>
+<li>I/O完成</li>
+<li>新数据到达</li>
+<li>进程提出新请求（服务）</li>
+</ul>
+</li>
+<li><strong>参数</strong>：被唤醒进程的标识</li>
+</ul>
+<h3 id="进程控制原语">进程控制原语</h3>
+<ul>
+<li>
+<p><strong>原语</strong></p>
+<ul>
+<li>由若干指令构成的具有特定功能的函数</li>
+<li><strong>具有原子性，其操作不可分割</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>进程控制原语</strong></p>
+<ul>
+<li>创建原语</li>
+<li>撤消原语</li>
+<li>阻塞原语</li>
+<li>唤醒原语</li>
+</ul>
+</li>
+</ul>
+<h2 id="Windows进程控制">Windows进程控制</h2>
+<ul>
+<li>CreateProcess创建新进程</li>
+<li>ExitProcess结束自身进程</li>
+<li>TerminateProcess结束目标进程</li>
+</ul>
+<h2 id="Linux进程控制">Linux进程控制</h2>
+<ul>
+<li>fork()创建进程</li>
+<li>wait()阻塞进程</li>
+<li>exit()结束进程</li>
+<li>sleep()休眠进程</li>
+</ul>
+<h3 id="fork-创建进程">fork()创建进程</h3>
+<p>pid_t fork(void);<br>
+例：pid_t  pid = fork();</p>
+<ul>
+<li>
+<p><strong>父进程和子进程</strong></p>
+<ul>
+<li>子进程：新建的进程</li>
+<li>父进程：fork()的调用者</li>
+<li>子进程是父进程的复制</li>
+<li>父进程和子进程并发运行</li>
+</ul>
+</li>
+<li>
+<p><strong>fork的返回值</strong>：pid</p>
+<ul>
+<li>在子进程中：pid=0</li>
+<li>在父进程中：pid&gt;0（子进程ID）</li>
+<li>pid=-1（出错）</li>
+</ul>
+</li>
+</ul>
+<p>fork 为什么在子进程中没有再建立新的进程呢？新的进程的CS:IP 指<br>
+向在fork 函数后的第一个指令。</p>
+<ul>
+<li>
+<p><strong>fork()执行流程</strong></p>
+<ul>
+<li>分配task_struct结构</li>
+<li>拷贝父进程
+<ul>
+<li>复制正文段、用户数据段及系统数据段</li>
+<li>复制task_struct的大部分内容</li>
+<li>修改task_struct的小部分内容</li>
+</ul>
+</li>
+<li>把新进程的task_struct保存在task队列中</li>
+<li>新进程置于<strong>就绪状态</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>fork()的实际开销</strong></p>
+<ul>
+<li>复制父进程页表</li>
+<li>给子进程创建PCB</li>
+</ul>
+<p>父进程的资源被设置为只读，当父进程或子进程试图修改某些内容时，内核才在修改前将该部分进行拷贝——写时复制</p>
+</li>
+<li>
+<p>Linux启动后第一个进程是<strong>init进程</strong>，其他进程都是init子孙进程</p>
+</li>
+<li>
+<p><strong>exec函数族</strong>（包含若干函数）：在子进程空间运行指定的“可执行程序”</p>
+<ul>
+<li>exec调用成功：进入新进程且不再返回</li>
+<li>exec调用失败：继续从调用点向下执行</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">if</span><span class="token punctuation">(</span>pid <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span><span class="token comment">//子进程</span>
+    <span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"Exe File Name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>pid<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span><span class="token comment">//父进程&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con9.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="wait-阻塞进程">wait()阻塞进程</h3>
+<p>进程调用wait(int &amp;status)阻塞自己</p>
+<ul>
+<li>检测有无子进程结束？
+<ul>
+<li>没有：继续阻塞，等待子进程结束</li>
+<li>有：收集该子进程信息并彻底销毁它，返回</li>
+</ul>
+</li>
+<li>Status接收子进程退出时的退出代码
+<ul>
+<li>status：按位处理</li>
+<li>若忽略子进程的退出信息：pid=wait(NULL)</li>
+</ul>
+</li>
+</ul>
+<h3 id="exit-结束进程">exit()结束进程</h3>
+<p>调用void exit(int status)终结进程，进程终结时要释放资源并向父进程报告</p>
+<ul>
+<li>利用status向父进程报告结束时的退出代码</li>
+<li>变为僵尸状态，保留部分PCB信息供wait收集
+<ul>
+<li>正常结束还是异常结束</li>
+<li>占用总系统cpu时间</li>
+<li>缺页中断次数</li>
+</ul>
+</li>
+<li>调用schedule()函数，选择新进程运行</li>
+</ul>
+<h3 id="Sleep-休眠进程">Sleep()休眠进程</h3>
+<p>Sleep(int nSecond)</p>
+<ul>
+<li>进程暂停执行nSecond秒</li>
+<li>系统暂停调度该进程</li>
+<li>相当于windows挂起操作resume( )，挂起指定秒</li>
+</ul>
+<h2 id="线程">线程</h2>
+<ul>
+<li>线程是进程内的一个执行路径</li>
+<li>一个进程可以创建和包含多个线程</li>
+<li>线程之间共享CPU可以实现并发运行</li>
+<li>创建线程比创建进程开销要小</li>
+<li>线程间通信十分方便</li>
+</ul>
+<p>线程的应用：如果把程序中某些函数创建为线程，那么这些函数将可以并发运行！</p>
+<p><strong>进程=资源集+线程组</strong></p>
+<h3 id="线程的状态变迁">线程的状态变迁</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con10.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><strong>单线程程序</strong>：整个进程只有一个线程。Windows程序缺省创建一个线程（主线程，main线程）。</li>
+<li><strong>多线程程序</strong>：整个进程至少有2个线程。主线程和至少1个用户线程。</li>
+</ul>
+<h3 id="多线程的应用">多线程的应用</h3>
+<ul>
+<li>多个功能需要并发的地方</li>
+<li>需要改善窗口交互性的地方</li>
+<li>需要改善程序结构的地方</li>
+<li>多核CPU上的应用，充分发挥多核性能</li>
+</ul>
+<h2 id="进程相互制约关系">进程相互制约关系</h2>
+<h3 id="进程的互斥关系">进程的互斥关系</h3>
+<p>多个进程共享具有<strong>独占性</strong>的资源时，必须确保各进程<strong>互斥地存取资源</strong>，即确保没有任何两个进程<strong>同时</strong>存取资源。</p>
+<ul>
+<li><strong>临界资源</strong>：一次只允许一个进程独占访问（使用）的资源</li>
+<li><strong>临界区</strong>：进程中访问临界资源的程序段</li>
+</ul>
+<h3 id="进程的同步关系">进程的同步关系</h3>
+<p>若干<strong>合作进程</strong>为了共同完成一个任务，需要相互协调运行步伐：一个进程A开始某个操作之前要求另一个进程B必须已经完成另一个操作，否则进程A只能等待。</p>
+<h3 id="同步机制的功能">同步机制的功能</h3>
+<ul>
+<li>当进程<strong>不能执行</strong>，即将要执行的某个操作的运行条件不满足时能让该进程<strong>立即暂停</strong>执行该操作</li>
+<li>当被暂停的操作在运行条件<strong>一旦满足</strong>时，相应进程能被<strong>尽快唤醒</strong>以便继续运行</li>
+<li>同步进制在实现上也需要满足<strong>原子性</strong></li>
+</ul>
+<h3 id="访问临界区的方法">访问临界区的方法</h3>
+<ul>
+<li><strong>硬件方法</strong>
+<ul>
+<li>中断屏蔽：进入临界区前执行“关中断”指令(IF=0)，离开临界区后执行“开中断”指令(IF=1)</li>
+<li>测试并设置</li>
+<li>交换指令</li>
+</ul>
+</li>
+<li><strong>软件方法</strong>
+<ul>
+<li><strong>锁</strong></li>
+<li><strong>信号量</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="锁机制">锁机制</h3>
+<ul>
+<li>设置一个“标志”S：表明临界资源“可用”还是“不可用”？1:0</li>
+<li>在进入临界区之前检查标志是否“可用”？
+<ul>
+<li>若为“不可用”状态：进程在临界区之外等待</li>
+<li>若为“可用”状态：
+<ul>
+<li>进入临界区,并将标志修改为“不可用”</li>
+<li>在临界区内访问临界资源……</li>
+<li>退出临界区,并将标志修改为“可用”状态</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="上锁操作">上锁操作</h4>
+<ul>
+<li>第1步：检测锁S的状态（0或1?）</li>
+<li>第2步：如果S=0，则返回第1步</li>
+<li>第3步：如果S=1，则置其为0</li>
+</ul>
+<p>上锁原语</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con11.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="开锁操作">开锁操作</h4>
+<ul>
+<li>把锁S的状态置1</li>
+</ul>
+<p>开锁原语</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con12.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="用锁机制访问临界区">用锁机制访问临界区</h4>
+<p>目标：确保临界区中任何时候最多只有1个进程运行于其中</p>
+<ul>
+<li>初始化锁的状态<strong>S = 1</strong> (可用）</li>
+<li>进入临界区之前执行上锁Lock(s)操作</li>
+<li>离开临界区之后执行开锁unLock(s)操作</li>
+</ul>
+<h3 id="设计临界区访问机制的四个原则">设计临界区访问机制的四个原则</h3>
+<ul>
+<li><strong>忙则等待</strong>：当临界区忙时，其他进程必须在临界区外等待</li>
+<li><strong>空闲让进</strong>：当无进程处于临界区时，任何有权进程可进入临界区</li>
+<li><strong>有限等待</strong>：进程进入临界区的请求应在有限时间内得到满足</li>
+<li><strong>让权等待</strong>：等待进程放弃CPU（让其它进程有机会得到CPU）</li>
+</ul>
+<p>锁机制满足前三条，不满足让权等待原则</p>
+<h3 id="信号灯与P-V操作">信号灯与P-V操作</h3>
+<p>基本思想：进程在运行过程受信号灯控制，并能改变信号灯。</p>
+<ul>
+<li>进程受控制：进程因信号灯的状态被<strong>阻塞</strong>或被<strong>唤醒</strong></li>
+<li>改变信号灯：信号灯的状态可以被进程改变</li>
+</ul>
+<h4 id="信号灯数据结构">信号灯数据结构</h4>
+<p>信号灯定义为一个二元矢量（S, q）。</p>
+<ul>
+<li>S：<strong>整数</strong>，初值非负（S又称<strong>信号量</strong>）</li>
+<li>q：<strong>队列(进程PCB集合)</strong>，初值为空集</li>
+</ul>
+<h4 id="P操作的原理（P-S-）">P操作的原理（P(S)）</h4>
+<ul>
+<li>第1步：S值<strong>减1</strong>；</li>
+<li>第2步：判断<strong>S&lt;0</strong>
+<ul>
+<li>若S<strong>大于或等于零</strong>，该进程继续；</li>
+<li>若S<strong>小于零</strong>，该进程<strong>阻塞</strong>并加入到q中，转调度函数。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con13.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="V操作的原理（V-S-）">V操作的原理（V(S)）</h3>
+<ul>
+<li>第1步：S值<strong>加1</strong>；</li>
+<li>第2步：判断<strong>S &lt;= 0</strong>
+<ul>
+<li>若S<strong>大于零</strong>，该进程<strong>继续</strong>；</li>
+<li>若S<strong>小于或等于零</strong>，该进程<strong>继续</strong>同时从q中<strong>唤醒</strong>一个进程。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con14.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="P-V操作应用过程">P-V操作应用过程</h3>
+<h4 id="实现进程互斥">实现进程互斥</h4>
+<ul>
+<li>
+<p><strong>先设定合适的S初值</strong>（S初值为临界资源的数量）<br>
+s=m：允许最多m个进程同时处于临界区</p>
+</li>
+<li>
+<p>进入临界区之前先执行P操作（可能阻塞当前进程）</p>
+</li>
+<li>
+<p>离开临界区之后再执行V操作（可能唤醒某个进程）</p>
+</li>
+</ul>
+<h4 id="实现进程同步">实现进程同步</h4>
+<p>实质：</p>
+<ul>
+<li>运行条件不满足时，能让进程暂停</li>
+<li>运行条件满足时，能让进程立即继续</li>
+</ul>
+<p>基本思路：</p>
+<ul>
+<li>暂停当前进程：在关键操作<strong>之前</strong>执行P操作</li>
+<li>继续进程：在关键操作<strong>之后</strong>执行V操作</li>
+<li>定义有意义的信号量S，并设置合适的<strong>初值</strong>（一般设为0或初始状态值）<br>
+不合理的初值不仅达不到同步的目的，还会发生死锁</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con15.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con16.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/content/20221003_con17.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="进程通信">进程通信</h2>
+<h3 id="Linux信号通信">Linux信号通信</h3>
+<ul>
+<li>信号是Linux进程间一种重要的通信机制</li>
+<li>信号是向进程发送的一个<strong>通知</strong>，通知某个事件已发生</li>
+<li>收到信号的进程可以立即<strong>执行</strong>指定的操作</li>
+<li>信号的发出可以是<strong>进程</strong>，也可以是<strong>系统（含硬件）</strong></li>
+</ul>
+<h4 id="信号的产生">信号的产生</h4>
+<ul>
+<li>键盘输入特殊组合键产生信号，例：“Ctrl+C”</li>
+<li>执行终端命令产生信号，例：kill系列命令</li>
+<li>程序中调用函数产生信号，例：kill()、abort()</li>
+<li>硬件异常或内核产生相应信号，例：内存访问错</li>
+</ul>
+<p><strong>Linux定义了64种信号，用整数1~64表示</strong></p>
+<h4 id="常用函数">常用函数</h4>
+<ul>
+<li><strong>signal()</strong>：注册信号处理函数的函数</li>
+<li><strong>kill()</strong>：发送信号的函数</li>
+<li><strong>SIGUSR1</strong>：用户自定义信号1</li>
+</ul>
+<p>kill(childpid,SIGUSR1)：向childpid进程发送信号SIGUSR1<br>
+signal(SIGUSR1,handler)：当收到SIGUSR1信号时，执行handler函数（自己定义）</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AF%BE%E4%B8%9A/" class="category-chain-item">课业</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E8%AF%BE%E4%B8%9A/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/" class="category-chain-item">操作系统原理</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%BE%E4%B8%9A/">#课业</a>
+      
+        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86/">#操作系统原理</a>
+      
+        <a href="/tags/%E5%A4%8D%E4%B9%A0/">#复习</a>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>操作系统原理复习 第四章 进程管理和通信</div>
+      <div>https://lmc20020909.github.io/OSP_Chapter04/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Liu Mingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年11月14日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/OSP_Chapter03/" title="操作系统原理复习 第三章 用户界面">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统原理复习 第三章 用户界面</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/OSP_Chapter05/" title="操作系统原理复习 第五章 资源分配与调度">
+                        <span class="hidden-mobile">操作系统原理复习 第五章 资源分配与调度</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

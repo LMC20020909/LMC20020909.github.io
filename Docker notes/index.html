@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon/Mingchen%20Liu.png">
+  <link rel="icon" href="/img/icon/Mingchen%20Liu.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Liu Mingchen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Docker 的一些命令和概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker 学习笔记">
+<meta property="og:url" content="https://lmc20020909.github.io/Docker%20notes/index.html">
+<meta property="og:site_name" content="Mingchen&#39;s Blog">
+<meta property="og:description" content="Docker 的一些命令和概念">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20240331_bg1.jpg">
+<meta property="article:published_time" content="2024-03-31T16:40:32.000Z">
+<meta property="article:modified_time" content="2024-03-31T16:40:32.000Z">
+<meta property="article:author" content="Liu Mingchen">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="Docker">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20240331_bg1.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Docker 学习笔记 - Mingchen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc20020909.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mingchen&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20240331_bg1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Docker 学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-31 16:40" pubdate>
+          2024年3月31日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Docker 学习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>基本概念</h1>
+<ol>
+<li>docker image (映像)：一套提供了应用程序的隔离运行环境的模板；</li>
+<li>docker container (容器)：一个映像的运行实例（可以类比 image 是类，container 是实例对象），每一个 container 都是独立的运行环境，当容器内没有程序运行时会自动 exit；</li>
+</ol>
+<h1>常用命令</h1>
+<ol>
+<li>docker run [映像名]<br>
+会创建对应映像的一个容器并运行。如果该映像在本地不存在，就会在 <a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a> 中自动查找并下载到本地。<br>
+docker run [映像名] 之后的内容会被识别成要让这个容器中的应用程序执行的命令，如 <code>docker run ubuntu sleep 100</code>，会创建并运行 ubuntu 的一个容器并让其睡眠 100 秒。<br>
+当 docker 容器中不再有程序运行时，容器会自动 exit。<br>
+<strong>常用参数</strong> <code>docker run [option]  [image]  [command]</code>：（<code>docker run --help</code> 查看全部）
+<ol>
+<li>-d：在终端运行 docker run 命令会默认在前台运行该容器，直到 ctrl+c 强制 exit 容器或者在另一个终端 docker stop 。-d 是 detached，标识在后台运行，终端可以继续正尝使用；</li>
+<li>–name [name]：设置容器名；</li>
+<li>docker run image:tag：tag 代表映像的版本，不写明默认为 latest；各个映像的不同版本对应的 tag 可以在  hub. docker 中查看；</li>
+<li>-p [host_port] : [container_port] ：设置端口映射。容器端口只能在 docker host 上通过内部 ip（每个容器都会被分配一个内部 ip，通过 docker inspect 查看） 访问，主机端口可以在外部通过主机 ip 访问，两个端口号可以不同，可以将同一个 container_port 映射到不同的 host_port，但不能反过来；container_port 一般是 docker 运行的应用程序指定的，用户只能配置到主机 port 的映射；</li>
+<li>-v [外部路径] : [内部路径]：将容器内的某个目录映射到真实主机上的某个物理路径。默认情况下，当容器 stop 后，容器内部所有的数据都会消失，包括对数据库的操作等等，-v 参数会在对容器内某个目录进行操作时自动映射到指定的外部目录，将数据保存下来，不会随着容器的 stop 而丢失。在下一次 docker run 的时候，这种映射还可以让新的容器读取保存在主机上的数据。</li>
+<li>-i：默认情况下，容器不会读取标准输入。这个参数表示将标准输入保持打开状态。-i 是 interactive mode；</li>
+<li>-t：表示为容器分配一个伪终端 (pseudo-TTY)。这个选项通常与交互式的容器一起使用，使得用户能够与容器的命令行交互，并且能够获得命令行的控制权。</li>
+<li>-it：这是 <code>-i</code> 和 <code>-t</code> 的结合，用于启动一个既保持标准输入打开又分配了伪终端的交互式容器。这意味着你可以与容器中的命令行交互，并且容器将保持运行状态。</li>
+<li>-e [变量名=值]：在运行容器时向容器传递环境变量，供容器内部的程序使用。</li>
+<li>–link [内部名] : [容器名] : 用于将不同容器关联起来，形成一套复合的环境。</li>
+<li>–cpus=[比例, e.g. .5]：设置该容器可使用的 host 的 cpu 资源的比例上限。</li>
+<li>–memory=[大小, e.g. 100 m]：设置该容器可使用的最大内存。</li>
+<li>–network=[网络名]：指定该容器运行的网络。</li>
+</ol>
+</li>
+<li>docker pull [映像名]<br>
+仅从 hub 中拉取 image，不会直接创建容器并运行。</li>
+<li>docker ps<br>
+显示目前正在运行中的容器。</li>
+<li>docker ps -a<br>
+显示目前所有存在的容器，包括运行中和已经退出的。</li>
+<li>docker stop [容器 id 或 容器名]<br>
+停止运行一个容器，会让容器从 running 状态变为 exited 状态。<br>
+如果是容器名需要全称，如果是容器 id 只需要前 k 位，k 是能够在当前运行的所有容器中唯一标识该容器的最小值，即如果只有一个容器在运行，容器 id 只需要输入第一位就可以。</li>
+<li>docker rm [容器 id 或容器名]<br>
+彻底删除一个容器，避免继续占用磁盘空间。==在删除前必须先将容器停止运行==。</li>
+<li>docker images<br>
+显示本地存在的所有映像。</li>
+<li>docker rmi [映像名]<br>
+删除映像。==在这之前必须关闭并删除该映像的所有容器==。</li>
+<li>docker exec [容器 id 或容器名]  [command]<br>
+让正在运行中的容器中的应用程序执行命令。</li>
+<li>docker attach [容器 id 或容器名]<br>
+让在后台运行的容器回到前台，即运行在当前终端。</li>
+<li>docker inspect [容器 id 或容器名]<br>
+查看某一容器的详细信息。</li>
+<li>docker logs [容器 id 或容器名]<br>
+查看在后台运行的容器的输出日志。</li>
+<li>docker image [COMMAND]<br>
+对映像进行操作，如更改标签、删除所有 dangling 映像（没有容器的映像）等等。具体可以通过 <code>docker image --help</code> 查看。</li>
+</ol>
+<h1>构建映像</h1>
+<ol>
+<li>在需要容器化的应用程序目录下创建 Dockerfile 文件，格式如下所示：</li>
+</ol>
+<figure><div class="code-wrapper"><pre class="line-numbers language-docker" data-language="docker"><code class="language-docker"><span class="token comment"># 该 image 构建于哪个容器之上，以 FROM 开头，每个 Dockerfile 必须指明</span>
+<span class="token instruction"><span class="token keyword">FROM</span> Ubuntu</span>
+
+<span class="token comment"># RUN 开头的命令代表在构建映像时需要执行的命令，包括程序需要用到的依赖、环境等</span>
+<span class="token instruction"><span class="token keyword">RUN</span> apt-get update</span>
+<span class="token instruction"><span class="token keyword">RUN</span> apt-get install python</span>
+
+<span class="token instruction"><span class="token keyword">RUN</span> pip install flask</span>
+<span class="token instruction"><span class="token keyword">RUN</span> pip install flask-mysql</span>
+
+<span class="token comment"># COPY 表示将本机的应用程序的源代码拷贝到容器内的哪个位置，格式为 COPY [主机目录] [容器目录]</span>
+<span class="token instruction"><span class="token keyword">COPY</span> . /opt/source-code</span>
+
+<span class="token comment"># ENTRYPOINT 命令表示在 run 容器时需要执行的命令，即应用程序的入口命令</span>
+<span class="token instruction"><span class="token keyword">ENTRYPOINT</span> FLASK_APP=/opt/source-code/app.py flask run</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<ol start="2">
+<li>在当前目录执行命令构建映像：<code>docker build -t [name:tag] .</code>，-t 指定映像的名字和标签；</li>
+<li>docker 会默认对 build 过程进行缓存，重新构建时无需担心会从头执行；</li>
+<li>使用 <code>docker images</code> 命令查看当前存在的映像，构建完成；</li>
+<li><code>docker login</code> 命令登录 docker hub；</li>
+<li><code>docker push [映像名]</code> 将构建的映像上传到 docker hub，类似于 github，可以公开下载；</li>
+</ol>
+<blockquote>
+<p>如果要上传到 docker hub，映像的名字必须为 <code>用户名/映像名</code>，如果不加用户名会默认上传到官方 library ，没有权限会失败。<br>
+也可以选择上传到其他的私有平台，但需要自己指定域名；甚至可以在本地运行一个 repository 的容器，将自己的映像上传到这上面。具体方法自行查找。</p>
+</blockquote>
+<h2 id="Dockerfile-中-CMD-和-ENTRYPOINT-的区别与联系">Dockerfile 中 CMD 和 ENTRYPOINT 的区别与联系</h2>
+<p>CMD 和 ENTRYPOINT 命令都表示容器运行时执行的命令，它们又都有两种写法，分别是 <code>CMD/ENTRYPOINT 命令 参数</code> 和 <code>CMD/ENTRYPOINT [&quot;命令&quot;,&quot;参数&quot;]</code>，一般采用第二种写法。<br>
+其中：</p>
+<ol>
+<li>CMD 会被 <code>docker run</code> 命令后携带的命令完全替换，如 <code>docker run ubuntu sleep 10</code>，ubuntu 容器就不会执行 Dockerfile 中描述的 <code>CMD [&quot;bash&quot;]</code> 命令，而是直接执行 <code>sleep 10</code>；</li>
+<li>ENTRYPOINT 则不会被完全替换，<code>docker run</code> 携带的命令会作为参数添加到 ENTRYPOINT 描述的命令后面一同执行。如 <code>ENTRYPOINT [&quot;sleep&quot;]</code>，<code>docker run xxx 10</code> ，则会执行 <code>sleep 10</code>；</li>
+<li>如果二者同时出现，那么 CMD 就起到传递参数默认值的作用。如 <code>ENTRYPOINT [&quot;sleep&quot;]</code> <code>CMD [&quot;10&quot;]</code>，<code>docker run xxx</code>，就会执行 <code>sleep 10</code>；如果 <code>docker run xxx 100</code>，就会替换掉 CMD 中的参数，执行 <code>sleep 100</code> 。</li>
+</ol>
+<h1>Docker compose</h1>
+<p>reference: <a target="_blank" rel="noopener" href="https://docs.docker.com/compose/">https://docs.docker.com/compose/</a><br>
+当我们需要构建一个复杂的应用程序环境时，我们需要同时运行多个容器并能够将其彼此联系起来，比如有运行数据库的容器，有运行 redis 的容器等等。docker-compose 就是用来整合部署这些不同容器的。<br>
+假如不使用 docker compose，我们需要在运行每个容器时手动指定需要与其相关联的其他容器名，用 <code>docker run --link 内部名1:容器名1 内部名2:容器名2</code>。</p>
+<h2 id="使用-docker-compose">使用 docker compose</h2>
+<ol>
+<li>在项目路径下创建 compose. yaml 文件，格式如下：</li>
+</ol>
+<figure><div class="code-wrapper"><pre class="line-numbers language-docker" data-language="docker"><code class="language-docker">services:
+  web: # 容器名
+    build: .  # 自动 build image 并运行容器
+    ports:
+      - "8000:5000"
+  redis:
+    image: "redis:alpine"
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<ol start="2">
+<li>输入命令：<code>docker compose up</code>, 这样就可以将文件中指定的容器全部运行并自动进行关联，不需要手动指定。</li>
+</ol>
+<h1>Docker engine</h1>
+<ol>
+<li>docker 的数据默认位置是 /var/lib/docker （linux）；</li>
+<li><code>docker volume create [volume name]</code> 会在 /var/lib/docker/volume 下创建一个名为 volume name 的文件夹。当运行容器时，如果想要将容器内的数据持久化，可以使用 -v 参数：<code>docker run -v [volume name]:[容器内文件位置]</code>，就会默认将数据映射到 /var/lib/docker/volume/volume name 中。如果是一个新的 volume name，docker 会自动创建一个新的 volume；</li>
+<li>如果不想使用 volume 提供的位置，可以自己手动指定持久化的存储路径 <code>docker run -v [外部路径] : [内部路径]</code>，需要显式指明路径；</li>
+<li>使用 volume 进行映射叫做 volume mapping，自己指定路径进行映射叫做 bind mapping；</li>
+<li>也可以使用 mount 参数进行更加详细的映射设置，比如： <code>docker run --mount type=bind,source=/host/path,target=/container/path,readonly image_name</code></li>
+</ol>
+<h1>Docker network</h1>
+<p>docker 容器运行有三种网络模式：bridge, none, host，默认为 bridge 模式。</p>
+<ol>
+<li>bridge：桥接模式，会为每一个容器分配一个独立的内部 ip 地址，应用程序运行在内部 ip 内部 port 上，在同一局域网下（比如在主机上）可以直接以 <code>容器内部 ip: 内部 port</code> 的方式访问。如果想要从外部访问（假设主机有公网 ip），则需要用 -p 参数映射到主机的某一端口，这样就可以通过 <code>主机 ip: 主机 port</code> 的方式访问；</li>
+<li>host：容器共享主机的网络命名空间，与主机共享相同的 IP 地址和端口。容器没有自己的内部 ip。所以一个特定端口只能够运行一个应用程序，不再区分内部和外部 port，通过 <code>主机 ip: 主机 port</code> 访问；</li>
+<li>none：不与主机进行网络通信。只可以从 <code>容器内部 ip: 内部 port</code> 的方式访问，外部无法直接访问容器。</li>
+</ol>
+<h2 id="docker-network-操作">docker network 操作</h2>
+<ol>
+<li><code>docker network create [name] --argument</code>：创建网络，可以自己设定采用的网络模式、子网范围、网关等等；</li>
+<li><code>docker network --help</code>：查看所有命令说明；</li>
+<li><code>docker run --network=[network name]</code>：指定容器运行的网络。</li>
+</ol>
+<h1>Docker orchestration</h1>
+<p>在真正的业务中，我们不只需要在一台 host 上部署一个 docker 容器，而是往往需要在多个主机上同时部署以实现负载均衡等稳定性、安全性要求。有一些 Docker orchestration 工具可以帮助我们方便一键部署，并能够根据业务量动态调整容器数量和其他不同功能。常用的工具有两个：<strong><code>docker swarm</code></strong> 和 <strong><code>kubernetes</code></strong>。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%99%E7%A8%8B/" class="category-chain-item">教程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%95%99%E7%A8%8B/Docker/" class="category-chain-item">Docker</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>
+      
+        <a href="/tags/Docker/">#Docker</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Docker 学习笔记</div>
+      <div>https://lmc20020909.github.io/Docker notes/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Liu Mingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月31日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Version%20Control%20(Git)%20%C2%B7%20Missing%20Semester/" title="Version Control (Git) · Missing Semester">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Version Control (Git) · Missing Semester</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/ubuntu%20%E5%AE%89%E8%A3%85%20tensorflow/" title="ubuntu 安装 tensorflow">
+                        <span class="hidden-mobile">ubuntu 安装 tensorflow</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

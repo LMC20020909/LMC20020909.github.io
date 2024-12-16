@@ -1,0 +1,988 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon/Mingchen%20Liu.png">
+  <link rel="icon" href="/img/icon/Mingchen%20Liu.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Liu Mingchen">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="利用 GitHub Actions 实现博客自动化部署并多端同步">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blog CI">
+<meta property="og:url" content="https://lmc20020909.github.io/Blog-CI/index.html">
+<meta property="og:site_name" content="Mingchen&#39;s Blog">
+<meta property="og:description" content="利用 GitHub Actions 实现博客自动化部署并多端同步">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20240819_bg1.png">
+<meta property="article:published_time" content="2024-08-19T17:47:30.000Z">
+<meta property="article:modified_time" content="2024-08-19T17:47:30.000Z">
+<meta property="article:author" content="Liu Mingchen">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="教程">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20240819_bg1.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Blog CI - Mingchen&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc20020909.github.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mingchen&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps@main/bg/20240819_bg1.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Blog CI"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-19 17:47" pubdate>
+          2024年8月19日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          71 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Blog CI</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>最近新配了一台主机，加上 macbook 和老笔记本一共就有了三台设备。俗话说得好，有新的不用旧的，这个博客的环境和数据都保存在老笔记本上，每次想发点什么东西还要特意打开它，十分麻烦。加上三台电脑一般被我放在三个地方，于是就有了随时随地写、随时随地发的需求。本来想的是将博客移植到新主机上面去，但在搜索攻略的时候发现有一种能够免配环境、自动部署、多端同步的处理方式正合我意，毕竟出于需求隔离的想法，暂时还不是很想对另外两台设备动过多的手脚。</p>
+<p>通俗来讲，这种方式之所以有效，本质上是相当于把原来在电脑本地配置安装的 hexo 博客环境和数据转移到 github 的服务器上，这样就不用在本地安装 NodeJS 和 hexo 环境。同时编写一个自动化脚本，利用 github actions 功能，每当博客的源代码有更新时自动编译，并将静态文件推送到 <a target="_blank" rel="noopener" href="http://github.io">github.io</a> 的仓库中。</p>
+<h3 id="建仓">建仓</h3>
+<p>为了实现这一需求，我们需要准备两个 github repo，一个用来存放博客的源代码，一个用来存放网页的静态文件。如果你在本地已经使用过博客，那么后一个仓库，也就是你的 <a target="_blank" rel="noopener" href="http://username.github.io">username.github.io</a> 仓库，应该已经准备好了，在此不再赘述；前一个 repo 我起名为 Blog，设置为 private（毕竟是存放源码的地方，需要考虑隐私性）。建好之后，就可以将你在本地的博客源代码一个不剩的全部 push 上去了。注意是把整个根目录都推送上去，包括博客的配置文件等。具体操作如下：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 我的本地博客的根目录为 Blog</span>
+<span class="token builtin class-name">cd</span> Blog/
+<span class="token function">git</span> init
+<span class="token function">git</span> remote <span class="token function">add</span> origin xxx
+<span class="token function">git</span> branch <span class="token parameter variable">-M</span> main
+<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"xxx"</span>
+<span class="token function">git</span> push <span class="token parameter variable">-f</span> origin main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>在此过程中，可能会出现 git add . 时出错的情况。这是因为在目录下存在着其他 git 仓库，而 git 并不支持嵌套仓库。排查发现是 themes/next 目录是一个 git 仓库。最简单直接的方法就是把 themes/next 目录下的 <strong>.git 文件夹删掉</strong>，这样我们的主题文件夹就是一个普通的目录，而不是一个 git 仓库，这样嵌套仓库的内容就会成为当前仓库内容的一部分，就可以使用 git add 对这些文件进行跟踪。这样做的代价就是无法自动更新主题，但实际上主题的更新与博客的内容无关，且周期很长，所以无伤大雅。删掉之后重新 add commit push 就可以了。</p>
+<h3 id="赋予权限">赋予权限</h3>
+<p>在此之后，我们需要赋予这个 Blog 仓库向另一个仓库（<a target="_blank" rel="noopener" href="http://github.io">github.io</a>）推送代码的权限。你可以把这个存放着博客源代码的仓库当作一个云端服务器，每次向它 push 代码就相当于在这个 server 上编译博客并向 <a target="_blank" rel="noopener" href="http://github.io">github.io</a> 推送，所以就像我们在本地使用 git 一样，需要有权限访问更改你的 repo。</p>
+<p>在 Github 中这种权限验证方式有三种：</p>
+<ol>
+<li>用户名密码，最古早的方式，在2021年就基本已被弃用；</li>
+<li>SSH 密钥验证，目前最主要的方式，只要公钥存放在你的 Github 账户里，拥有对应私钥的一方就拥有了访问更改你仓库的权限；</li>
+<li>Token 链接，与 SSH 相比，好处是你可以对每个 token 的权限进行更加细化的设置，如访问、更改、删除等，坏处是 token 的验证是单向的，而我们一般为了图方便都会给 token 赋予最高权限，换句话说，拥有了你的 token 的一方相当于掌握了你的密码，安全性难以保证。</li>
+</ol>
+<p>当然，为了赋予 Blog 仓库权限，我们无论是使用 SSH 还是 Token，都需要把一个有权限的 SSH 私钥或是 token 上传到云端，似乎安全性都无法保证。但实际上，GitHub 提供了在仓库中设置机密（Secrets）的功能，允许将敏感信息（如 token 或 密钥）安全地存储并在工作流中使用。GitHub 通过加密和访问控制来保护这些机密，避免在构建过程中泄露。使用 SSH 验证只需要上传私钥就行，而使用 Token 还需要对博客的配置文件中的 deploy 地址进行更改。基于最小化实现原则，本人选择了 SSH 的方式。具体操作如下：</p>
+<ol>
+<li>
+<p>找一个已有的有效密钥，即公钥已经添加到了你的 Github 设置中。如果没有或者不想重用的话，可以再新生成一个然后将公钥添加好：</p>
+ <figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen <span class="token parameter variable">-t</span> ed25519 <span class="token parameter variable">-C</span> <span class="token string">"your_email@example.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+</li>
+<li>
+<p>将私钥添加到 Blog 仓库中：<br>
+<img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps2@main//img/202408191908522.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这里我取名为 HEXO_DEPLOY_PRIVATE_KEY_DELL_RSA。注意，在复制私钥的时候一定要全体复制，直接 ctrl A + ctrl C，否则可能会因格式不对而无法验证权限。</p>
+</li>
+</ol>
+<h3 id="添加-GitHub-Actions-脚本">添加 GitHub Actions 脚本</h3>
+<p>你可以把 GitHub Actions 功能当作触发器，当你设定的某个条件满足时出发相应的动作。我们的需求是当博客更新 push 时，自动编译并部署。所以在这里触发器的条件就是主分支有新的 push，触发的动作就是配置 hexo 博客环境并编译部署，也就是之前我们在本地做的那一套。</p>
+<p>点击 Blog 仓库的 <code>Actions</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps2@main//img/202408191922048.png" srcset="/img/loading.gif" lazyload alt="image-20240819192224011"></p>
+<p>点击 <code>New workflow</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps2@main//img/202408191923074.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>点击 <code>set up a new workflow yourself</code>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LMC20020909/BlogMaps2@main//img/202408191924277.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>编写触发器脚本，脚本是一个 yml 文件。本人的脚本如下：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># workflow name</span>
+<span class="token key atrule">name</span><span class="token punctuation">:</span> Hexo Blog CI
+
+<span class="token comment"># main branch on push, auto run</span>
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+    <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> main
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token comment"># check it to your workflow can access it</span>
+      <span class="token comment"># from: https://github.com/actions/checkout</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout Repository
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+      <span class="token comment">#   with:</span>
+      <span class="token comment">#     fetch-depth: 0</span>
+
+      <span class="token comment"># - name: Restore file modification time</span>
+      <span class="token comment">#   run: |</span><span class="token scalar string">
+      #     git config --global core.quotepath false
+      #     find source -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done</span>
+
+      <span class="token comment"># from: https://github.com/actions/setup-node</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Node.js
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@main
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Hexo Dependencies
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          npm install hexo-cli -g
+          npm install</span>
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Deploy Private Key
+        <span class="token key atrule">env</span><span class="token punctuation">:</span>
+          <span class="token key atrule">HEXO_DEPLOY_PRIVATE_KEY</span><span class="token punctuation">:</span> $<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> secrets.HEXO_DEPLOY_PRIVATE_KEY_DELL_RSA <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          mkdir -p ~/.ssh/
+          echo "$HEXO_DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa 
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts</span>
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Git Infomation
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          git config --global user.name 'xxx' 
+          git config --global user.email 'xxx'</span>
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy Hexo
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          hexo clean
+          hexo generate 
+          hexo deploy</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>以下解释来自于 ChatGPT：</p>
+<blockquote>
+<p>这是一个使用 GitHub Actions 实现 Hexo 博客持续集成（CI）的脚本。下面是对每个部分的详细解释：</p>
+<p><strong>1. Workflow 名称</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Hexo Blog CI<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<p>这部分为工作流命名为 “Hexo Blog CI”，表示这是用于 Hexo 博客的持续集成工作流。</p>
+<p><strong>2. 触发条件</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">on</span><span class="token punctuation">:</span>
+<span class="token key atrule">push</span><span class="token punctuation">:</span>
+ <span class="token key atrule">branches</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>这个部分定义了工作流的触发条件。它会在推送到 <code>main</code> 分支时自动运行。这意味着每当你向 <code>main</code> 分支提交更改时，工作流都会被触发。</p>
+<p><strong>3. Jobs 部分</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<p><code>jobs</code> 部分定义了实际运行的任务。这里定义了一个名为 <code>build</code> 的任务，使用的是 <code>ubuntu-latest</code> 环境。</p>
+<p><strong>3.1 检出仓库</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout Repository
+  <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<p>这一步使用 <code>actions/checkout@v2</code> 检出你的 GitHub 仓库代码。这使得工作流能够访问并操作你项目的代码。</p>
+<p><strong>3.2 设置 Node.js 环境</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Node.js
+  <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<p>这一步使用 <code>actions/setup-node@main</code> 设置 Node.js 环境，确保工作流可以使用 Node.js 运行 Hexo 命令。</p>
+<p><strong>3.3 安装 Hexo 依赖项</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Hexo Dependencies
+  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+    npm install hexo-cli -g
+    npm install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>这一部分通过 <code>npm</code> 安装 Hexo 命令行工具和项目依赖项。这一步为 Hexo 的生成和部署提供了必要的环境。</p>
+<p><strong>3.4 设置部署私钥</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Deploy Private Key
+  <span class="token key atrule">env</span><span class="token punctuation">:</span>
+    <span class="token key atrule">HEXO_DEPLOY_PRIVATE_KEY</span><span class="token punctuation">:</span> $<span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span> secrets.HEXO_DEPLOY_PRIVATE_KEY_DELL_RSA <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+    mkdir -p ~/.ssh/
+    echo "$HEXO_DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa 
+    chmod 600 ~/.ssh/id_rsa
+    ssh-keyscan github.com >> ~/.ssh/known_hosts</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>此步骤用于配置 SSH 私钥，以便工作流能够通过 SSH 连接到 GitHub，并将生成的内容推送到你的博客仓库中。密钥保存在 GitHub Secrets 中，以确保安全性。</p>
+<p><strong>3.5 配置 Git 用户信息</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Setup Git Infomation
+  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+    git config --global user.name 'xxx' 
+    git config --global user.email 'xxx'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>这一步配置了 Git 用户名和邮箱信息，确保在部署过程中 Git 提交有正确的用户信息。</p>
+<p><strong>3.6 部署 Hexo</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Deploy Hexo
+  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+    hexo clean
+    hexo generate 
+    hexo deploy</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>最后一步执行了 Hexo 的一系列命令：</p>
+<ul>
+<li><code>hexo clean</code> 清理旧的生成文件。</li>
+<li><code>hexo generate</code> 生成静态文件。</li>
+<li><code>hexo deploy</code> 将生成的文件部署到远程服务器（通常是 GitHub Pages）。</li>
+</ul>
+<p><strong>总结</strong></p>
+<p>通过上述工作流脚本，你可以在每次推送到 <code>main</code> 分支时自动生成和部署 Hexo 博客。这使得博客的更新变得自动化和更加便捷。</p>
+</blockquote>
+<p>最后点击提交 commit 即可。</p>
+<p>别忘了在本地 git pull 将其同步在本地更新。</p>
+<p>到此大体工作基本结束。以后只需要在本地编写 markdown 文件并 push 到仓库中，博客就会同步更新了。在另外的设备上也是同理，将 Blog 仓库 clone 下来，进行更改，再进行 push，完全不需要在本地安装配置 hexo 的环境。</p>
+<p>注意，多端同步主要依靠每次更新后在另外的设备上的 git pull 操作，所以无论使用哪台电脑，在进行更改之前最好先 git pull 一下。</p>
+<h3 id="常见问题">常见问题</h3>
+<h4 id="域名绑定问题">域名绑定问题</h4>
+<p>如果你的 <a target="_blank" rel="noopener" href="http://github.io">github.io</a> 像我一样绑定了自定义域名，那么根据我在网上看到的教程，还需要进行额外一步操作：</p>
+<ol>
+<li>
+<p>在博客根目录的配置文件（_config.yml）中找到<code>skip_render</code>字段，添加值<code>'CNAME'</code>：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">skip_render</span><span class="token punctuation">:</span> <span class="token string">'CNAME'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+</li>
+<li>
+<p>在<code>/source/</code>目录下创建一个文件，命名为<code>CNAME</code>，里边的内容写你的域名。只写域名即可。例如<code>mingchenliu.com</code>，不需要添加<code>http(s)://</code>。</p>
+</li>
+</ol>
+<h4 id="博客文章发表时间的顺序错乱问题">博客文章发表时间的顺序错乱问题</h4>
+<p>在上面的步骤都成功了之后，我发现博客文章的展示顺序全部错乱了。由于 hexo 默认按照文章源文件的修改时间从近到远排序，所以我细看之下发现所有文章的发表时间全部变成了 push 到 repo 的时间，导致顺序错乱。按照网上的攻略，有以下两种解决方式：</p>
+<ol>
+<li>在所有文章顶部的 metadata 部分（也就是以<code>---</code>分割的部分）中添加 <code>updated</code>字段，这样 hexo 在渲染排序时就会优先根据这一时间。</li>
+<li>在 GitHub Actions 的自动化脚本中进行修改，将文件的修改时间设置为 Git 中最后一次提交的时间戳。</li>
+</ol>
+<p>本着最小化实现的原则，我首先尝试了第二种方案。在脚本中添加了几行代码（即前文中注释掉的代码）：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># check it to your workflow can access it</span>
+<span class="token comment"># from: https://github.com/actions/checkout</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Checkout Repository
+  <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v2
+	<span class="token key atrule">with</span><span class="token punctuation">:</span>
+    <span class="token key atrule">fetch-depth</span><span class="token punctuation">:</span> <span class="token number">0</span>
+
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Restore file modification time
+  <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+    git config --global core.quotepath false
+    find source -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>以下是 ChatGPT 的解释：</p>
+<blockquote>
+<p>这些被注释掉的代码片段是工作流中的可选步骤，分别与仓库的检出配置和文件的修改时间恢复有关。以下是对每个部分的解释：</p>
+<p><strong>1. 可选的仓库检出配置</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">#   with:</span>
+<span class="token comment">#     fetch-depth: 0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<p>这个部分是 <code>actions/checkout@v2</code> 步骤的可选配置项。<code>fetch-depth: 0</code> 表示在检出代码时，克隆整个 Git 历史记录，而不仅仅是最新的提交。默认情况下，<code>actions/checkout</code> 只会克隆最近的一个提交，以节省时间和带宽。如果你需要访问整个提交历史（例如在运行特定的 Git 命令或生成变更日志时），你可以取消注释这一部分并设置 <code>fetch-depth</code> 为 <code>0</code>。</p>
+<p><strong>2. 恢复文件的修改时间</strong></p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># - name: Restore file modification time</span>
+<span class="token comment">#   run: |</span>
+<span class="token comment">#     git config --global core.quotepath false</span>
+<span class="token comment">#     find source -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>这一段代码的目的是恢复文件的修改时间，使其与 Git 记录中的最后一次提交时间一致。</p>
+<ul>
+<li>
+<p><code>git config --global core.quotepath false</code>：这行命令禁用了 Git 中的路径转义，使路径信息在输出时不包含特殊字符的转义形式。</p>
+</li>
+<li>
+<p><code>find source -name '*.md'</code>：这行命令查找 <code>source</code> 目录下所有以 <code>.md</code> 结尾的文件（即 Markdown 文件）。</p>
+</li>
+<li>
+<p><code>while read file; do touch -d &quot;$(git log -1 --format=&quot;@%ct&quot; &quot;$file&quot;)&quot; &quot;$file&quot;; done</code>：这段代码循环遍历查找到的每个文件，使用 <code>touch -d</code> 命令将文件的修改时间设置为 Git 中最后一次提交的时间戳（<code>@%ct</code>）。</p>
+</li>
+</ul>
+<p>这一部分的作用是在一些情况下保持文件的修改时间与 Git 提交历史一致，可能对 Hexo 的文件生成逻辑有影响。如果 Hexo 或其他系统依赖于文件的修改时间来决定是否更新某些内容，这一步可能是必要的。</p>
+<p><strong>总结</strong></p>
+<p>这些被注释的代码片段是为了在特定需求下更灵活地配置工作流。如果你需要完整的 Git 历史或准确的文件修改时间戳，可以考虑取消注释并使用这些选项。</p>
+</blockquote>
+<p>然而这对我并没有用，时间信息并没有恢复。于是我尝试了第一种方式，为所有的文章添加一个 <code>updated</code>字段，标识文件的修改时间。当然，这一步需要在老电脑上操作，因为这些文件的基础信息保存在最初的系统上，而在新电脑上 clone 下来的文件的修改时间都是 clone 的时间。</p>
+<p>另外，出于个人偏好，我喜欢让文章根据创建时间而不是修改时间进行排序，这样在我对之前的文章内容进行修改后不会影响排序。所以在添加时我获取了文件的创建时间添加到字段中。</p>
+<p>这一操作是通过编写一个简单的 python 脚本完成的。但在添加好之后重新 push 竟然没有任何效果。在查阅文档和反复试验后我发现，可能是由于本人使用的主题或者配置的原因，我的文章发表时间优先设置为文章的<code>Date</code>字段的值而非<code>updated</code>字段，如果没有该字段则获取文件的系统信息（也就是 git 无法获取到的时间）。就是因为 GitHub 将后者设置成了最新 push 的时间，所以才导致了这一问题。</p>
+<p>由此我又为所有文章添加了一个<code>Date</code>字段，值为文件的创建时间，这倒是阴差阳错和我的需求统一起来，算是“名实相符”了。</p>
+<blockquote>
+<p>子路曰：「衛君待子而為政，子將奚先？」子曰：「必也正名乎！」子路曰：「有是哉，子之迂也！奚其正？」子曰：「野哉由也！君子於其所不知，蓋闕如也。名不正，則言不順；言不順，則事不成；事不成，則禮樂不興；禮樂不興，則刑罰不中；刑罰不中，則民無所措手足。故君子名之必可言也，言之必可行也。君子於其言，無所苟而已矣。」</p>
+</blockquote>
+<p>果然，名正言顺则事可成。这个问题算是解决了。</p>
+<p>最后附上批处理为所有文章添加<code>Date</code>字段的 python 代码（需要放在文章的源文件的目录下执行，在我这里是 <code>source/_posts/</code>）：</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+
+
+<span class="token keyword">def</span> <span class="token function">creation_time_extraction</span><span class="token punctuation">(</span>file_path<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 获取文件的创建时间 (Windows 和部分类Unix系统)</span>
+    creation_time <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>getctime<span class="token punctuation">(</span>file_path<span class="token punctuation">)</span>
+
+    <span class="token comment"># 转换为可读的日期时间格式</span>
+    creation_time_readable <span class="token operator">=</span> datetime<span class="token punctuation">.</span>fromtimestamp<span class="token punctuation">(</span>
+        creation_time<span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y-%m-%d %H:%M:%S'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> creation_time_readable
+
+
+<span class="token keyword">def</span> <span class="token function">update_md</span><span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> creation_time<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> md_file<span class="token punctuation">:</span>
+        content <span class="token operator">=</span> md_file<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    start_idx<span class="token punctuation">,</span> end_idx <span class="token operator">=</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token boolean">None</span>
+    <span class="token keyword">for</span> i<span class="token punctuation">,</span> line <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> line<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">"---"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> start_idx <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+                start_idx <span class="token operator">=</span> i
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                end_idx <span class="token operator">=</span> i
+                <span class="token keyword">break</span>
+
+    <span class="token keyword">if</span> start_idx <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span> <span class="token keyword">and</span> end_idx <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span> <span class="token keyword">and</span> start_idx <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">&lt;</span> end_idx<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>start_idx <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> end_idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> content<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">"title:"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                content<span class="token punctuation">.</span>insert<span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string-interpolation"><span class="token string">f"date: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>creation_time<span class="token punctuation">&#125;</span></span><span class="token string">\n"</span></span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> md_file<span class="token punctuation">:</span>
+            md_file<span class="token punctuation">.</span>writelines<span class="token punctuation">(</span>content<span class="token punctuation">)</span>
+
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    files <span class="token operator">=</span> <span class="token punctuation">[</span>f <span class="token keyword">for</span> f <span class="token keyword">in</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span> <span class="token keyword">if</span> f<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.md'</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>files<span class="token punctuation">)</span>
+    m <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">for</span> file_name <span class="token keyword">in</span> files<span class="token punctuation">:</span>
+        file_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> file_name<span class="token punctuation">)</span>
+        creation_time <span class="token operator">=</span> creation_time_extraction<span class="token punctuation">(</span>file_path<span class="token punctuation">)</span>
+        <span class="token comment"># print(f"File: &#123;file_name&#125;, Created: &#123;creation_time&#125;")</span>
+        flag <span class="token operator">=</span> update_md<span class="token punctuation">(</span>file_path<span class="token punctuation">,</span> creation_time<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> flag<span class="token punctuation">:</span>
+            m <span class="token operator">+=</span> <span class="token number">1</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>file_path<span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"total num of files: "</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"fail updating num: "</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h3 id="参考文章">参考文章</h3>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1611808">https://cloud.tencent.com/developer/article/1611808</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2369534">https://cloud.tencent.com/developer/article/2369534</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yyyzyyyz/p/15792199.html">https://www.cnblogs.com/yyyzyyyz/p/15792199.html</a></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="category-chain-item">博客</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8D%9A%E5%AE%A2/">#博客</a>
+      
+        <a href="/tags/github/">#github</a>
+      
+        <a href="/tags/%E6%95%99%E7%A8%8B/">#教程</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Blog CI</div>
+      <div>https://lmc20020909.github.io/Blog-CI/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Liu Mingchen</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月19日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/MacOS%20Anaconda%20%E9%85%8D%E7%BD%AE/" title="MacOS conda 创建环境时的特殊配置">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MacOS conda 创建环境时的特殊配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/%E3%80%8A%E6%88%91%E4%B8%8E%E5%9C%B0%E5%9D%9B%E3%80%8B%E6%9C%AD%E8%AE%B0/" title="《我与地坛》札记">
+                        <span class="hidden-mobile">《我与地坛》札记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script  src="https://lib.baomitu.com/prism/1.28.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
