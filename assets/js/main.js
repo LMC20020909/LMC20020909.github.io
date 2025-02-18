@@ -50,28 +50,28 @@ function decryptEmail(encoded) {
 	window.location.href = "mailto:" + address;
 }
 
-// document.addEventListener('DOMContentLoaded', function () {
-// 	// 获取一言数据
-// 	var xhr = new XMLHttpRequest();
-// 	xhr.onreadystatechange = function () {
-// 		if (this.readyState == 4 && this.status == 200) {
-// 			var res = JSON.parse(this.responseText);
-// 			document.getElementById('description').innerHTML = res.hitokoto + "<br/> -" + res.from_who + "「<strong>" + res.from + "</strong>」";
-// 		}
-// 	};
-// 	xhr.open("GET", "https://v1.hitokoto.cn?c=i", true);
-// 	xhr.send();
+document.addEventListener('DOMContentLoaded', function () {
+	// 获取一言数据
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var res = JSON.parse(this.responseText);
+			document.getElementById('description').innerHTML = res.hitokoto + "<br/> -" + res.from_who + "「<strong>" + res.from + "</strong>」";
+		}
+	};
+	xhr.open("GET", "https://v1.hitokoto.cn?c=i", true);
+	xhr.send();
 
-// 	var iUpElements = document.querySelectorAll(".iUp");
-// 	iUpElements.forEach(function (element) {
-// 		iUp.up(element);
-// 	});
+	var iUpElements = document.querySelectorAll(".iUp");
+	iUpElements.forEach(function (element) {
+		iUp.up(element);
+	});
 
-// 	var avatarElement = document.querySelector(".js-avatar");
-// 	avatarElement.addEventListener('load', function () {
-// 		avatarElement.classList.add("show");
-// 	});
-// });
+	var avatarElement = document.querySelector(".js-avatar");
+	avatarElement.addEventListener('load', function () {
+		avatarElement.classList.add("show");
+	});
+});
 
 var btnMobileMenu = document.querySelector('.btn-mobile-menu__icon');
 var navigationWrapper = document.querySelector('.navigation-wrapper');
