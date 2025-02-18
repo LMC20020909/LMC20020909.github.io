@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			document.getElementById('description').innerHTML = res.hitokoto + "<br/> -「<strong>" + res.from + "</strong>」";
 		}
 	};
-	xhr.open("GET", "https://v1.hitokoto.cn", true);
+	xhr.open("GET", "https://v1.hitokoto.cn?c=i&c=k", true);
 	xhr.send();
 
 	var iUpElements = document.querySelectorAll(".iUp");
