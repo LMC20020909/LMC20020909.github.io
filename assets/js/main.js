@@ -56,10 +56,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	xhr.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var res = JSON.parse(this.responseText);
-			document.getElementById('description').innerHTML = res.hitokoto + "<br/> -「<strong>" + res.from + "</strong>」";
+			document.getElementById('description').innerHTML = res.hitokoto + "<br/> -" + res.from_who + "《<strong>" + res.from + "</strong>》";
 		}
 	};
-	xhr.open("GET", "https://v1.hitokoto.cn?c=i&c=k", true);
+	xhr.open("GET", "https://v1.hitokoto.cn?c=i", true);
 	xhr.send();
 
 	var iUpElements = document.querySelectorAll(".iUp");
